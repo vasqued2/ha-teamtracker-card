@@ -1,6 +1,6 @@
 import { html, LitElement } from "https://unpkg.com/lit?module";
 
-class NFLCard extends LitElement {
+class SportsCard extends LitElement {
 
   static get properties() {
     return {
@@ -349,4 +349,4 @@ class NFLCard extends LitElement {
   }
 }
 
-customElements.define("nfl-card", NFLCard);
+customElements.define("sports-card", SportsCard);
