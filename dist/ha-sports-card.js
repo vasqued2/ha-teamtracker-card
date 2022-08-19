@@ -91,6 +91,26 @@ class SportsCard extends LitElement {
         </ha-card> 
       `;
     }
+//
+//  MLB Specific Changes
+//
+    var startTerm = 'Kickoff in';
+    var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
+    var downDistance = stateObj.attributes.down_distance_text;
+    var network = stateObj.attributes.tv_network;
+    var outsDisplay = 'none';
+    var timeoutsDisplay = 'inline';
+    var basesDisplay = 'none';
+
+    if (stateObj.attributes.league == 'MLB') {
+      startTerm = 'First Pitch in';
+      playClock = stateObj.attributes.clock;
+      downDistance = 'Balls ' + stateObj.attributes.balls;
+      network = 'Strikes ' + stateObj.attributes.strikes;
+      outsDisplay = 'inline'
+      timeoutsDisplay = 'none';
+      basesDisplay = 'inline';
+    }
 
     if (stateObj.state == 'POST') {
       return html`
@@ -151,7 +171,7 @@ class SportsCard extends LitElement {
             .divider { font-size: 2.5em; text-align: center; margin: 0 4px; }
             .name { font-size: 1.4em; margin-bottom: 4px; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-            .timeouts { margin: 0 auto; width: 70%; }
+            .timeouts { margin: 0 auto; width: 70%; display: ${timeoutsDisplay}; }
             .timeouts div.opponent-to:nth-child(-n + ${stateObj.attributes.opponent_timeouts})  { opacity: 1; }
             .timeouts div.team-to:nth-child(-n + ${stateObj.attributes.team_timeouts})  { opacity: 1; }
             .team-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
@@ -165,6 +185,7 @@ class SportsCard extends LitElement {
             .clock { text-align: center; font-size: 1.4em; }
             .down-distance { text-align: right; }
             .play-clock { font-size: 1.4em; text-align: center; margin-top: -24px; }
+            .outs { text-align: center; display: ${outsDisplay}; }
             .probability-text { text-align: center; }
             .prob-flex { width: 100%; display: flex; justify-content: center; margin-top: 4px; }
             .opponent-probability { width: ${oppoProb}%; background-color: ${oppoColor}; height: 12px; border-radius: 0 ${probRadius}px ${probRadius}px 0; border: ${clrOut}px solid ${outColor}; border-left: 0; transition: all 1s ease-out; }
@@ -206,15 +227,16 @@ class SportsCard extends LitElement {
                 </div>
               </div>
             </div>
-            <div class="play-clock">Q${stateObj.attributes.quarter} - ${stateObj.attributes.clock}</div>
+            <div class="play-clock">${playClock}</div>
+            <div class="outs">${stateObj.attributes.outs} Outs</div>
             <div class="line"></div>
             <div class="sub2">
               <div class="venue">${stateObj.attributes.venue}</div>
-             <div class="down-distance">${stateObj.attributes.down_distance_text}</div>
+             <div class="down-distance">${downDistance}</div>
             </div>
             <div class="sub3">
               <div class="location">${stateObj.attributes.location}</div>
-              <div class="network">${stateObj.attributes.tv_network}</div>
+              <div class="network">${network}</div>
             </div>
             <div class="line"></div>
             <div class="last-play">
@@ -278,7 +300,7 @@ class SportsCard extends LitElement {
               </div>
               <div class="line"></div>
               <div class="sub1">
-                <div class="date">Kickoff ${stateObj.attributes.kickoff_in}</div>
+                <div class="date">${startTerm} ${stateObj.attributes.kickoff_in}</div>
                 <div class="odds">${stateObj.attributes.odds}</div>
               </div>
               <div class="sub2">
