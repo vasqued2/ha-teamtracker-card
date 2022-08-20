@@ -94,6 +94,27 @@ class SportsCard extends LitElement {
 //
 //  MLB Specific Changes
 //
+    if (stateObj.attributes.on_first) {
+      var onFirstOp = 1;
+    }
+    else {
+      var onFirstOp = 0.2;
+    }
+    if (stateObj.attributes.on_second) {
+      var onSecondOp = 1;
+    }
+    else {
+      var onSecondOp = 0.2;
+    }
+    if (stateObj.attributes.on_third) {
+      var onThirdOp = 1;
+    }
+    else {
+      var onThirdOp = 0.2;
+    }
+
+    var nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png'
+    var nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png'
     var startTerm = 'Kickoff in';
     var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
     var downDistance = stateObj.attributes.down_distance_text;
@@ -103,13 +124,15 @@ class SportsCard extends LitElement {
     var basesDisplay = 'none';
 
     if (stateObj.attributes.league == 'MLB') {
+      nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png'
+      nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png'
       startTerm = 'First Pitch in';
       playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
       network = 'Strikes ' + stateObj.attributes.strikes;
-      outsDisplay = 'inline'
+      outsDisplay = 'inherit'
       timeoutsDisplay = 'none';
-      basesDisplay = 'inline';
+      basesDisplay = 'inherit';
     }
 
     if (stateObj.state == 'POST') {
@@ -175,6 +198,11 @@ class SportsCard extends LitElement {
             .timeouts div.opponent-to:nth-child(-n + ${stateObj.attributes.opponent_timeouts})  { opacity: 1; }
             .timeouts div.team-to:nth-child(-n + ${stateObj.attributes.team_timeouts})  { opacity: 1; }
             .team-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
+            .bases { text-align:center; margin: 0 auto; width: 25%; display:  ${basesDisplay}; }
+            .on-first { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onFirstOp}; }
+            .on-second { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onSecondOp}; }
+            .on-third { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onThirdOp}; }
+            .pitcher { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.0; }
             .opponent-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${oppoColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
             .status { text-align:center; font-size:1.6em; font-weight: 700; }
             .sub1 { font-weight: 700; font-size: 1.2em; margin: 6px 0 2px; }
@@ -228,11 +256,19 @@ class SportsCard extends LitElement {
               </div>
             </div>
             <div class="play-clock">${playClock}</div>
+            <div class="bases">
+              <div class="on-second"></div>
+            </div>
+            <div class="bases">
+              <div class="on-third"></div>
+              <div class="pitcher"></div>
+              <div class="on-first"></div>
+            </div>
             <div class="outs">${stateObj.attributes.outs} Outs</div>
             <div class="line"></div>
             <div class="sub2">
               <div class="venue">${stateObj.attributes.venue}</div>
-             <div class="down-distance">${downDistance}</div>
+              <div class="down-distance">${downDistance}</div>
             </div>
             <div class="sub3">
               <div class="location">${stateObj.attributes.location}</div>
@@ -357,10 +393,10 @@ class SportsCard extends LitElement {
         </style>
         <ha-card>
           <div class="card">
-            <img class="team-bg" src="https://a.espncdn.com/i/espn/misc_logos/500/nfl.png" />
+            <img class="team-bg" src="${nfTeamBG}" />
             <div class="card-content">
               <div class="team">
-                <img src="https://a.espncdn.com/i/espn/misc_logos/500/nfl.png" />
+                <img src="${nfTeam}" />
               </div>
               <div class="eos">Better Luck<br />Next Year</div>
             </div>
