@@ -134,7 +134,15 @@ class SportsCard extends LitElement {
       timeoutsDisplay = 'none';
       basesDisplay = 'inherit';
     }
+//
+//  NCAAF Specific Changes
+//
+    if (stateObj.attributes.league == 'NCAAF') {
+      nfTeamBG = 'https://a.espncdn.com/redesign/assets/img/icons/ESPN-icon-football-college.png'
+      nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
+    }
 
+    
     if (stateObj.state == 'POST') {
       return html`
         <style>
