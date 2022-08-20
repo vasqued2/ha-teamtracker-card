@@ -118,11 +118,13 @@ class SportsCard extends LitElement {
 //    var lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
     var lastPlaySpeed = 18;
     if (stateObj.attributes.last_play) {
-      lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
+      lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/40) * 5;
     }
 
     var nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png';
     var nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png';
+    var nfTerm1 = 'Better Luck'
+    var nfTerm2 = 'Next Year';
     var startTerm = 'Kickoff in';
     var probTerm = 'Win Probability';
     var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
@@ -149,7 +151,9 @@ class SportsCard extends LitElement {
 //
 if (stateObj.attributes.league == 'MLS') {
   nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
-  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png';
+  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
+  nfTerm1 = stateObj.attributes.team_abbr;
+  nfTerm2 = 'No Upcoming Games'
   probTerm = 'Shots (On Target)';
   playClock = stateObj.attributes.clock;
   teamProb = stateObj.attributes.team_total_shots;
@@ -433,7 +437,7 @@ if (stateObj.attributes.league == 'MLS') {
               <div class="team">
                 <img src="${nfTeam}" />
               </div>
-              <div class="eos">Better Luck<br />Next Year</div>
+              <div class="eos">${nfTerm1}<br />${nfTerm2}</div>
             </div>
           </div>
         </ha-card>
