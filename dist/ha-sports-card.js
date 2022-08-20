@@ -112,6 +112,7 @@ class SportsCard extends LitElement {
     else {
       var onThirdOp = 0.2;
     }
+    var lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
 
     var nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png'
     var nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png'
@@ -216,7 +217,7 @@ class SportsCard extends LitElement {
             .sub1 { font-weight: 700; font-size: 1.2em; margin: 6px 0 2px; }
             .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
             .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
-            .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide 18s linear infinite; }
+            .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide ${lastPlaySpeed}s linear infinite; }
             @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
             .clock { text-align: center; font-size: 1.4em; }
             .down-distance { text-align: right; }
