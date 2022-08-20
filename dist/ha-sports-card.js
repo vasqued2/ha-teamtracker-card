@@ -24,8 +24,10 @@ class SportsCard extends LitElement {
     const stateObj = this.hass.states[this._config.entity];
     const outline = this._config.outline;
     const outlineColor = this._config.outline_color;
-    const teamProb = (stateObj.attributes.team_win_probability * 100).toFixed(0);
-    const oppoProb = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
+    var teamProb = (stateObj.attributes.team_win_probability * 100).toFixed(0);
+    var oppoProb = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
+    var teamProbPercent = teamProb + '%';
+    var oppoProbPercent = oppoProb + '%';
     var tScr = stateObj.attributes.team_score;
     var oScr = stateObj.attributes.opponent_score;
 
@@ -112,11 +114,17 @@ class SportsCard extends LitElement {
     else {
       var onThirdOp = 0.2;
     }
-    var lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
 
-    var nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png'
-    var nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png'
+//    var lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
+    var lastPlaySpeed = 18;
+    if (stateObj.attributes.last_play) {
+      lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
+    }
+
+    var nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png';
+    var nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png';
     var startTerm = 'Kickoff in';
+    var probTerm = 'Win Probability';
     var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
     var downDistance = stateObj.attributes.down_distance_text;
     var network = stateObj.attributes.tv_network;
@@ -125,16 +133,34 @@ class SportsCard extends LitElement {
     var basesDisplay = 'none';
 
     if (stateObj.attributes.league == 'MLB') {
-      nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png'
-      nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png'
+      nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png';
+      nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png';
       startTerm = 'First Pitch in';
       playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
       network = 'Strikes ' + stateObj.attributes.strikes;
-      outsDisplay = 'inherit'
+      outsDisplay = 'inherit';
       timeoutsDisplay = 'none';
       basesDisplay = 'inherit';
     }
+
+//
+//  MLS Specific Changes
+//
+if (stateObj.attributes.league == 'MLS') {
+  nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
+  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png';
+  probTerm = 'Shots (On Target)';
+  playClock = stateObj.attributes.clock;
+  teamProb = stateObj.attributes.team_total_shots;
+  oppoProb = stateObj.attributes.opponent_total_shots;
+  teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
+  oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
+  timeoutsDisplay = 'none';
+
+
+}
+
 //
 //  NCAAF Specific Changes
 //
@@ -287,14 +313,14 @@ class SportsCard extends LitElement {
             <div class="last-play">
               <p>${stateObj.attributes.last_play}</p>
             </div>
-            <div class="probability-text">Win Probability</div>
+            <div class="probability-text">${probTerm}</div>
             <div class="probability-wrapper">
-              <div class="team-percent">${teamProb}%</div>
+              <div class="team-percent">${teamProbPercent}</div>
               <div class="prob-flex">
                 <div class="team-probability"></div>
                 <div class="opponent-probability"></div>
               </div>
-              <div class="oppo-percent">${oppoProb}%</div>
+              <div class="oppo-percent">${oppoProbPercent}</div>
             </div>
           </div>
           </ha-card>
