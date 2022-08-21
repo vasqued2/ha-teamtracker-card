@@ -147,12 +147,12 @@ class SportsCard extends LitElement {
     }
 
 //
-//  Soccer (MLS/NWSL) Specific Changes
+//  Soccer Specific Changes
 //
-if ((stateObj.attributes.league == 'MLS') || (stateObj.attributes.league == 'NWSL')) {
+if (["MLS", "NWSL", "EPL", "LIGA", "BUND"].includes(stateObj.attributes.league)) {
   nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
   nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
-  nfTerm1 = stateObj.attributes.team_abbr;
+  nfTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
   nfTerm2 = 'No Upcoming Games'
   probTerm = 'Shots (On Target)';
   playClock = stateObj.attributes.clock;
@@ -167,8 +167,8 @@ if ((stateObj.attributes.league == 'MLS') || (stateObj.attributes.league == 'NWS
 //  NWSL Specific Changes
 //
 if (stateObj.attributes.league == 'NWSL') {
-  nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nwsl.png'
-  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nwsl.png'
+  nfTeamBG = 'https://a.espncdn.com/i/leaguelogos/soccer/500/2323.png'
+  nfTeam = 'https://a.espncdn.com/i/leaguelogos/soccer/500/2323.png'
 }
 //
 //  Basketball Specific Changes
