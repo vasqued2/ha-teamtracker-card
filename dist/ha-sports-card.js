@@ -170,7 +170,14 @@ if (stateObj.attributes.league == 'NWSL') {
   nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nwsl.png'
   nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nwsl.png'
 }
-
+//
+//  Basketball Specific Changes
+//
+if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
+  nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nba.png'
+  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nba.png'
+  startTerm = 'Tipoff in';
+}
 //
 //  NCAAF Specific Changes
 //
