@@ -147,9 +147,9 @@ class SportsCard extends LitElement {
     }
 
 //
-//  MLS Specific Changes
+//  Soccer (MLS/NWSL) Specific Changes
 //
-if (stateObj.attributes.league == 'MLS') {
+if ((stateObj.attributes.league == 'MLS') || (stateObj.attributes.league == 'NWSL')) {
   nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
   nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
   nfTerm1 = stateObj.attributes.team_abbr;
@@ -161,8 +161,14 @@ if (stateObj.attributes.league == 'MLS') {
   teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
   oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
   timeoutsDisplay = 'none';
+}
 
-
+//
+//  NWSL Specific Changes
+//
+if (stateObj.attributes.league == 'NWSL') {
+  nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nwsl.png'
+  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nwsl.png'
 }
 
 //
