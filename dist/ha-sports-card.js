@@ -1,5 +1,4 @@
 import { html, LitElement } from "https://unpkg.com/lit?module";
-
 class SportsCard extends LitElement {
 
   static get properties() {
@@ -94,37 +93,16 @@ class SportsCard extends LitElement {
       `;
     }
 //
-//  MLB Specific Changes
+//  Set default values for variable components
 //
-    if (stateObj.attributes.on_first) {
-      var onFirstOp = 1;
-    }
-    else {
-      var onFirstOp = 0.2;
-    }
-    if (stateObj.attributes.on_second) {
-      var onSecondOp = 1;
-    }
-    else {
-      var onSecondOp = 0.2;
-    }
-    if (stateObj.attributes.on_third) {
-      var onThirdOp = 1;
-    }
-    else {
-      var onThirdOp = 0.2;
-    }
-
-//    var lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/50) * 5;
     var lastPlaySpeed = 18;
     if (stateObj.attributes.last_play) {
       lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/40) * 5;
     }
-
-    var nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png';
-    var nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nfl.png';
-    var nfTerm1 = 'Better Luck'
-    var nfTerm2 = 'Next Year';
+    var nfTeamBG = stateObj.attributes.league_logo;
+    var nfTeam = stateObj.attributes.league_logo;
+    var nfTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
+    var nfTerm2 = 'No Upcoming Games'
     var startTerm = 'Kickoff in';
     var probTerm = 'Win Probability';
     var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
@@ -134,9 +112,28 @@ class SportsCard extends LitElement {
     var timeoutsDisplay = 'inline';
     var basesDisplay = 'none';
 
+//
+//  MLB Specific Changes
+//
+if (stateObj.attributes.on_first) {
+  var onFirstOp = 1;
+}
+else {
+  var onFirstOp = 0.2;
+}
+if (stateObj.attributes.on_second) {
+  var onSecondOp = 1;
+}
+else {
+  var onSecondOp = 0.2;
+}
+if (stateObj.attributes.on_third) {
+  var onThirdOp = 1;
+}
+else {
+  var onThirdOp = 0.2;
+}
     if (stateObj.attributes.league == 'MLB') {
-      nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png';
-      nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mlb.png';
       startTerm = 'First Pitch in';
       playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
@@ -150,10 +147,6 @@ class SportsCard extends LitElement {
 //  Soccer Specific Changes
 //
 if (["MLS", "NWSL", "EPL", "LIGA", "BUND"].includes(stateObj.attributes.league)) {
-  nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
-  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/mls.png';
-  nfTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
-  nfTerm2 = 'No Upcoming Games'
   probTerm = 'Shots (On Target)';
   playClock = stateObj.attributes.clock;
   teamProb = stateObj.attributes.team_total_shots;
@@ -162,27 +155,16 @@ if (["MLS", "NWSL", "EPL", "LIGA", "BUND"].includes(stateObj.attributes.league))
   oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
   timeoutsDisplay = 'none';
 }
-
-//
-//  NWSL Specific Changes
-//
-if (stateObj.attributes.league == 'NWSL') {
-  nfTeamBG = 'https://a.espncdn.com/i/leaguelogos/soccer/500/2323.png'
-  nfTeam = 'https://a.espncdn.com/i/leaguelogos/soccer/500/2323.png'
-}
 //
 //  Basketball Specific Changes
 //
 if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
-  nfTeamBG = 'https://a.espncdn.com/i/espn/misc_logos/500/nba.png'
-  nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/nba.png'
   startTerm = 'Tipoff in';
 }
 //
-//  NCAAF Specific Changes
+//  NCAA Specific Changes
 //
-    if (stateObj.attributes.league == 'NCAAF') {
-      nfTeamBG = 'https://a.espncdn.com/redesign/assets/img/icons/ESPN-icon-football-college.png'
+  if (["NCAAB", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
       nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
 
@@ -451,7 +433,6 @@ if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
                 <img src="${nfTeam}" />
               </div>
               <div class="eos">${nfTerm1}<br />${nfTerm2}</div>
-            </div>
           </div>
         </ha-card>
       `;
