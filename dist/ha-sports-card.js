@@ -50,12 +50,7 @@ class SportsCard extends LitElement {
     if (!this._config.outline_color) {
       var outColor = '#ffffff';
     }
-    if (stateObj.attributes.possession == stateObj.attributes.team_id) {
-      var teamPoss = 1;
-    }
-    if (stateObj.attributes.possession == stateObj.attributes.opponent_id) {
-      var oppoPoss = 1;
-    }
+
     if (Boolean(stateObj.state == 'POST') && Number(tScr) > Number(oScr)) {
         var oppoScore = 0.6;
         var teamScore = 1;
@@ -69,7 +64,6 @@ class SportsCard extends LitElement {
         var teamScore = 1;
     }
 
-
     if (stateObj.attributes.team_homeaway == 'home') {
       var teamColor = stateObj.attributes.team_colors[0];
       var oppoColor = stateObj.attributes.opponent_colors[1];
@@ -77,6 +71,15 @@ class SportsCard extends LitElement {
     if (stateObj.attributes.team_homeaway == 'away') {
       var teamColor = stateObj.attributes.team_colors[1];
       var oppoColor = stateObj.attributes.opponent_colors[0];
+    }
+
+    if (stateObj.attributes.possession == stateObj.attributes.team_id) {
+      var teamPoss = 1;
+      var basesColor = teamColor;
+    }
+    if (stateObj.attributes.possession == stateObj.attributes.opponent_id) {
+      var oppoPoss = 1;
+      var basesColor = oppoColor
     }
 
     if (!stateObj) {
@@ -146,7 +149,7 @@ else {
 //
 //  Soccer Specific Changes
 //
-if (["MLS", "NWSL", "EPL", "LIGA", "BUND"].includes(stateObj.attributes.league)) {
+if (["MLS", "NWSL", "EPL", "LIGA", "BUND", "SERA", "LIG1"].includes(stateObj.attributes.league)) {
   probTerm = 'Shots (On Target)';
   playClock = stateObj.attributes.clock;
   teamProb = stateObj.attributes.team_total_shots;
@@ -164,7 +167,7 @@ if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
 //
 //  NCAA Specific Changes
 //
-  if (["NCAAB", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
+  if (["NCAAB", "NCAAM", "NCAAW", "NCAAF"].includes(stateObj.attributes.league)) {
       nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
 
@@ -233,10 +236,10 @@ if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
             .timeouts div.team-to:nth-child(-n + ${stateObj.attributes.team_timeouts})  { opacity: 1; }
             .team-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
             .bases { text-align:center; margin: 0 auto; width: 25%; display:  ${basesDisplay}; }
-            .on-first { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onFirstOp}; }
-            .on-second { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onSecondOp}; }
-            .on-third { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onThirdOp}; }
-            .pitcher { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.0; }
+            .on-first { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onFirstOp}; }
+            .on-second { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onSecondOp}; }
+            .on-third { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onThirdOp}; }
+            .pitcher { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.0; }
             .opponent-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${oppoColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
             .status { text-align:center; font-size:1.6em; font-weight: 700; }
             .sub1 { font-weight: 700; font-size: 1.2em; margin: 6px 0 2px; }
