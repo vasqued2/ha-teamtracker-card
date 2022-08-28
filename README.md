@@ -1,5 +1,5 @@
 # Home Assistant Sports Card
-A Home Assistant frontend custom card for the [vasqued2/ha-sports-card](https://github.com/vasqued2/ha-sports-card) integration.  Based on [D34DC3N73R/ha-nfl-card] by @D34DC3N73R.
+A Home Assistant frontend custom card for the [vasqued2/ha-teamtracker](https://github.com/vasqued2/ha-teamtracker) integration.  Based on [D34DC3N73R/ha-nfl-card] by @D34DC3N73R.
 
 #### &nbsp;&nbsp;&nbsp;PREGAME
 
@@ -21,34 +21,34 @@ A Home Assistant frontend custom card for the [vasqued2/ha-sports-card](https://
 ## HACS Installation
  - In the HACS UI, click the 3 dots in the upper right
  - Click 'Add Custom Repository'
- - Fill in the repo url https://github.com/D34DC3N73R/ha-nfl-card and choose 'Lovelace' category.
+ - Fill in the repo url https://github.com/D34DC3N73R/ha-teamtracker-card and choose 'Lovelace' category.
  - install the custom card
  - Add the following to your resources
 ```
-url: /hacsfiles/ha-nfl-card/ha-nfl-card.js
+url: /hacsfiles/ha-teamtracker-card/ha-teamtracker-card.js
 type: module
 ```
 
 ## Manual Installation
- - Download [ha-nfl-card.js](https://raw.githubusercontent.com/D34DC3N73R/ha-nfl-card/main/dist/ha-nfl-card.js)
- - Copy to www/community/ha-nfl-card/ (make the ha-nfl-card directory)
+ - Download [ha-teamtracker-card.js](https://raw.githubusercontent.com/D34DC3N73R/ha-nfl-card/main/dist/ha-nfl-card.js)
+ - Copy to www/community/ha-teamtracker-card/ (make the ha-teamtracker-card directory)
  - Add the following to your resources
 ```
-url: /hacsfiles/ha-nfl-card/ha-nfl-card.js
+url: /hacsfiles/ha-teamtracker-card/ha-teamtracker-card.js
 type: module
 ```
 
 ## Options
 | Name | Description | Default | Required |  Values |
 | --- | --- | --- | --- | --- |
-| `entity` | Name of ha-nfl sensor | `sensor.nfl` | Yes  | Valid sensor |
+| `entity` | Name of ha-teamtracker sensor | `sensor.team_tracker` | Yes  | Valid sensor |
 | `outline` | Outline team colors (helpful w/ dark themes) |`false` | No |  `true` `false` |
 | `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
 
 ## Examples
 ```
-type: 'custom:nfl-card'
-entity: sensor.nfl
+type: 'custom:teamtracker-card'
+entity: sensor.team_tracker
 outline: true
 outline_color: deeppink
 ```
@@ -56,8 +56,8 @@ outline_color: deeppink
 
 
 ```
-type: 'custom:nfl-card'
-entity: sensor.nfl
+type: 'custom:teamtracker-card'
+entity: sensor.team_tracker
 outline: true
 outline_color: '#ffe500'
 ```
@@ -65,7 +65,7 @@ outline_color: '#ffe500'
 
 ## Minimal Required Configuration
 ```
-type: 'custom:nfl-card'
-entity: sensor.nfl
+type: 'custom:teamtracker-card'
+entity: sensor.team_tracker
 ```
-Where `sensor.nfl` is the sensor name from the [ha-nfl](https://github.com/zacs/ha-nfl) integration.
+Where `sensor.team_tracker` is the sensor name from the [ha-teamtracker](https://github.com/vasqued2/ha-teamtracker) integration.

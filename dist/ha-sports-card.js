@@ -1,5 +1,5 @@
 import { html, LitElement } from "https://unpkg.com/lit?module";
-class SportsCard extends LitElement {
+class TeamTrackerCard extends LitElement {
 
   static get properties() {
     return {
@@ -443,4 +443,4 @@ if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
   }
 }
 
-customElements.define("sports-card", SportsCard);
+customElements.define("teamtracker-card", TeamTrackerCard);

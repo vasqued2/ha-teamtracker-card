@@ -1,6 +1,6 @@
 {
-  "name": "Sports Card",
-  "filename": "ha-sports-card.js",
+  "name": "Team Tracker Card",
+  "filename": "ha-teamtracker-card.js",
   "render_readme": true,
   "homeassistant": "0.95.4",
   "country": ["US"]
