@@ -165,6 +165,12 @@ if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
   startTerm = 'Tipoff in';
 }
 //
+//  Hockey Specific Changes
+//
+if (["NHL"].includes(stateObj.attributes.league)) {
+  startTerm = 'Puck Drop in';
+}
+//
 //  NCAA Specific Changes
 //
   if (["NCAAB", "NCAAM", "NCAAW", "NCAAF"].includes(stateObj.attributes.league)) {
