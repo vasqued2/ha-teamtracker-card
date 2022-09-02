@@ -136,7 +136,7 @@ if (stateObj.attributes.on_third) {
 else {
   var onThirdOp = 0.2;
 }
-    if (stateObj.attributes.league == 'MLB') {
+    if (["baseball"].includes(stateObj.attributes.sport)) {
       startTerm = 'First Pitch in';
       playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
@@ -149,7 +149,7 @@ else {
 //
 //  Soccer Specific Changes
 //
-if (["MLS", "NWSL", "EPL", "LIGA", "BUND", "SERA", "LIG1"].includes(stateObj.attributes.league)) {
+if (["soccer"].includes(stateObj.attributes.sport)) {
   probTerm = 'Shots (On Target)';
   playClock = stateObj.attributes.clock;
   teamProb = stateObj.attributes.team_total_shots;
@@ -161,13 +161,13 @@ if (["MLS", "NWSL", "EPL", "LIGA", "BUND", "SERA", "LIG1"].includes(stateObj.att
 //
 //  Basketball Specific Changes
 //
-if (["NBA", "WNBA", "NCAAM", "NCAAW"].includes(stateObj.attributes.league)) {
+if (["basketball"].includes(stateObj.attributes.sport)) {
   startTerm = 'Tipoff in';
 }
 //
 //  Hockey Specific Changes
 //
-if (["NHL"].includes(stateObj.attributes.league)) {
+if (["hockey"].includes(stateObj.attributes.sport)) {
   startTerm = 'Puck Drop in';
 }
 //
