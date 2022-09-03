@@ -241,11 +241,11 @@ if (["hockey"].includes(stateObj.attributes.sport)) {
             .timeouts div.opponent-to:nth-child(-n + ${stateObj.attributes.opponent_timeouts})  { opacity: 1; }
             .timeouts div.team-to:nth-child(-n + ${stateObj.attributes.team_timeouts})  { opacity: 1; }
             .team-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
-            .bases { text-align:center; margin: 0 auto; width: 25%; display:  ${basesDisplay}; }
-            .on-first { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onFirstOp}; }
-            .on-second { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onSecondOp}; }
-            .on-third { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: ${onThirdOp}; }
-            .pitcher { height: 10px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 10%; background-color: ${basesColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.0; }
+            .bases { font-size: 2.5em; text-align: center; font-weight:900; display: ${basesDisplay};}
+            .on-first { opacity: ${onFirstOp}; display: inline-block; }
+            .on-second { opacity: ${onSecondOp}; display: inline-block; }
+            .on-third { opacity: ${onThirdOp}; display: inline-block; }
+            .pitcher { opacity: 0.0; display: inline-block; }
             .opponent-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${oppoColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
             .status { text-align:center; font-size:1.6em; font-weight: 700; }
             .sub1 { font-weight: 700; font-size: 1.2em; margin: 6px 0 2px; }
@@ -300,12 +300,12 @@ if (["hockey"].includes(stateObj.attributes.sport)) {
             </div>
             <div class="play-clock">${playClock}</div>
             <div class="bases">
-              <div class="on-second"></div>
+              <div class="on-second">&bull;</div>
             </div>
             <div class="bases">
-              <div class="on-third"></div>
+              <div class="on-third">&bull;</div>
               <div class="pitcher"></div>
-              <div class="on-first"></div>
+              <div class="on-first">&bull;</div>
             </div>
             <div class="outs">${stateObj.attributes.outs} Outs</div>
             <div class="line"></div>
