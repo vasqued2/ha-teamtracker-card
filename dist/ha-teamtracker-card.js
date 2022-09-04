@@ -106,7 +106,7 @@ class TeamTrackerCard extends LitElement {
     var nfTeam = stateObj.attributes.league_logo;
     var nfTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
     var nfTerm2 = 'No Upcoming Games'
-    var startTerm = 'Kickoff in';
+    var startTerm = 'Kickoff';
     var probTerm = 'Win Probability';
     var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
     var downDistance = stateObj.attributes.down_distance_text;
@@ -118,26 +118,26 @@ class TeamTrackerCard extends LitElement {
 //
 //  MLB Specific Changes
 //
-if (stateObj.attributes.on_first) {
-  var onFirstOp = 1;
-}
-else {
-  var onFirstOp = 0.2;
-}
-if (stateObj.attributes.on_second) {
-  var onSecondOp = 1;
-}
-else {
-  var onSecondOp = 0.2;
-}
-if (stateObj.attributes.on_third) {
-  var onThirdOp = 1;
-}
-else {
-  var onThirdOp = 0.2;
-}
+    if (stateObj.attributes.on_first) {
+      var onFirstOp = 1;
+    }
+    else {
+      var onFirstOp = 0.2;
+    }
+    if (stateObj.attributes.on_second) {
+      var onSecondOp = 1;
+    }
+    else {
+      var onSecondOp = 0.2;
+    }
+    if (stateObj.attributes.on_third) {
+      var onThirdOp = 1;
+    }
+    else {
+      var onThirdOp = 0.2;
+    }
     if (["baseball"].includes(stateObj.attributes.sport)) {
-      startTerm = 'First Pitch in';
+      startTerm = 'First Pitch';
       playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
       network = 'Strikes ' + stateObj.attributes.strikes;
@@ -149,34 +149,50 @@ else {
 //
 //  Soccer Specific Changes
 //
-if (["soccer"].includes(stateObj.attributes.sport)) {
-  probTerm = 'Shots (On Target)';
-  playClock = stateObj.attributes.clock;
-  teamProb = stateObj.attributes.team_total_shots;
-  oppoProb = stateObj.attributes.opponent_total_shots;
-  teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
-  oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
-  timeoutsDisplay = 'none';
-}
+    if (["soccer"].includes(stateObj.attributes.sport)) {
+      probTerm = 'Shots (On Target)';
+      playClock = stateObj.attributes.clock;
+      teamProb = stateObj.attributes.team_total_shots;
+      oppoProb = stateObj.attributes.opponent_total_shots;
+      teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
+      oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
+      timeoutsDisplay = 'none';
+    }
+
+//
+//  Volleyball Specific Changes
+//
+    if (["volleyball"].includes(stateObj.attributes.sport)) {
+      startTerm = 'First Serve';
+      playClock = stateObj.attributes.clock;
+      probTerm = stateObj.attributes.clock + ' Score';
+      teamProb = stateObj.attributes.team_total_shots;
+      oppoProb = stateObj.attributes.opponent_total_shots;
+      teamProbPercent = stateObj.attributes.team_total_shots;
+      oppoProbPercent = stateObj.attributes.opponent_total_shots;
+      timeoutsDisplay = 'none';
+    }
+
 //
 //  Basketball Specific Changes
 //
-if (["basketball"].includes(stateObj.attributes.sport)) {
-  startTerm = 'Tipoff in';
-}
+    if (["basketball"].includes(stateObj.attributes.sport)) {
+      startTerm = 'Tipoff';
+    }
+
 //
 //  Hockey Specific Changes
 //
-if (["hockey"].includes(stateObj.attributes.sport)) {
-  startTerm = 'Puck Drop in';
-}
+    if (["hockey"].includes(stateObj.attributes.sport)) {
+      startTerm = 'Puck Drop';
+    }
+
 //
 //  NCAA Specific Changes
 //
-  if (["NCAAB", "NCAAM", "NCAAW", "NCAAF"].includes(stateObj.attributes.league)) {
+    if (stateObj.attributes.league.includes("NCAA")) {
       nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
-
     
     if (stateObj.state == 'POST') {
       return html`
@@ -219,7 +235,6 @@ if (["hockey"].includes(stateObj.attributes.sport)) {
         </ha-card>
       `;
     }
-
 
     if (stateObj.state == 'IN') {
         return html`
