@@ -166,11 +166,11 @@ class TeamTrackerCard extends LitElement {
       startTerm = 'First Serve';
       playClock = stateObj.attributes.clock;
       probTerm = stateObj.attributes.clock + ' Score';
-      teamProb = stateObj.attributes.team_total_shots;
-      oppoProb = stateObj.attributes.opponent_total_shots;
-      teamProbPercent = stateObj.attributes.team_total_shots;
-      oppoProbPercent = stateObj.attributes.opponent_total_shots;
-      timeoutsDisplay = 'none';
+      teamProb = stateObj.attributes.team_score;
+      oppoProb = stateObj.attributes.opponent_score;
+      teamProbPercent = stateObj.attributes.team_score;
+      oppoProbPercent = stateObj.attributes.opponent_score;
+      timeoutsDisplay = 'inline';
     }
 
 //
