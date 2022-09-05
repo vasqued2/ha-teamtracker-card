@@ -114,6 +114,9 @@ class TeamTrackerCard extends LitElement {
     var outsDisplay = 'none';
     var timeoutsDisplay = 'inline';
     var basesDisplay = 'none';
+    var teamTimeouts = stateObj.attributes.team_timeouts;
+    var oppoTimeouts = stateObj.attributes.opponent_timeouts;
+
 
 //
 //  MLB Specific Changes
@@ -170,6 +173,8 @@ class TeamTrackerCard extends LitElement {
       oppoProb = stateObj.attributes.opponent_score;
       teamProbPercent = stateObj.attributes.team_score;
       oppoProbPercent = stateObj.attributes.opponent_score;
+      teamTimeouts = stateObj.attributes.team_sets_won;
+      oppoTimeouts = stateObj.attributes.opponent_sets_won;
       timeoutsDisplay = 'inline';
     }
 
@@ -253,8 +258,8 @@ class TeamTrackerCard extends LitElement {
             .name { font-size: 1.4em; margin-bottom: 4px; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .timeouts { margin: 0 auto; width: 70%; display: ${timeoutsDisplay}; }
-            .timeouts div.opponent-to:nth-child(-n + ${stateObj.attributes.opponent_timeouts})  { opacity: 1; }
-            .timeouts div.team-to:nth-child(-n + ${stateObj.attributes.team_timeouts})  { opacity: 1; }
+            .timeouts div.opponent-to:nth-child(-n + ${oppoTimeouts})  { opacity: 1; }
+            .timeouts div.team-to:nth-child(-n + ${teamTimeouts})  { opacity: 1; }
             .team-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
             .bases { font-size: 2.5em; text-align: center; font-weight:900; display: ${basesDisplay};}
             .on-first { opacity: ${onFirstOp}; display: inline-block; }
