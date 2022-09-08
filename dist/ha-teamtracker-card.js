@@ -106,7 +106,7 @@ class TeamTrackerCard extends LitElement {
     var nfTeam = stateObj.attributes.league_logo;
     var nfTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
     var nfTerm2 = 'No Upcoming Games'
-    var startTerm = 'Kickoff in';
+    var startTerm = 'Kickoff';
     var probTerm = 'Win Probability';
     var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
     var downDistance = stateObj.attributes.down_distance_text;
@@ -114,30 +114,33 @@ class TeamTrackerCard extends LitElement {
     var outsDisplay = 'none';
     var timeoutsDisplay = 'inline';
     var basesDisplay = 'none';
+    var teamTimeouts = stateObj.attributes.team_timeouts;
+    var oppoTimeouts = stateObj.attributes.opponent_timeouts;
+
 
 //
 //  MLB Specific Changes
 //
-if (stateObj.attributes.on_first) {
-  var onFirstOp = 1;
-}
-else {
-  var onFirstOp = 0.2;
-}
-if (stateObj.attributes.on_second) {
-  var onSecondOp = 1;
-}
-else {
-  var onSecondOp = 0.2;
-}
-if (stateObj.attributes.on_third) {
-  var onThirdOp = 1;
-}
-else {
-  var onThirdOp = 0.2;
-}
+    if (stateObj.attributes.on_first) {
+      var onFirstOp = 1;
+    }
+    else {
+      var onFirstOp = 0.2;
+    }
+    if (stateObj.attributes.on_second) {
+      var onSecondOp = 1;
+    }
+    else {
+      var onSecondOp = 0.2;
+    }
+    if (stateObj.attributes.on_third) {
+      var onThirdOp = 1;
+    }
+    else {
+      var onThirdOp = 0.2;
+    }
     if (["baseball"].includes(stateObj.attributes.sport)) {
-      startTerm = 'First Pitch in';
+      startTerm = 'First Pitch';
       playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
       network = 'Strikes ' + stateObj.attributes.strikes;
@@ -149,34 +152,52 @@ else {
 //
 //  Soccer Specific Changes
 //
-if (["soccer"].includes(stateObj.attributes.sport)) {
-  probTerm = 'Shots (On Target)';
-  playClock = stateObj.attributes.clock;
-  teamProb = stateObj.attributes.team_total_shots;
-  oppoProb = stateObj.attributes.opponent_total_shots;
-  teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
-  oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
-  timeoutsDisplay = 'none';
-}
+    if (["soccer"].includes(stateObj.attributes.sport)) {
+      probTerm = 'Shots (On Target)';
+      playClock = stateObj.attributes.clock;
+      teamProb = stateObj.attributes.team_total_shots;
+      oppoProb = stateObj.attributes.opponent_total_shots;
+      teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
+      oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
+      timeoutsDisplay = 'none';
+    }
+
+//
+//  Volleyball Specific Changes
+//
+    if (["volleyball"].includes(stateObj.attributes.sport)) {
+      startTerm = 'First Serve';
+      playClock = stateObj.attributes.clock;
+      probTerm = stateObj.attributes.clock + ' Score';
+      teamProb = stateObj.attributes.team_score;
+      oppoProb = stateObj.attributes.opponent_score;
+      teamProbPercent = stateObj.attributes.team_score;
+      oppoProbPercent = stateObj.attributes.opponent_score;
+      teamTimeouts = stateObj.attributes.team_sets_won;
+      oppoTimeouts = stateObj.attributes.opponent_sets_won;
+      timeoutsDisplay = 'inline';
+    }
+
 //
 //  Basketball Specific Changes
 //
-if (["basketball"].includes(stateObj.attributes.sport)) {
-  startTerm = 'Tipoff in';
-}
+    if (["basketball"].includes(stateObj.attributes.sport)) {
+      startTerm = 'Tipoff';
+    }
+
 //
 //  Hockey Specific Changes
 //
-if (["hockey"].includes(stateObj.attributes.sport)) {
-  startTerm = 'Puck Drop in';
-}
+    if (["hockey"].includes(stateObj.attributes.sport)) {
+      startTerm = 'Puck Drop';
+    }
+
 //
 //  NCAA Specific Changes
 //
-  if (["NCAAB", "NCAAM", "NCAAW", "NCAAF"].includes(stateObj.attributes.league)) {
+    if (stateObj.attributes.league.includes("NCAA")) {
       nfTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
-
     
     if (stateObj.state == 'POST') {
       return html`
@@ -220,7 +241,6 @@ if (["hockey"].includes(stateObj.attributes.sport)) {
       `;
     }
 
-
     if (stateObj.state == 'IN') {
         return html`
           <style>
@@ -238,8 +258,8 @@ if (["hockey"].includes(stateObj.attributes.sport)) {
             .name { font-size: 1.4em; margin-bottom: 4px; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .timeouts { margin: 0 auto; width: 70%; display: ${timeoutsDisplay}; }
-            .timeouts div.opponent-to:nth-child(-n + ${stateObj.attributes.opponent_timeouts})  { opacity: 1; }
-            .timeouts div.team-to:nth-child(-n + ${stateObj.attributes.team_timeouts})  { opacity: 1; }
+            .timeouts div.opponent-to:nth-child(-n + ${oppoTimeouts})  { opacity: 1; }
+            .timeouts div.team-to:nth-child(-n + ${teamTimeouts})  { opacity: 1; }
             .team-to { height: 6px; border-radius: ${toRadius}px; border: ${clrOut}px solid ${outColor}; width: 20%; background-color: ${teamColor}; display: inline-block; margin: 0 auto; position: relative; opacity: 0.2; }
             .bases { font-size: 2.5em; text-align: center; font-weight:900; display: ${basesDisplay};}
             .on-first { opacity: ${onFirstOp}; display: inline-block; }
