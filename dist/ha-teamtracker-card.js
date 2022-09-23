@@ -112,12 +112,19 @@ class TeamTrackerCard extends LitElement {
     var downDistance = stateObj.attributes.down_distance_text;
     var network = stateObj.attributes.tv_network;
     var outsDisplay = 'none';
-    var timeoutsDisplay = 'inline';
     var basesDisplay = 'none';
     var teamTimeouts = stateObj.attributes.team_timeouts;
     var oppoTimeouts = stateObj.attributes.opponent_timeouts;
 
+    var timeoutsDisplay = 'inline';
+    if (this._config.show_timeouts == false) {
+      timeoutsDisplay = 'none';
+    }
 
+    var rankDisplay = 'inline';
+    if (this._config.show_rank == false) {
+      rankDisplay = 'none';
+    }
 //
 //  MLB Specific Changes
 //
@@ -182,7 +189,7 @@ class TeamTrackerCard extends LitElement {
 //  Basketball Specific Changes
 //
     if (["basketball"].includes(stateObj.attributes.sport)) {
-      startTerm = 'Tipoff';
+      startTerm = 'Tipoff';      
     }
 
 //
@@ -190,6 +197,13 @@ class TeamTrackerCard extends LitElement {
 //
     if (["hockey"].includes(stateObj.attributes.sport)) {
       startTerm = 'Puck Drop';
+      playClock = stateObj.attributes.clock;
+      probTerm = 'Shots on Goal';
+      teamProb = stateObj.attributes.team_shots_on_target;
+      oppoProb = stateObj.attributes.opponent_shots_on_target;
+      teamProbPercent = stateObj.attributes.team_shots_on_target;
+      oppoProbPercent = stateObj.attributes.opponent_shots_on_target;
+      timeoutsDisplay = 'none';
     }
 
 //
@@ -213,6 +227,7 @@ class TeamTrackerCard extends LitElement {
           .opposcr { opacity: ${oppoScore}; }
           .divider { font-size: 2.5em; text-align: center; opacity: 0; }
           .name { font-size: 1.4em; margin-bottom: 4px; }
+          .rank { font-size:0.8em; display: ${rankDisplay}; }
           .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
           .status { font-size: 1.2em; text-align: center; margin-top: -21px; }
         </style>
@@ -223,7 +238,7 @@ class TeamTrackerCard extends LitElement {
             <div class="card-content">
               <div class="team">
                 <img src="${stateObj.attributes.team_logo}" />
-                <div class="name">${stateObj.attributes.team_name}</div>
+                <div class="name"><span class="rank">${stateObj.attributes.team_rank}</span> ${stateObj.attributes.team_name}</div>
                 <div class="record">${stateObj.attributes.team_record}</div>
               </div>
               <div class="score teamscr">${tScr}</div>
@@ -231,7 +246,7 @@ class TeamTrackerCard extends LitElement {
               <div class="score opposcr">${oScr}</div>
               <div class="team">
                 <img src="${stateObj.attributes.opponent_logo}" />
-                <div class="name">${stateObj.attributes.opponent_name}</div>
+                <div class="name"><span class="rank">${stateObj.attributes.opponent_rank}</span> ${stateObj.attributes.opponent_name}</div>
                 <div class="record">${stateObj.attributes.opponent_record}</div>
               </div>
             </div>
@@ -256,6 +271,7 @@ class TeamTrackerCard extends LitElement {
             .score { font-size: 3em; text-align: center; }
             .divider { font-size: 2.5em; text-align: center; margin: 0 4px; }
             .name { font-size: 1.4em; margin-bottom: 4px; }
+            .rank { font-size:0.8em; display: ${rankDisplay}; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .timeouts { margin: 0 auto; width: 70%; display: ${timeoutsDisplay}; }
             .timeouts div.opponent-to:nth-child(-n + ${oppoTimeouts})  { opacity: 1; }
@@ -294,7 +310,7 @@ class TeamTrackerCard extends LitElement {
             <div class="card-content">
               <div class="team">
                 <img src="${stateObj.attributes.team_logo}" />
-                <div class="name">${stateObj.attributes.team_name}</div>
+                <div class="name"><span class="rank">${stateObj.attributes.team_rank}</span> ${stateObj.attributes.team_name}</div>
                 <div class="record">${stateObj.attributes.team_record}</div>
                 <div class="timeouts">
                   <div class="team-to"></div>
@@ -309,7 +325,7 @@ class TeamTrackerCard extends LitElement {
               <div class="oppoposs">&bull;</div>
               <div class="team">
                 <img src="${stateObj.attributes.opponent_logo}" />
-                <div class="name">${stateObj.attributes.opponent_name}</div>
+                <div class="name"><span class="rank">${stateObj.attributes.opponent_rank}</span> ${stateObj.attributes.opponent_name}</div>
                 <div class="record">${stateObj.attributes.opponent_record}</div>
                 <div class="timeouts">
                   <div class="opponent-to"></div>
@@ -365,6 +381,7 @@ class TeamTrackerCard extends LitElement {
             .team { text-align: center; width: 35%; }
             .team img { max-width: 90px; }
             .name { font-size: 1.4em; margin-bottom: 4px; }
+            .rank { font-size:0.8em; display:${rankDisplay}; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .gameday { font-size: 1.4em; margin-bottom: 4px; }
             .gametime { font-size: 1.1em; }
@@ -384,7 +401,7 @@ class TeamTrackerCard extends LitElement {
               <div class="card-content">
                 <div class="team">
                   <img src="${stateObj.attributes.team_logo}" />
-                  <div class="name">${stateObj.attributes.team_name}</div>
+                  <div class="name"><span class="rank">${stateObj.attributes.team_rank}</span> ${stateObj.attributes.team_name}</div>
                   <div class="record">${stateObj.attributes.team_record}</div>
                 </div>
                 <div class="gamewrapper">
@@ -393,7 +410,7 @@ class TeamTrackerCard extends LitElement {
                 </div>
                 <div class="team">
                   <img src="${stateObj.attributes.opponent_logo}" />
-                  <div class="name">${stateObj.attributes.opponent_name}</div>
+                  <div class="name"><span class="rank">${stateObj.attributes.opponent_rank}</span> ${stateObj.attributes.opponent_name}</div>
                   <div class="record">${stateObj.attributes.opponent_record}</div>
                 </div>
               </div>

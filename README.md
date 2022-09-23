@@ -58,6 +58,8 @@ type: Javascript Module
 | `entity` | Name of ha-teamtracker sensor | `sensor.team_tracker` | Yes  | Valid sensor |
 | `outline` | Outline team colors (helpful w/ dark themes) |`false` | No |  `true` `false` |
 | `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
+| `show_timeouts` | Specifies if timeout indicators should be shown. | `true` | No |  `true` `false`  |
+| `show_rank` | Specifies if team rank should be shown. | `true` | No |  `true` `false`  |
 
 ## Examples
 ```
