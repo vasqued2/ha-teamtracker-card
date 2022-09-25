@@ -37,6 +37,12 @@ class TeamTrackerCard extends LitElement {
     var gameDate = dateForm.toLocaleDateString('en-US', { day: '2-digit' });
     var outColor = outlineColor;
     
+    var overUnder = '';
+    if (stateObj.attributes.overunder) {
+      overUnder = 'O/U: ' + stateObj.attributes.overunder;
+    }
+
+
     if (outline == true) {
       var clrOut = 1;
       var toRadius = 4;
@@ -417,7 +423,7 @@ class TeamTrackerCard extends LitElement {
               </div>
               <div class="sub2">
                 <div class="venue">${stateObj.attributes.venue}</div>
-                <div class="overunder"> O/U: ${stateObj.attributes.overunder}</div>
+                <div class="overunder"> ${overUnder}</div>
               </div>
               <div class="sub3">
                 <div class="location">${stateObj.attributes.location}</div>
