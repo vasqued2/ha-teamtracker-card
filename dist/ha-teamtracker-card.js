@@ -108,7 +108,7 @@ class TeamTrackerCard extends LitElement {
     var nfTerm2 = 'No Upcoming Games'
     var startTerm = 'Kickoff';
     var probTerm = 'Win Probability';
-    var playClock = 'Q' + stateObj.attributes.quarter + ' - ' + stateObj.attributes.clock;
+    var playClock = stateObj.attributes.clock;
     var downDistance = stateObj.attributes.down_distance_text;
     var network = stateObj.attributes.tv_network;
     var outsDisplay = 'none';
@@ -148,7 +148,6 @@ class TeamTrackerCard extends LitElement {
     }
     if (["baseball"].includes(stateObj.attributes.sport)) {
       startTerm = 'First Pitch';
-      playClock = stateObj.attributes.clock;
       downDistance = 'Balls ' + stateObj.attributes.balls;
       network = 'Strikes ' + stateObj.attributes.strikes;
       outsDisplay = 'inherit';
@@ -161,7 +160,6 @@ class TeamTrackerCard extends LitElement {
 //
     if (["soccer"].includes(stateObj.attributes.sport)) {
       probTerm = 'Shots (On Target)';
-      playClock = stateObj.attributes.clock;
       teamProb = stateObj.attributes.team_total_shots;
       oppoProb = stateObj.attributes.opponent_total_shots;
       teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
@@ -174,7 +172,6 @@ class TeamTrackerCard extends LitElement {
 //
     if (["volleyball"].includes(stateObj.attributes.sport)) {
       startTerm = 'First Serve';
-      playClock = stateObj.attributes.clock;
       probTerm = stateObj.attributes.clock + ' Score';
       teamProb = stateObj.attributes.team_score;
       oppoProb = stateObj.attributes.opponent_score;
@@ -197,7 +194,6 @@ class TeamTrackerCard extends LitElement {
 //
     if (["hockey"].includes(stateObj.attributes.sport)) {
       startTerm = 'Puck Drop';
-      playClock = stateObj.attributes.clock;
       probTerm = 'Shots on Goal';
       teamProb = stateObj.attributes.team_shots_on_target;
       oppoProb = stateObj.attributes.opponent_shots_on_target;
