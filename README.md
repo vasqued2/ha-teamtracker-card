@@ -52,10 +52,10 @@ url: /hacsfiles/ha-teamtracker-card/ha-teamtracker-card.js
 type: Javascript Module
 ```
 
-### Add Manual Card to Dashboard
+## Add Manual Card to Dashboard
 Add a Manual Card to the dashboard and enter the YAML to configure it as desired.
 
-## Options
+### Options
 | Name | Description | Default | Required |  Values |
 | --- | --- | --- | --- | --- |
 | `entity` | Name of ha-teamtracker sensor | `sensor.team_tracker` | Yes  | Valid sensor |
@@ -64,7 +64,7 @@ Add a Manual Card to the dashboard and enter the YAML to configure it as desired
 | `show_timeouts` | Specifies if timeout indicators should be shown. | `true` | No |  `true` `false`  |
 | `show_rank` | Specifies if team rank should be shown. | `true` | No |  `true` `false`  |
 
-## Examples
+### Examples
 ```
 type: 'custom:teamtracker-card'
 entity: sensor.team_tracker
@@ -94,7 +94,7 @@ show_rank: true
 
 
 
-## Minimal Required Configuration
+### Minimal Required Configuration
 ```
 type: 'custom:teamtracker-card'
 entity: sensor.team_tracker
