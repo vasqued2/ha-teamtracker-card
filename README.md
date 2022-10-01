@@ -28,8 +28,8 @@ This card was strongly based on the fantastic [ha-nfl-card](https://github.com/D
 
 ### BYE and NOT FOUND (No Upcoming Game) Examples
 
-![NF-hockey](https://user-images.githubusercontent.com/17114183/187316958-617173d1-a6f2-4cf5-8abe-3a58ae40ff8e.png)
-![NF-ncaaf](https://user-images.githubusercontent.com/17114183/187316966-495ca610-c28a-401d-a4a1-080445d98894.png)
+![NoScheduledGames](https://user-images.githubusercontent.com/17114183/193429143-7af63cd3-d6e4-47f1-9014-cceeac4a886c.png)
+![APIerror](https://user-images.githubusercontent.com/17114183/193429159-af48b6f7-f106-4999-bbfa-95865f0ff0d9.png)
 ![NF-football](https://user-images.githubusercontent.com/17114183/187316983-998527e7-c75d-421a-8833-d00e7ddb4ddc.png)
 
 ## HACS Installation
@@ -65,6 +65,7 @@ Add a Manual Card to the dashboard and enter the YAML to configure it as desired
 | `show_rank` | Specifies if team rank should be shown. | `true` | No |  `true` `false`  |
 
 ### Examples
+#### Example 1
 ```
 type: 'custom:teamtracker-card'
 entity: sensor.team_tracker
@@ -74,6 +75,7 @@ outline_color: deeppink
 
 ![PINK-example](https://user-images.githubusercontent.com/17114183/187317324-f1a9764b-5443-46e5-b000-b9c61a7856ef.png)
 
+#### Example 2
 ```
 type: 'custom:teamtracker-card'
 entity: sensor.team_tracker
@@ -83,15 +85,17 @@ outline_color: '#ffe500'
 
 ![OUTLINE-example](https://user-images.githubusercontent.com/17114183/187317354-496ed84a-fe27-496d-a75e-7163fcea3845.png)
 
+#### Example 3
 ```
 type: 'custom:teamtracker-card'
 entity: sensor.team_tracker
 outline: true
-outline_color: '#ffe500'
+outline_color: lightgray
 show_timeouts: false
 show_rank: true
 ```
 
+![RankNoTimeouts-dark](https://user-images.githubusercontent.com/17114183/193429227-5d4ec3fc-d934-4eb9-947e-b6bae89c88ff.png)
 
 
 ### Minimal Required Configuration
