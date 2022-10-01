@@ -18,7 +18,7 @@ This card was strongly based on the fantastic [ha-nfl-card](https://github.com/D
 ### IN Game Examples
 
 ![IN-baseball](https://user-images.githubusercontent.com/17114183/187316734-53688f9c-bd7a-44a1-b3a6-36894c5669c2.png)
-<img width="409" alt="IN-soccer" src="https://user-images.githubusercontent.com/17114183/187316787-97aca588-56c3-4737-9df6-aef86fc0c503.png">
+![IN-soccer-CLB](https://user-images.githubusercontent.com/17114183/193429458-6c19c6d3-e44e-49a6-9299-4cfed1480482.png)
 ![IN-football](https://user-images.githubusercontent.com/17114183/187316807-b694d4ad-a895-4047-a700-264b41f91adc.png)
 
 ### POST Game Examples
@@ -26,7 +26,7 @@ This card was strongly based on the fantastic [ha-nfl-card](https://github.com/D
 ![POST-football](https://user-images.githubusercontent.com/17114183/187316885-7bbff2de-0382-47be-b775-116a45b9b636.png)
 ![POST-soccer2](https://user-images.githubusercontent.com/17114183/187316901-d40f8e2f-b86d-4cab-9713-976402cd94fb.png)
 
-### BYE and NOT FOUND (No Upcoming Game) Examples
+### NOT_FOUND (No Upcoming Game, API Error) and BYE Examples
 
 ![NoScheduledGames](https://user-images.githubusercontent.com/17114183/193429143-7af63cd3-d6e4-47f1-9014-cceeac4a886c.png)
 ![APIerror](https://user-images.githubusercontent.com/17114183/193429159-af48b6f7-f106-4999-bbfa-95865f0ff0d9.png)
@@ -52,8 +52,8 @@ url: /hacsfiles/ha-teamtracker-card/ha-teamtracker-card.js
 type: Javascript Module
 ```
 
-## Add Manual Card to Dashboard
-Add a Manual Card to the dashboard and enter the YAML to configure it as desired.
+## Adding the Card to the Dashboard
+Add a Manual card to the dashboard and enter the YAML to configure it as desired.
 
 ### Options
 | Name | Description | Default | Required |  Values |
