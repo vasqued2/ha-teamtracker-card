@@ -27,8 +27,6 @@ class TeamTrackerCard extends LitElement {
     const outlineColor = this._config.outline_color;
     var teamProb = (stateObj.attributes.team_win_probability * 100).toFixed(0);
     var oppoProb = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
-    var teamProbPercent = teamProb + '%';
-    var oppoProbPercent = oppoProb + '%';
     var tScr = stateObj.attributes.team_score;
     var oScr = stateObj.attributes.opponent_score;
 
@@ -40,20 +38,9 @@ class TeamTrackerCard extends LitElement {
     var gameDate = dateForm.toLocaleDateString(lang, { day: '2-digit' });
     var outColor = outlineColor;
     
-//    var lastDate = ""
-//    if (stateObj.attributes.api_message) {
-//        lastDate = localize("API Error")
-//        var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
-//        if (apiTail.slice(-1) == "Z") {
-//          lastDate = apiTail
-//          var lastDateForm = new Date (apiTail)
-//          lastDate = "through " + lastDateForm.toLocaleDateString(lang)
-//        }
-//    }
-
-    var overUnder = '';
-    if (stateObj.attributes.overunder) {
-      overUnder = localize("football.over_under", "%s", stateObj.attributes.overunder);
+    var sport = stateObj.attributes.sport;
+    if (!(["baseball", "basketball","football","hockey", "soccer","volleyball"].includes(sport))) {
+      sport = "default"
     }
 
     if (outline == true) {
@@ -117,17 +104,36 @@ class TeamTrackerCard extends LitElement {
 //
 //  Set default values for variable components
 //
+
+    var byeTerm = localize("common.byeTerm");
+    var finalTerm = localize("common.finalTerm", "%s", gameMonth + " " + gameDate);
+    var startTerm = localize(sport + ".startTerm");
+
+    var overUnder = '';
+    if (stateObj.attributes.overunder) {
+      overUnder = localize(sport + ".overUnder", "%s", stateObj.attributes.overunder);
+    }
+    var gameStat1 = '';
+    if (stateObj.attributes.down_distance_text) {
+        gameStat1 = localize(sport + ".gameStat1", "%s", stateObj.attributes.down_distance_text);
+    }
+    var gameStat2 = '';
+    if (stateObj.attributes.tv_network) {
+        gameStat2 = localize(sport + ".gameStat2", "%s", stateObj.attributes.tv_network);
+    }
+    var gameStat3 = '';
+
+    var gameBar = localize(sport + ".gameBar");
+    var teamBarLabel = localize(sport + ".teamBarLabel", "%s", teamProb);
+    var oppoBarLabel = localize(sport + ".oppoBarLabel", "%s", oppoProb);
+
     var lastPlaySpeed = 18;
     if (stateObj.attributes.last_play) {
       lastPlaySpeed = 18 + Math.floor(stateObj.attributes.last_play.length/40) * 5;
     }
     var notFoundTeamBG = stateObj.attributes.league_logo;
     var notFoundTeam = stateObj.attributes.league_logo;
-    var startTerm = localize("football.startTerm");
-    var probTerm = localize("football.probTerm");
     var playClock = stateObj.attributes.clock;
-    var downDistance = localize("football.downDistance", "%s", stateObj.attributes.down_distance_text);
-    var network = localize("football.network", "%s", stateObj.attributes.tv_network);
     var outsDisplay = 'none';
     var basesDisplay = 'none';
     var teamTimeouts = stateObj.attributes.team_timeouts;
@@ -149,9 +155,7 @@ class TeamTrackerCard extends LitElement {
         notFoundTerm2 = localize("common.api_error")
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
         if (apiTail.slice(-1) == "Z") {
-//          lastDate = apiTail
           var lastDateForm = new Date (apiTail)
-//          notFoundTerm2 = "No upcoming games through " + lastDateForm.toLocaleDateString(lang)
           notFoundTerm2 = localize("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
         }
     }
@@ -178,9 +182,9 @@ class TeamTrackerCard extends LitElement {
       var onThirdOp = 0.2;
     }
     if (["baseball"].includes(stateObj.attributes.sport)) {
-      startTerm = localize("baseball.startTerm");
-      downDistance = localize("baseball.downDistance", "%s", stateObj.attributes.balls);
-      network = localize("baseball.network", "%s", stateObj.attributes.strikes);
+      gameStat1 = localize("baseball.gameStat1", "%s", stateObj.attributes.balls);
+      gameStat2 = localize("baseball.gameStat2", "%s", stateObj.attributes.strikes);
+      gameStat3 = localize("baseball.gameStat3", "%s", stateObj.attributes.outs);
       outsDisplay = 'inherit';
       timeoutsDisplay = 'none';
       basesDisplay = 'inherit';
@@ -190,11 +194,13 @@ class TeamTrackerCard extends LitElement {
 //  Soccer Specific Changes
 //
     if (["soccer"].includes(stateObj.attributes.sport)) {
-      probTerm = localize("soccer.probTerm");
       teamProb = stateObj.attributes.team_total_shots;
       oppoProb = stateObj.attributes.opponent_total_shots;
-      teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
-      oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
+      teamBarLabel = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
+      teamBarLabel = localize("soccer.teamBarLabel", "%s", stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')');
+      oppoBarLabel = localize("soccer.oppoBarLabel", "%s", stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')');
+
+//      oppoProbPercent = stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')';
       timeoutsDisplay = 'none';
     }
 
@@ -202,12 +208,11 @@ class TeamTrackerCard extends LitElement {
 //  Volleyball Specific Changes
 //
     if (["volleyball"].includes(stateObj.attributes.sport)) {
-      startTerm = localize("volleyball.startTerm");
-      probTerm = localize("volleyball.probTerm", "%s", stateObj.attributes.clock);
+      gameBar = localize("volleyball.gameBar", "%s", stateObj.attributes.clock);
       teamProb = stateObj.attributes.team_score;
       oppoProb = stateObj.attributes.opponent_score;
-      teamProbPercent = stateObj.attributes.team_score;
-      oppoProbPercent = stateObj.attributes.opponent_score;
+      teamBarLabel = localize("volleyball.teamBarLabel", "%s", stateObj.attributes.team_score);
+      oppoBarLabel = localize("volleyball.oppoBarLabel", "%s", stateObj.attributes.opponent_score);
       teamTimeouts = stateObj.attributes.team_sets_won;
       oppoTimeouts = stateObj.attributes.opponent_sets_won;
       timeoutsDisplay = 'inline';
@@ -217,19 +222,20 @@ class TeamTrackerCard extends LitElement {
 //  Basketball Specific Changes
 //
     if (["basketball"].includes(stateObj.attributes.sport)) {
-      startTerm = localize("basketball.startTerm");      
+//      startTerm = localize("basketball.startTerm");      
     }
 
 //
 //  Hockey Specific Changes
 //
     if (["hockey"].includes(stateObj.attributes.sport)) {
-      startTerm = localize("hockey.startTerm");
-      probTerm = localize("hockey.probTerm");
+//      startTerm = localize("hockey.startTerm");
+//      gameBar = localize("hockey.gameBar");
       teamProb = stateObj.attributes.team_shots_on_target;
       oppoProb = stateObj.attributes.opponent_shots_on_target;
-      teamProbPercent = stateObj.attributes.team_shots_on_target;
-      oppoProbPercent = stateObj.attributes.opponent_shots_on_target;
+      teamBarLabel = localize("hockey.teamBarLabel", "%s", stateObj.attributes.team_shots_on_target);
+      oppoBarLabel = localize("hockey.oppoBarLabel", "%s", stateObj.attributes.opponent_shots_on_target);
+
       timeoutsDisplay = 'none';
     }
 
@@ -277,7 +283,7 @@ class TeamTrackerCard extends LitElement {
                 <div class="record">${stateObj.attributes.opponent_record}</div>
               </div>
             </div>
-            <div class="status">${gameMonth} ${gameDate} - FINAL</div>
+            <div class="status">${finalTerm}</div>
           </div>
         </ha-card>
       `;
@@ -370,28 +376,28 @@ class TeamTrackerCard extends LitElement {
               <div class="pitcher"></div>
               <div class="on-first">&bull;</div>
             </div>
-            <div class="outs">${stateObj.attributes.outs} Outs</div>
+            <div class="outs">${gameStat3}</div>
             <div class="line"></div>
             <div class="sub2">
               <div class="venue">${stateObj.attributes.venue}</div>
-              <div class="down-distance">${downDistance}</div>
+              <div class="down-distance">${gameStat1}</div>
             </div>
             <div class="sub3">
               <div class="location">${stateObj.attributes.location}</div>
-              <div class="network">${network}</div>
+              <div class="network">${gameStat2}</div>
             </div>
             <div class="line"></div>
             <div class="last-play">
               <p>${stateObj.attributes.last_play}</p>
             </div>
-            <div class="probability-text">${probTerm}</div>
+            <div class="probability-text">${gameBar}</div>
             <div class="probability-wrapper">
-              <div class="team-percent">${teamProbPercent}</div>
+              <div class="team-percent">${teamBarLabel}</div>
               <div class="prob-flex">
                 <div class="team-probability"></div>
                 <div class="opponent-probability"></div>
               </div>
-              <div class="oppo-percent">${oppoProbPercent}</div>
+              <div class="oppo-percent">${oppoBarLabel}</div>
             </div>
           </div>
           </ha-card>
@@ -479,7 +485,7 @@ class TeamTrackerCard extends LitElement {
                 <img src="${stateObj.attributes.team_logo}" />
                 <div class="name">${stateObj.attributes.team_name}</div>
               </div>
-              <div class="bye">BYE</div>
+              <div class="bye">${byeTerm}</div>
             </div>
           </div>
         </ha-card>
