@@ -30,11 +30,12 @@ class TeamTrackerCard extends LitElement {
     var tScr = stateObj.attributes.team_score;
     var oScr = stateObj.attributes.opponent_score;
 
+    var lang = this.hass.selectedLanguage || this.hass.language  || "en-US"
     var dateForm = new Date (stateObj.attributes.date);
-    var gameDay = dateForm.toLocaleDateString('en-US', { weekday: 'long' });
-    var gameTime = dateForm.toLocaleTimeString('en-US', { hour: '2-digit', minute:'2-digit' });
-    var gameMonth = dateForm.toLocaleDateString('en-US', { month: 'short' });
-    var gameDate = dateForm.toLocaleDateString('en-US', { day: '2-digit' });
+    var gameDay = dateForm.toLocaleDateString(lang, { weekday: 'long' });
+    var gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
+    var gameMonth = dateForm.toLocaleDateString(lang, { month: 'short' });
+    var gameDate = dateForm.toLocaleDateString(lang, { day: '2-digit' });
     var outColor = outlineColor;
     
     var lastDate = ""
@@ -44,16 +45,14 @@ class TeamTrackerCard extends LitElement {
         if (apiTail.slice(-1) == "Z") {
           lastDate = apiTail
           var lastDateForm = new Date (apiTail)
-          lastDate = "through " + lastDateForm.toLocaleDateString('en-US')
+          lastDate = "through " + lastDateForm.toLocaleDateString(lang)
         }
     }
 
-    
     var overUnder = '';
     if (stateObj.attributes.overunder) {
       overUnder = 'O/U: ' + stateObj.attributes.overunder;
     }
-
 
     if (outline == true) {
       var clrOut = 1;
@@ -150,7 +149,7 @@ class TeamTrackerCard extends LitElement {
         if (apiTail.slice(-1) == "Z") {
           lastDate = apiTail
           var lastDateForm = new Date (apiTail)
-          notFoundTerm2 = "No upcoming games through " + lastDateForm.toLocaleDateString('en-US')
+          notFoundTerm2 = "No upcoming games through " + lastDateForm.toLocaleDateString(lang)
         }
     }
 
