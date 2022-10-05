@@ -1,4 +1,6 @@
 import { html, LitElement } from "https://unpkg.com/lit?module";
+import { localize } from "./localize/localize.js";
+
 class TeamTrackerCard extends LitElement {
 
   static get properties() {
@@ -38,20 +40,20 @@ class TeamTrackerCard extends LitElement {
     var gameDate = dateForm.toLocaleDateString(lang, { day: '2-digit' });
     var outColor = outlineColor;
     
-    var lastDate = ""
-    if (stateObj.attributes.api_message) {
-        lastDate = "API Error"
-        var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
-        if (apiTail.slice(-1) == "Z") {
-          lastDate = apiTail
-          var lastDateForm = new Date (apiTail)
-          lastDate = "through " + lastDateForm.toLocaleDateString(lang)
-        }
-    }
+//    var lastDate = ""
+//    if (stateObj.attributes.api_message) {
+//        lastDate = localize("API Error")
+//        var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
+//        if (apiTail.slice(-1) == "Z") {
+//          lastDate = apiTail
+//          var lastDateForm = new Date (apiTail)
+//          lastDate = "through " + lastDateForm.toLocaleDateString(lang)
+//        }
+//    }
 
     var overUnder = '';
     if (stateObj.attributes.overunder) {
-      overUnder = 'O/U: ' + stateObj.attributes.overunder;
+      overUnder = localize("football.over_under", "%s", stateObj.attributes.overunder);
     }
 
     if (outline == true) {
@@ -121,11 +123,11 @@ class TeamTrackerCard extends LitElement {
     }
     var notFoundTeamBG = stateObj.attributes.league_logo;
     var notFoundTeam = stateObj.attributes.league_logo;
-    var startTerm = 'Kickoff';
-    var probTerm = 'Win Probability';
+    var startTerm = localize("football.startTerm");
+    var probTerm = localize("football.probTerm");
     var playClock = stateObj.attributes.clock;
-    var downDistance = stateObj.attributes.down_distance_text;
-    var network = stateObj.attributes.tv_network;
+    var downDistance = localize("football.downDistance", "%s", stateObj.attributes.down_distance_text);
+    var network = localize("football.network", "%s", stateObj.attributes.tv_network);
     var outsDisplay = 'none';
     var basesDisplay = 'none';
     var teamTimeouts = stateObj.attributes.team_timeouts;
@@ -144,12 +146,13 @@ class TeamTrackerCard extends LitElement {
     var notFoundTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
     var notFoundTerm2 = ""
     if (stateObj.attributes.api_message) {
-        notFoundTerm2 = "API Error"
+        notFoundTerm2 = localize("common.api_error")
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
         if (apiTail.slice(-1) == "Z") {
-          lastDate = apiTail
+//          lastDate = apiTail
           var lastDateForm = new Date (apiTail)
-          notFoundTerm2 = "No upcoming games through " + lastDateForm.toLocaleDateString(lang)
+//          notFoundTerm2 = "No upcoming games through " + lastDateForm.toLocaleDateString(lang)
+          notFoundTerm2 = localize("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
         }
     }
 
@@ -175,9 +178,9 @@ class TeamTrackerCard extends LitElement {
       var onThirdOp = 0.2;
     }
     if (["baseball"].includes(stateObj.attributes.sport)) {
-      startTerm = 'First Pitch';
-      downDistance = 'Balls ' + stateObj.attributes.balls;
-      network = 'Strikes ' + stateObj.attributes.strikes;
+      startTerm = localize("baseball.startTerm");
+      downDistance = localize("baseball.downDistance", "%s", stateObj.attributes.balls);
+      network = localize("baseball.network", "%s", stateObj.attributes.strikes);
       outsDisplay = 'inherit';
       timeoutsDisplay = 'none';
       basesDisplay = 'inherit';
@@ -187,7 +190,7 @@ class TeamTrackerCard extends LitElement {
 //  Soccer Specific Changes
 //
     if (["soccer"].includes(stateObj.attributes.sport)) {
-      probTerm = 'Shots (On Target)';
+      probTerm = localize("soccer.probTerm");
       teamProb = stateObj.attributes.team_total_shots;
       oppoProb = stateObj.attributes.opponent_total_shots;
       teamProbPercent = stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')';
@@ -199,8 +202,8 @@ class TeamTrackerCard extends LitElement {
 //  Volleyball Specific Changes
 //
     if (["volleyball"].includes(stateObj.attributes.sport)) {
-      startTerm = 'First Serve';
-      probTerm = stateObj.attributes.clock + ' Score';
+      startTerm = localize("volleyball.startTerm");
+      probTerm = localize("volleyball.probTerm", "%s", stateObj.attributes.clock);
       teamProb = stateObj.attributes.team_score;
       oppoProb = stateObj.attributes.opponent_score;
       teamProbPercent = stateObj.attributes.team_score;
@@ -214,15 +217,15 @@ class TeamTrackerCard extends LitElement {
 //  Basketball Specific Changes
 //
     if (["basketball"].includes(stateObj.attributes.sport)) {
-      startTerm = 'Tipoff';      
+      startTerm = localize("basketball.startTerm");      
     }
 
 //
 //  Hockey Specific Changes
 //
     if (["hockey"].includes(stateObj.attributes.sport)) {
-      startTerm = 'Puck Drop';
-      probTerm = 'Shots on Goal';
+      startTerm = localize("hockey.startTerm");
+      probTerm = localize("hockey.probTerm");
       teamProb = stateObj.attributes.team_shots_on_target;
       oppoProb = stateObj.attributes.opponent_shots_on_target;
       teamProbPercent = stateObj.attributes.team_shots_on_target;
