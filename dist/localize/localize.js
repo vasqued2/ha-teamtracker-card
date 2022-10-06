@@ -1,9 +1,11 @@
 import {en} from "./languages/en.js"
 import {es} from "./languages/es.js"
+import {pt_BR} from "./languages/pt_BR.js"
 
 var languages = {
     en: en,
     es: es,
+    pt_BR: pt_BR,
 };
 
 export function localize(string, search, replace) {
