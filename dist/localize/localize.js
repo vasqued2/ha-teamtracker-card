@@ -17,10 +17,16 @@ export function localize(string, search, replace) {
         translated = string.split('.').reduce(function (o, i) { return o[i]; }, languages[lang]);
     }
     catch (e) {
-        translated = string.split('.').reduce(function (o, i) { return o[i]; }, languages['en']);
+        try {
+            translated = string.split('.').reduce(function (o, i) { return o[i]; }, languages['en']);
+        }
+        catch (e) {
+            translated = '{' + string + '}';
+        }
     }
-    if (translated === undefined)
-        translated = string.split('.').reduce(function (o, i) { return o[i]; }, languages['en']);
+    if ((translated === undefined) || (!(typeof translated === 'string') && !(translated instanceof String))) {
+        translated = '{' + string + '}';
+    }
     if (search !== '' && replace !== '') {
         translated = translated.replace(search, replace);
     }

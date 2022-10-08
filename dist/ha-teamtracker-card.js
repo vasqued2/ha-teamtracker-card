@@ -30,7 +30,8 @@ class TeamTrackerCard extends LitElement {
     var tScr = stateObj.attributes.team_score;
     var oScr = stateObj.attributes.opponent_score;
 
-    var lang = this.hass.selectedLanguage || this.hass.language  || "en-US"
+    var lang = this.hass.selectedLanguage || this.hass.language  || navigator.language || "en"
+
     var dateForm = new Date (stateObj.attributes.date);
     var gameDay = dateForm.toLocaleDateString(lang, { weekday: 'long' });
     var gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
