@@ -1,77 +1,77 @@
-export const pt_BR = {
+export const en_US = {
     "common": {
-        "api_error": "Erro de API",
-        "no_upcoming_games": "Sem próximos jogos %s",
+        "api_error": "API Error",
+        "no_upcoming_games": "No upcoming games through %s",
         "finalTerm": "%s - Final",
-        "byeTerm": "DESCANSO"
+        "byeTerm": "BYE"
     },
     "baseball": {
-        "startTerm": "Começa em",
-        "overUnder": "Mais/Menos: %s",
-        "gameStat1": "Bolas %s",
+        "startTerm": "First Pitch",
+        "overUnder": "O/U: %s",
+        "gameStat1": "Balls %s",
         "gameStat2": "Strikes %s",
-        "gameStat3": "%s Fora",
-        "gameBar": "Probabilidade de Vitória",
+        "gameStat3": "%s Outs",
+        "gameBar": "Win Probability",
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     },
     "basketball": {
-        "startTerm": "Começa em",
-        "overUnder": "Mais/Menos: %s",
+        "startTerm": "Tipoff",
+        "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Probabilidade de Vitória",
+        "gameBar": "Win Probability",
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     },
     "football": {
-        "startTerm": "Começa em",
-        "overUnder": "Mais/Menos: %s",
+        "startTerm": "Kickoff",
+        "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Probabilidade de Vitória",
+        "gameBar": "Win Probability",
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     },
     "hockey": {
-        "startTerm": "Começa em",
-        "overUnder": "Mais/Menos: %s",
+        "startTerm": "Puck Drop",
+        "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Chutes no Gol",
+        "gameBar": "Shots on Goal",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
     "soccer": {
-        "startTerm": "Começa em",
-        "overUnder": "Mais/Menos: %s",
+        "startTerm": "Kickoff",
+        "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Chutes no Gol",
+        "gameBar": "Shots (On Target)",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
     "volleyball": {
-        "startTerm": "Primeiro serviço",
-        "overUnder": "Mais/Menos: %s",
+        "startTerm": "First Serve",
+        "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": " Pontos %s",
+        "gameBar": "%s Score",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
     "default": {
-        "startTerm": "Começa em",
-        "overUnder": "Mais/Menos: %s",
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Probabilidade de Vitória",
+        "gameBar": "Win Probability",
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     }

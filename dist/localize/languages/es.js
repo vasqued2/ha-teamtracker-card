@@ -8,7 +8,7 @@ export const es = {
     "baseball": {
         "startTerm": "Comienzo",
         "overUnder": "Más/Menos: %s",
-        "gameStat1": "Balls %s",
+        "gameStat1": "Bolas %s",
         "gameStat2": "Strikes %s",
         "gameStat3": "%s Outs",
         "gameBar": "Probabilidad de Ganar",
