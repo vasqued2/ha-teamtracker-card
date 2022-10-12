@@ -6,7 +6,7 @@ export const pt_BR = {
         "byeTerm": "DESCANSO"
     },
     "baseball": {
-        "startTerm": "Começa em",
+        "startTerm": "Começa",
         "overUnder": "Mais/Menos: %s",
         "gameStat1": "Bolas %s",
         "gameStat2": "Strikes %s",
@@ -16,7 +16,7 @@ export const pt_BR = {
         "oppoBarLabel": "%s%"
     },
     "basketball": {
-        "startTerm": "Começa em",
+        "startTerm": "Começa",
         "overUnder": "Mais/Menos: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -26,7 +26,7 @@ export const pt_BR = {
         "oppoBarLabel": "%s%"
     },
     "football": {
-        "startTerm": "Começa em",
+        "startTerm": "Começa",
         "overUnder": "Mais/Menos: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -36,7 +36,7 @@ export const pt_BR = {
         "oppoBarLabel": "%s%"
     },
     "hockey": {
-        "startTerm": "Começa em",
+        "startTerm": "Começa",
         "overUnder": "Mais/Menos: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -46,7 +46,7 @@ export const pt_BR = {
         "oppoBarLabel": "%s"
     },
     "soccer": {
-        "startTerm": "Começa em",
+        "startTerm": "Começa",
         "overUnder": "Mais/Menos: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -66,7 +66,7 @@ export const pt_BR = {
         "oppoBarLabel": "%s"
     },
     "default": {
-        "startTerm": "Começa em",
+        "startTerm": "Começa",
         "overUnder": "Mais/Menos: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
