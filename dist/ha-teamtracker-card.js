@@ -22,7 +22,15 @@ class TeamTrackerCard extends LitElement {
       return html``;
     }
 
+    var lang = this.hass.selectedLanguage || this.hass.language  || navigator.language || "en"
+    var t = new Translator(lang);
+
     const stateObj = this.hass.states[this._config.entity];
+    var sport = stateObj.attributes.sport;
+    if (!(["baseball", "basketball","football","hockey", "soccer", "volleyball", "golf", "mma", "tennis"].includes(sport))) {
+      sport = "default"
+    }
+
     const outline = this._config.outline;
     const outlineColor = this._config.outline_color;
     var teamProb = (stateObj.attributes.team_win_probability * 100).toFixed(0);
@@ -30,20 +38,12 @@ class TeamTrackerCard extends LitElement {
     var tScr = stateObj.attributes.team_score;
     var oScr = stateObj.attributes.opponent_score;
 
-    var lang = this.hass.selectedLanguage || this.hass.language  || navigator.language || "en"
-    var t = new Translator(lang);
-
     var dateForm = new Date (stateObj.attributes.date);
     var gameDay = dateForm.toLocaleDateString(lang, { weekday: 'long' });
     var gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
     var gameMonth = dateForm.toLocaleDateString(lang, { month: 'short' });
     var gameDate = dateForm.toLocaleDateString(lang, { day: '2-digit' });
     var outColor = outlineColor;
-    
-    var sport = stateObj.attributes.sport;
-    if (!(["baseball", "basketball","football","hockey", "soccer","volleyball"].includes(sport))) {
-      sport = "default"
-    }
 
     if (outline == true) {
       var clrOut = 1;
@@ -76,9 +76,13 @@ class TeamTrackerCard extends LitElement {
       var teamColor = stateObj.attributes.team_colors[0];
       var oppoColor = stateObj.attributes.opponent_colors[1];
     }
-    if (stateObj.attributes.team_homeaway == 'away') {
+    else if (stateObj.attributes.team_homeaway == 'away') {
       var teamColor = stateObj.attributes.team_colors[1];
       var oppoColor = stateObj.attributes.opponent_colors[0];
+    }
+    else {
+      var teamColor = '#ffffff';
+      var oppoColor = '#000000';
     }
 
     if (stateObj.attributes.possession == stateObj.attributes.team_id) {
@@ -220,11 +224,52 @@ class TeamTrackerCard extends LitElement {
     }
 
 //
+//  Tennis Specific Changes
+//
+    if (sport.includes("tennis")) {
+      console.log("tennis");
+      gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock);
+      teamProb = stateObj.attributes.team_score;
+      oppoProb = stateObj.attributes.opponent_score;
+      if (stateObj.attributes.team_shots_on_target) {
+        gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock + "(tiebreak)");
+        teamBarLabel = t.translate("tennis.teamBarLabel", "%s", stateObj.attributes.team_score +'(' + stateObj.attributes.team_shots_on_target + ')');
+      }
+      else {
+        teamBarLabel = t.translate("tennis.teamBarLabel", "%s", stateObj.attributes.team_score);
+      }
+      if (stateObj.attributes.team_shots_on_target) {
+        gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock + "(tiebreak)");
+        oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", stateObj.attributes.opponent_score +'(' + stateObj.attributes.opponent_shots_on_target + ')');
+      }
+      else {
+        oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", stateObj.attributes.opponent_score);
+      }
+      teamTimeouts = stateObj.attributes.team_sets_won;
+      oppoTimeouts = stateObj.attributes.opponent_sets_won;
+      timeoutsDisplay = 'inline';
+    }
+
+//
 //  Basketball Specific Changes
 //
     if (sport.includes("basketball")) {
 //      insert basketball specific changes here
     }
+
+//
+//  Golf Specific Changes
+//
+if (sport.includes("golf")) {
+  teamProb = stateObj.attributes.team_shots_on_target;
+  oppoProb = stateObj.attributes.opponent_shots_on_target;
+  teamBarLabel = t.translate("golf.teamBarLabel", "%s", stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')');
+  oppoBarLabel = t.translate("golf.oppoBarLabel", "%s", stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')');
+  finalTerm = stateObj.attributes.clock
+  
+  timeoutsDisplay = 'none';
+}
+
 
 //
 //  Hockey Specific Changes

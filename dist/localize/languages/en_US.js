@@ -35,6 +35,16 @@ export const en_US = {
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     },
+    "golf": {
+        "startTerm": "Round Starts",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Shots (Thru)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
     "hockey": {
         "startTerm": "Puck Drop",
         "overUnder": "O/U: %s",
@@ -52,6 +62,16 @@ export const en_US = {
         "gameStat2": "%s",
         "gameStat3": "",
         "gameBar": "Shots (On Target)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "tennis": {
+        "startTerm": "First Serve",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
