@@ -3,7 +3,15 @@ export const en_US = {
         "api_error": "API Error",
         "no_upcoming_games": "No upcoming games through %s",
         "finalTerm": "%s - Final",
-        "byeTerm": "BYE"
+        "byeTerm": "BYE",
+        "tourney2": "Final",
+        "tourney4": "Semifinals",
+        "tourney8": "Quarterfinals",
+        "tourney16": "Round of 16",
+        "tourney32": "Round of 32",
+        "tourney64": "Round of 64",
+        "tourney128": "Early Rounds",
+        "tourney256": "Early Rounds"
     },
     "baseball": {
         "startTerm": "First Pitch",
