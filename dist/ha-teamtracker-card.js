@@ -37,7 +37,14 @@ class TeamTrackerCard extends LitElement {
     var oScr = stateObj.attributes.opponent_score;
 
     var lang = this.hass.selectedLanguage || this.hass.language  || navigator.language || "en"
-    var time_format = this.hass.locale["time_format"] || "language";
+
+    var time_format = "language";
+    try {
+      time_format = this.hass.locale["time_format"] || "language";
+    }
+    catch (e) {
+      time_format = "language"
+    }
 
     var t = new Translator(lang);
 
