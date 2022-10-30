@@ -59,7 +59,7 @@ class TeamTrackerCard extends LitElement {
     }
     if (time_format == "system") {
       var sys_lang = navigator.language || "en"
-      gameTime = dateForm.toLocaleTimeString(sys_lang, { hour: '2-digit', minute:'2-digit', hour12:true });
+      gameTime = dateForm.toLocaleTimeString(sys_lang, { hour: '2-digit', minute:'2-digit' });
     }
     var gameMonth = dateForm.toLocaleDateString(lang, { month: 'short' });
     var gameDate = dateForm.toLocaleDateString(lang, { day: '2-digit' });
