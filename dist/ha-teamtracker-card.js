@@ -140,6 +140,7 @@ class TeamTrackerCard extends LitElement {
 //
 
     var byeTerm = t.translate("common.byeTerm");
+    var finalEvent = null
     var finalTerm = t.translate("common.finalTerm", "%s", gameMonth + " " + gameDate);
     var startTerm = t.translate(sport + ".startTerm");
     var context1 = stateObj.attributes.venue;
@@ -149,6 +150,8 @@ class TeamTrackerCard extends LitElement {
     if (stateObj.attributes.overunder) {
       overUnder = t.translate(sport + ".overUnder", "%s", String(stateObj.attributes.overunder));
     }
+    var odds = stateObj.attributes.odds;
+
     var gameStat1 = '';
     if (stateObj.attributes.down_distance_text) {
         gameStat1 = t.translate(sport + ".gameStat1", "%s", stateObj.attributes.down_distance_text);
@@ -160,8 +163,8 @@ class TeamTrackerCard extends LitElement {
     var gameStat3 = '';
 
     var gameBar = t.translate(sport + ".gameBar");
-    var teamBarLabel = t.translate(sport + ".teamBarLabel", "%s", teamProb);
-    var oppoBarLabel = t.translate(sport + ".oppoBarLabel", "%s", oppoProb);
+    var teamBarLabel = t.translate(sport + ".teamBarLabel", "%s", String(teamProb));
+    var oppoBarLabel = t.translate(sport + ".oppoBarLabel", "%s", String(oppoProb));
 
     var lastPlay = stateObj.attributes.last_play;
     var lastPlaySpeed = 18;
@@ -258,6 +261,7 @@ class TeamTrackerCard extends LitElement {
 //
     if (sport.includes("tennis")) {
       context2 = t.translate("common.tourney" + stateObj.attributes.odds)
+      odds = null
       gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock);
       teamProb = stateObj.attributes.team_score;
       oppoProb = stateObj.attributes.opponent_score;
@@ -266,44 +270,19 @@ class TeamTrackerCard extends LitElement {
         teamBarLabel = t.translate("tennis.teamBarLabel", "%s", stateObj.attributes.team_score +'(' + stateObj.attributes.team_shots_on_target + ')');
       }
       else {
-        teamBarLabel = t.translate("tennis.teamBarLabel", "%s", (stateObj.attributes.team_score + 0).toString());
+        teamBarLabel = t.translate("tennis.teamBarLabel", "%s", String(stateObj.attributes.team_score));
       }
       if (stateObj.attributes.team_shots_on_target) {
         gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock + "(tiebreak)");
         oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", stateObj.attributes.opponent_score +'(' + stateObj.attributes.opponent_shots_on_target + ')');
       }
       else {
-        oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", (stateObj.attributes.opponent_score + 0).toString());
+        oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", String(stateObj.attributes.opponent_score ));
       }
       teamTimeouts = stateObj.attributes.team_sets_won;
       oppoTimeouts = stateObj.attributes.opponent_sets_won;
-      timeoutsDisplay = 'inline';
-    }
+      finalEvent = stateObj.attributes.venue + " - " + context2
 
-//
-//  Tennis Specific Changes
-//
-    if (sport.includes("tennis")) {
-      context2 = t.translate("common.tourney" + stateObj.attributes.odds)
-      gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock);
-      teamProb = stateObj.attributes.team_score;
-      oppoProb = stateObj.attributes.opponent_score;
-      if (stateObj.attributes.team_shots_on_target) {
-        gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock + "(tiebreak)");
-        teamBarLabel = t.translate("tennis.teamBarLabel", "%s", stateObj.attributes.team_score +'(' + stateObj.attributes.team_shots_on_target + ')');
-      }
-      else {
-        teamBarLabel = t.translate("tennis.teamBarLabel", "%s", (stateObj.attributes.team_score + 0).toString());
-      }
-      if (stateObj.attributes.team_shots_on_target) {
-        gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock + "(tiebreak)");
-        oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", stateObj.attributes.opponent_score +'(' + stateObj.attributes.opponent_shots_on_target + ')');
-      }
-      else {
-        oppoBarLabel = t.translate("tennis.oppoBarLabel", "%s", (stateObj.attributes.opponent_score + 0).toString());
-      }
-      teamTimeouts = stateObj.attributes.team_sets_won;
-      oppoTimeouts = stateObj.attributes.opponent_sets_won;
       timeoutsDisplay = 'inline';
     }
 
@@ -323,7 +302,8 @@ class TeamTrackerCard extends LitElement {
       teamBarLabel = t.translate("golf.teamBarLabel", "%s", stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')');
       oppoBarLabel = t.translate("golf.oppoBarLabel", "%s", stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')');
       finalTerm = stateObj.attributes.clock
-  
+      finalEvent = stateObj.attributes.venue
+
       timeoutsDisplay = 'none';
     }
 
@@ -399,6 +379,7 @@ class TeamTrackerCard extends LitElement {
                 <div class="record">${stateObj.attributes.opponent_record}</div>
               </div>
             </div>
+            <div class="status">${finalEvent}</div>
             <div class="status">${finalTerm}</div>
           </div>
         </ha-card>
@@ -566,7 +547,7 @@ class TeamTrackerCard extends LitElement {
               <div class="line"></div>
               <div class="sub1">
                 <div class="date">${startTerm} ${stateObj.attributes.kickoff_in}</div>
-                <div class="odds">${stateObj.attributes.odds}</div>
+                <div class="odds">${odds}</div>
               </div>
               <div class="sub2">
                 <div class="venue">${context1}</div>

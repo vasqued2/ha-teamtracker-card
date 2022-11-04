@@ -1,5 +1,5 @@
 # Home Assistant Real-Time Sports Score Card
-A Home Assistant frontend custom card that will display real-time updates for teams tracked with the [ha-teamtracker](https://github.com/vasqued2/ha-teamtracker) integration by @vasqued2.  Has custom in-game layouts for football, baseball, basketball, and soccer.
+A Home Assistant frontend custom card that will display real-time updates for teams tracked with the [ha-teamtracker](https://github.com/vasqued2/ha-teamtracker) integration by @vasqued2.  Has custom in-game layouts for football, baseball, basketball, soccer, hockey, volleyball, golf, tennis, mma, and racing.
 
 This card was strongly based on the fantastic [ha-nfl-card](https://github.com/D34DC3N73R/ha-nfl-card) by @D34DC3N73R.
 

@@ -63,6 +63,16 @@ export const en_US = {
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
+    "mma": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Win Probability",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
     "soccer": {
         "startTerm": "Kickoff",
         "overUnder": "O/U: %s",
