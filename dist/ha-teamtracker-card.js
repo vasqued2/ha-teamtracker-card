@@ -33,6 +33,10 @@ class TeamTrackerCard extends LitElement {
 
     const outline = this._config.outline;
     const outlineColor = this._config.outline_color;
+    const showLeague = this._config.show_league;
+    const showTicker = this._config.show_ticker;
+    const homeSide = this._config.home_side;
+
     var teamProb = 0;
     if (stateObj.attributes.team_win_probability) {
         var teamProb = (stateObj.attributes.team_win_probability * 100).toFixed(0);
@@ -140,7 +144,10 @@ class TeamTrackerCard extends LitElement {
 //
 
     var byeTerm = t.translate("common.byeTerm");
-    var finalEvent = null
+    var title = null
+    if (showLeague) {
+      title = stateObj.attributes.league
+    }
     var finalTerm = t.translate("common.finalTerm", "%s", gameMonth + " " + gameDate);
     var startTerm = t.translate(sport + ".startTerm");
     var context1 = stateObj.attributes.venue;
@@ -176,6 +183,8 @@ class TeamTrackerCard extends LitElement {
     var playClock = stateObj.attributes.clock;
     var outsDisplay = 'none';
     var basesDisplay = 'none';
+    var probDisplay = 'inherit';
+    var probWrapDisplay = "flex";
     var teamTimeouts = stateObj.attributes.team_timeouts;
     var oppoTimeouts = stateObj.attributes.opponent_timeouts;
 
@@ -199,7 +208,7 @@ class TeamTrackerCard extends LitElement {
           notFoundTerm2 = t.translate("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
         }
     }
-
+    
 //
 //  MLB Specific Changes
 //
@@ -243,6 +252,18 @@ class TeamTrackerCard extends LitElement {
     }
 
 //
+//  Hockey Specific Changes
+//
+if (sport.includes("hockey")) {
+  teamProb = stateObj.attributes.team_shots_on_target;
+  oppoProb = stateObj.attributes.opponent_shots_on_target;
+  teamBarLabel = t.translate("hockey.teamBarLabel", "%s", String(stateObj.attributes.team_shots_on_target));
+  oppoBarLabel = t.translate("hockey.oppoBarLabel", "%s", String(stateObj.attributes.opponent_shots_on_target));
+
+  timeoutsDisplay = 'none';
+}
+
+//
 //  Volleyball Specific Changes
 //
     if (sport.includes("volleyball")) {
@@ -256,6 +277,13 @@ class TeamTrackerCard extends LitElement {
       timeoutsDisplay = 'inline';
     }
 
+//
+//  Basketball Specific Changes
+//
+if (sport.includes("basketball")) {
+  //      insert basketball specific changes here
+      }
+  
 //
 //  Tennis Specific Changes
 //
@@ -281,17 +309,30 @@ class TeamTrackerCard extends LitElement {
       }
       teamTimeouts = stateObj.attributes.team_sets_won;
       oppoTimeouts = stateObj.attributes.opponent_sets_won;
-      finalEvent = stateObj.attributes.venue + " - " + context2
+      title = stateObj.attributes.event_name + " - " + context2;
 
       timeoutsDisplay = 'inline';
     }
 
+
 //
-//  Basketball Specific Changes
+//  MMA Specific Changes
 //
-    if (sport.includes("basketball")) {
-//      insert basketball specific changes here
+    if (sport.includes("mma")) {
+      title = stateObj.attributes.event_name;
+      timeoutsDisplay = 'none';
+      probDisplay = "none";
+      var probWrapDisplay = "none";
+
     }
+
+//
+//  Racing Specific Changes
+//
+if (sport.includes("racing")) {
+  title = stateObj.attributes.event_name;
+}
+
 
 //
 //  Golf Specific Changes
@@ -301,9 +342,8 @@ class TeamTrackerCard extends LitElement {
       oppoProb = stateObj.attributes.opponent_shots_on_target;
       teamBarLabel = t.translate("golf.teamBarLabel", "%s", stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')');
       oppoBarLabel = t.translate("golf.oppoBarLabel", "%s", stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')');
-      finalTerm = stateObj.attributes.clock
-      finalEvent = stateObj.attributes.venue
-
+      finalTerm = stateObj.attributes.clock;
+      title = stateObj.attributes.event_name;
       timeoutsDisplay = 'none';
     }
 
@@ -323,17 +363,6 @@ class TeamTrackerCard extends LitElement {
     }
 
 
-//
-//  Hockey Specific Changes
-//
-    if (sport.includes("hockey")) {
-      teamProb = stateObj.attributes.team_shots_on_target;
-      oppoProb = stateObj.attributes.opponent_shots_on_target;
-      teamBarLabel = t.translate("hockey.teamBarLabel", "%s", String(stateObj.attributes.team_shots_on_target));
-      oppoBarLabel = t.translate("hockey.oppoBarLabel", "%s", String(stateObj.attributes.opponent_shots_on_target));
-
-      timeoutsDisplay = 'none';
-    }
 
 //
 //  NCAA Specific Changes
@@ -346,6 +375,7 @@ class TeamTrackerCard extends LitElement {
       return html`
         <style>
           .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+          .title { text-align: center; font-size: 1.2em; font-weight: 500; }
           .team-bg { opacity: 0.08; position: absolute; top: -30%; left: -20%; width: 58%; z-index: 0; }
           .opponent-bg { opacity: 0.08; position: absolute; top: -30%; right: -20%; width: 58%; z-index: 0; }
           .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
@@ -362,6 +392,7 @@ class TeamTrackerCard extends LitElement {
         </style>
         <ha-card>
           <div class="card">
+            <div class="title">${title}</div>
             <img class="team-bg" src="${stateObj.attributes.team_logo}" />
             <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
             <div class="card-content">
@@ -379,7 +410,6 @@ class TeamTrackerCard extends LitElement {
                 <div class="record">${stateObj.attributes.opponent_record}</div>
               </div>
             </div>
-            <div class="status">${finalEvent}</div>
             <div class="status">${finalTerm}</div>
           </div>
         </ha-card>
@@ -389,7 +419,8 @@ class TeamTrackerCard extends LitElement {
     if (stateObj.state == 'IN') {
         return html`
           <style>
-            .card { position: relative; overflow: hidden; padding: 0 16px 20px; font-weight: 400; }
+            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+            .title { text-align: center; font-size: 1.2em; font-weight: 500; }
             .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
             .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
             .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
@@ -423,11 +454,11 @@ class TeamTrackerCard extends LitElement {
             .down-distance { text-align: right; }
             .play-clock { font-size: 1.4em; text-align: center; }
             .outs { text-align: center; display: ${outsDisplay}; }
-            .probability-text { text-align: center; }
+            .probability-text { text-align: center; display: ${probDisplay}; }
             .prob-flex { width: 100%; display: flex; justify-content: center; margin-top: 4px; }
             .opponent-probability { width: ${oppoProb}%; background-color: ${oppoColor}; height: 12px; border-radius: 0 ${probRadius}px ${probRadius}px 0; border: ${clrOut}px solid ${outColor}; border-left: 0; transition: all 1s ease-out; }
             .team-probability { width: ${teamProb}%; background-color: ${teamColor}; height: 12px; border-radius: ${probRadius}px 0 0 ${probRadius}px; border: ${clrOut}px solid ${outColor}; border-right: 0; transition: all 1s ease-out; }
-            .probability-wrapper { display: flex; }
+            .probability-wrapper { display: ${probWrapDisplay}; }
             .team-percent { flex: 0 0 10px; padding: 0 10px 0 0; }
             .oppo-percent { flex: 0 0 10px; padding: 0 0 0 10px; text-align: right; }
             .percent { padding: 0 6px; }
@@ -435,6 +466,7 @@ class TeamTrackerCard extends LitElement {
           </style>
           <ha-card>
             <div class="card">
+            <div class="title">${title}</div>
             <img class="team-bg" src="${stateObj.attributes.team_logo}" />
             <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
             <div class="card-content">
@@ -504,7 +536,8 @@ class TeamTrackerCard extends LitElement {
     if (stateObj.state == 'PRE') {
         return html`
           <style>
-            .card { position: relative; overflow: hidden; padding: 0 16px 20px; font-weight: 400; }
+            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+            .title { text-align: center; font-size: 1.2em; font-weight: 500; }
             .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
             .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
             .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
@@ -526,6 +559,7 @@ class TeamTrackerCard extends LitElement {
           </style>
           <ha-card>
               <div class="card">
+              <div class="title">${title}</div>
               <img class="team-bg" src="${stateObj.attributes.team_logo}" />
               <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
               <div class="card-content">
