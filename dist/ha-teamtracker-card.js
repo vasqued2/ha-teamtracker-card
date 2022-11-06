@@ -148,6 +148,15 @@ class TeamTrackerCard extends LitElement {
     if (showLeague) {
       title = stateObj.attributes.league
     }
+    var teamLogo = stateObj.attributes.team_logo
+    var teamLogoBG = teamLogo
+    var oppoLogo = stateObj.attributes.opponent_logo
+    var oppoLogoBG = oppoLogo
+    if (showLeague) {
+      teamLogoBG = stateObj.attributes.league_logo
+      oppoLogoBG = stateObj.attributes.league_logo
+    }
+
     var finalTerm = t.translate("common.finalTerm", "%s", gameMonth + " " + gameDate);
     var startTerm = t.translate(sport + ".startTerm");
     var context1 = stateObj.attributes.venue;
@@ -178,8 +187,8 @@ class TeamTrackerCard extends LitElement {
     if (lastPlay) {
       lastPlaySpeed = 18 + Math.floor(lastPlay.length/40) * 5;
     }
-    var notFoundTeamBG = stateObj.attributes.league_logo;
-    var notFoundTeam = stateObj.attributes.league_logo;
+    var notFoundLogo = stateObj.attributes.league_logo;
+    var notFoundLogoBG = notFoundLogo;
     var playClock = stateObj.attributes.clock;
     var outsDisplay = 'none';
     var basesDisplay = 'none';
@@ -368,7 +377,7 @@ if (sport.includes("racing")) {
 //  NCAA Specific Changes
 //
     if (stateObj.attributes.league.includes("NCAA")) {
-      notFoundTeam = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
+      notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
     
     if (stateObj.state == 'POST') {
@@ -393,11 +402,11 @@ if (sport.includes("racing")) {
         <ha-card>
           <div class="card">
             <div class="title">${title}</div>
-            <img class="team-bg" src="${stateObj.attributes.team_logo}" />
-            <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
+            <img class="team-bg" src="${teamLogoBG}" />
+            <img class="opponent-bg" src="${oppoLogoBG}" />
             <div class="card-content">
               <div class="team">
-                <img src="${stateObj.attributes.team_logo}" />
+                <img src="${teamLogo}" />
                 <div class="name"><span class="rank">${stateObj.attributes.team_rank}</span> ${stateObj.attributes.team_name}</div>
                 <div class="record">${stateObj.attributes.team_record}</div>
               </div>
@@ -405,7 +414,7 @@ if (sport.includes("racing")) {
               <div class="divider">&nbsp&nbsp&nbsp</div>
               <div class="score opposcr">${oScr}</div>
               <div class="team">
-                <img src="${stateObj.attributes.opponent_logo}" />
+                <img src="${oppoLogo}" />
                 <div class="name"><span class="rank">${stateObj.attributes.opponent_rank}</span> ${stateObj.attributes.opponent_name}</div>
                 <div class="record">${stateObj.attributes.opponent_record}</div>
               </div>
@@ -467,11 +476,11 @@ if (sport.includes("racing")) {
           <ha-card>
             <div class="card">
             <div class="title">${title}</div>
-            <img class="team-bg" src="${stateObj.attributes.team_logo}" />
-            <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
+            <img class="team-bg" src="${teamLogoBG}" />
+            <img class="opponent-bg" src="${oppoLogoBG}" />
             <div class="card-content">
               <div class="team">
-                <img src="${stateObj.attributes.team_logo}" />
+                <img src="${teamLogo}" />
                 <div class="name"><span class="rank">${stateObj.attributes.team_rank}</span> ${stateObj.attributes.team_name}</div>
                 <div class="record">${stateObj.attributes.team_record}</div>
                 <div class="timeouts">
@@ -486,7 +495,7 @@ if (sport.includes("racing")) {
               <div class="score">${stateObj.attributes.opponent_score}</div>
               <div class="oppoposs">&bull;</div>
               <div class="team">
-                <img src="${stateObj.attributes.opponent_logo}" />
+                <img src="${oppoLogo}" />
                 <div class="name"><span class="rank">${stateObj.attributes.opponent_rank}</span> ${stateObj.attributes.opponent_name}</div>
                 <div class="record">${stateObj.attributes.opponent_record}</div>
                 <div class="timeouts">
@@ -560,11 +569,11 @@ if (sport.includes("racing")) {
           <ha-card>
               <div class="card">
               <div class="title">${title}</div>
-              <img class="team-bg" src="${stateObj.attributes.team_logo}" />
-              <img class="opponent-bg" src="${stateObj.attributes.opponent_logo}" />
+              <img class="team-bg" src="${teamLogoBG}" />
+              <img class="opponent-bg" src="${oppoLogoBG}" />
               <div class="card-content">
                 <div class="team">
-                  <img src="${stateObj.attributes.team_logo}" />
+                  <img src="${teamLogo}" />
                   <div class="name"><span class="rank">${stateObj.attributes.team_rank}</span> ${stateObj.attributes.team_name}</div>
                   <div class="record">${stateObj.attributes.team_record}</div>
                 </div>
@@ -573,7 +582,7 @@ if (sport.includes("racing")) {
                   <div class="gametime">${gameTime}</div>
                 </div>
                 <div class="team">
-                  <img src="${stateObj.attributes.opponent_logo}" />
+                  <img src="${oppoLogo}" />
                   <div class="name"><span class="rank">${stateObj.attributes.opponent_rank}</span> ${stateObj.attributes.opponent_name}</div>
                   <div class="record">${stateObj.attributes.opponent_record}</div>
                 </div>
@@ -610,10 +619,10 @@ if (sport.includes("racing")) {
         </style>
         <ha-card>
           <div class="card">
-            <img class="team-bg" src="${stateObj.attributes.team_logo}" />
+            <img class="team-bg" src="${teamLogoBG}" />
             <div class="card-content">
               <div class="team">
-                <img src="${stateObj.attributes.team_logo}" />
+                <img src="${teamLogo}" />
                 <div class="name">${stateObj.attributes.team_name}</div>
               </div>
               <div class="bye">${byeTerm}</div>
@@ -638,10 +647,10 @@ if (sport.includes("racing")) {
         </style>
         <ha-card>
           <div class="card">
-            <img class="team-bg" src="${notFoundTeamBG}" />
+            <img class="team-bg" src="${notFoundLogoBG}" />
             <div class="card-content">
               <div class="team">
-                <img src="${notFoundTeam}" />
+                <img src="${notFoundLogo}" />
               </div>
               <div><span class="eos">${notFoundTerm1}</span><span class="eos2"><br /><br />${notFoundTerm2}</span></div>
           </div>
