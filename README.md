@@ -63,6 +63,8 @@ Add a Manual card to the dashboard and enter the YAML to configure it as desired
 | `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
 | `show_timeouts` | Specifies if timeout indicators should be shown. | `true` | No |  `true` `false`  |
 | `show_rank` | Specifies if team rank should be shown. | `true` | No |  `true` `false`  |
+| `show_league` | Specifies if league should be shown at the top of the card. | `false` | No |  `true` `false`  |
+
 
 ### Examples
 #### Example 1
