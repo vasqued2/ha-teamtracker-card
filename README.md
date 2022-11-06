@@ -1,5 +1,5 @@
 # Home Assistant Real-Time Sports Score Card
-A Home Assistant frontend custom card that will display real-time updates for teams tracked with the [ha-teamtracker](https://github.com/vasqued2/ha-teamtracker) integration by @vasqued2.  Has custom in-game layouts for football, baseball, basketball, and soccer.
+A Home Assistant frontend custom card that will display real-time updates for teams tracked with the [ha-teamtracker](https://github.com/vasqued2/ha-teamtracker) integration by @vasqued2.  Has custom in-game layouts for football, baseball, basketball, soccer, hockey, volleyball, golf, tennis, mma, and racing.
 
 This card was strongly based on the fantastic [ha-nfl-card](https://github.com/D34DC3N73R/ha-nfl-card) by @D34DC3N73R.
 
@@ -63,6 +63,8 @@ Add a Manual card to the dashboard and enter the YAML to configure it as desired
 | `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
 | `show_timeouts` | Specifies if timeout indicators should be shown. | `true` | No |  `true` `false`  |
 | `show_rank` | Specifies if team rank should be shown. | `true` | No |  `true` `false`  |
+| `show_league` | Specifies if league should be shown at the top of the card. | `false` | No |  `true` `false`  |
+
 
 ### Examples
 #### Example 1
