@@ -59,7 +59,7 @@ Add a Manual card to the dashboard and enter the YAML to configure it as desired
 | Name | Description | Default | Required |  Values |
 | --- | --- | --- | --- | --- |
 | `entity` | Name of ha-teamtracker sensor | `sensor.team_tracker` | Yes  | Valid sensor |
-| `home_side` | Force the home team to the left or right side of scoreboard | Team being tracked is displayed on left | No |  `left` `right` |
+| `home_side` | Force the home team to the left or right side of scoreboard | Team displayed on left.  Opponent displayed on right. | No | `left` `right` |
 | `outline` | Outline team colors (helpful w/ dark themes) |`false` | No |  `true` `false` |
 | `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
 | `show_timeouts` | Specifies if timeout indicators should be shown. | `true` | No |  `true` `false`  |
