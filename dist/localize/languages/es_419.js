@@ -4,14 +4,14 @@ export const es_419 = {
         "no_upcoming_games": "No hay próximos juegos hasta el %s",
         "finalTerm": "%s - Final",
         "byeTerm": "DESCANSO",
-        "tourney2": "La Final",
-        "tourney4": "Las Semifinales",
-        "tourney8": "Los Quartos de Finals",
-        "tourney16": "Los Octavos",
-        "tourney32": "La Ronda de 32",
-        "tourney64": "La Ronda de 64",
-        "tourney128": "Las primeras Rondas",
-        "tourney256": "Las primeras Rondas"
+        "tourney2": "Final",
+        "tourney4": "Semifinales",
+        "tourney8": "Cuartos de Finals",
+        "tourney16": "Octavos de Finals",
+        "tourney32": "Ronda de 32",
+        "tourney64": "Ronda de 64",
+        "tourney128": "Primeras Rondas",
+        "tourney256": "Primeras Rondas"
     },
     "australian-football": {
         "startTerm": "Comienzo",
