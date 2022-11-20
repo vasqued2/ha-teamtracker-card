@@ -3,7 +3,25 @@ export const es = {
         "api_error": "Error de API",
         "no_upcoming_games": "No hay próximos juegos hasta el %s",
         "finalTerm": "%s - Final",
-        "byeTerm": "DESCANSO"
+        "byeTerm": "DESCANSO",
+        "tourney2": "La Final",
+        "tourney4": "Las Semifinales",
+        "tourney8": "Los Quartos de Finals",
+        "tourney16": "Los Octavos",
+        "tourney32": "La Ronda de 32",
+        "tourney64": "La Ronda de 64",
+        "tourney128": "Las primeras Rondas",
+        "tourney256": "Las primeras Rondas"
+    },
+    "australian-football": {
+        "startTerm": "Comienzo",
+        "overUnder": "Más/Menos: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Probabilidad de Ganar",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
     },
     "baseball": {
         "startTerm": "Comienzo",
@@ -35,6 +53,16 @@ export const es = {
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     },
+    "golf": {
+        "startTerm": "Comienzo",
+        "overUnder": "Más/Menos: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Tiros (Través De)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
     "hockey": {
         "startTerm": "Comienzo",
         "overUnder": "Más/Menos: %s",
@@ -45,6 +73,26 @@ export const es = {
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
+    "mma": {
+        "startTerm": "Comienzo",
+        "overUnder": "Más/Menos: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Probabilidad de Ganar",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "racing": {
+        "startTerm": "Comienzo",
+        "overUnder": "Más/Menos: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vueltas",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
     "soccer": {
         "startTerm": "Comienzo",
         "overUnder": "Más/Menos: %s",
@@ -52,6 +100,16 @@ export const es = {
         "gameStat2": "%s",
         "gameStat3": "",
         "gameBar": "Tiros (A Puerta)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "tennis": {
+        "startTerm": "Comienzo",
+        "overUnder": "Más/Menos: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },

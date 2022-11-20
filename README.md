@@ -59,6 +59,7 @@ Add a Manual card to the dashboard and enter the YAML to configure it as desired
 | Name | Description | Default | Required |  Values |
 | --- | --- | --- | --- | --- |
 | `entity` | Name of ha-teamtracker sensor | `sensor.team_tracker` | Yes  | Valid sensor |
+| `card_title` | Overrides `show_league` and displays the specified string at the top of the card | None | No | Any string value |
 | `home_side` | Force the home team to the left or right side of scoreboard | Team displayed on left and opponent displayed on right | No | `left` `right` |
 | `outline` | Outline team colors (helpful w/ dark themes) |`false` | No |  `true` `false` |
 | `outline_color` | Specifies outline color. | `white` | No |  CSS color or hex value  |
