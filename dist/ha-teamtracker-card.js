@@ -316,9 +316,11 @@ if (sport.includes("hockey")) {
 //
 //  Basketball Specific Changes
 //
-if (sport.includes("basketball")) {
-  //      insert basketball specific changes here
-      }
+    if (sport.includes("basketball")) {
+      timeoutsDisplay = 'none';
+      barDisplay = 'none';
+      barWrapDisplay = "none";
+    }
   
 //
 //  Tennis Specific Changes
