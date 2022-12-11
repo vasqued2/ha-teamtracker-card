@@ -607,6 +607,7 @@ if (sport.includes("hockey")) {
             .rank { font-size:0.8em; display:${rankDisplay}; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .gameday { font-size: 1.4em; margin-bottom: 4px; }
+            .gamedateshort { font-size: 1.1em; }
             .gametime { font-size: 1.1em; }
             .sub1 { font-weight: 500; font-size: 1.2em; margin: 6px 0 2px; }
             .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
@@ -630,7 +631,7 @@ if (sport.includes("hockey")) {
                 </div>
                 <div class="gamewrapper">
                   <div class="gameday">${gameDay}</div>
-                  <div class="gameday">${gameDateShort}</div>
+                  <div class="gamedateshort">${gameDateShort}</div>
                   <div class="gametime">${gameTime}</div>
                 </div>
                 <div class="team">
