@@ -82,8 +82,21 @@ class TeamTrackerCard extends LitElement {
 
     var t = new Translator(lang);
 
+    const rightNow = new Date();
+    const msInADay = 1000*60*60*24;
     var dateForm = new Date (stateObj.attributes.date);
+    var gameStartsInDays = (dateForm.getTime() - rightNow.getTime()) / (msInADay);
     var gameDay = dateForm.toLocaleDateString(lang, { weekday: 'long' });
+    var gameDateShort = "" ;
+    if (gameStartsInDays >= 7) {
+      gameDateShort = dateForm.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+    if (gameStartsInDays >= 0 && gameStartsInDays < 1) {
+      gameDay = "Today";
+//    Think this should be as follows for locale support but results in
+//    "{Today}" printing and haven't figured out how to fix that.
+//    gameDay = t.translate("Today");
+    }
     var gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
     if (time_format == "24") {
       gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:false });
@@ -617,6 +630,7 @@ if (sport.includes("hockey")) {
                 </div>
                 <div class="gamewrapper">
                   <div class="gameday">${gameDay}</div>
+                  <div class="gameday">${gameDateShort}</div>
                   <div class="gametime">${gameTime}</div>
                 </div>
                 <div class="team">
