@@ -2,6 +2,18 @@ import { html, LitElement } from "https://unpkg.com/lit?module";
 import { Translator } from "./localize/translator.js";
 
 class TeamTrackerCard extends LitElement {
+//
+// Trigger the UI Card Editor from Card Picker
+//
+//  static getConfigElement() {
+//    // Create and return an editor element
+//    return document.createElement("my-custom-card-editor");
+//  }
+//
+//  static getStubConfig() {
+//    // Return a minimal configuration that will result in a working card configuration
+//    return { entity: "" };
+//  }
 
   static get properties() {
     return {
@@ -12,6 +24,13 @@ class TeamTrackerCard extends LitElement {
 
   setConfig(config) {
     this._config = config;
+
+    if (config.debug) {
+      console.info("%c TeamTracker Card \n%c Version 0.5.4    ",
+        "color: orange; font-weight: bold; background: black",
+        "color: white; font-weight: bold; background: dimgray");
+        console.info(config);
+    }
   }
   getCardSize() {
     return 5;
@@ -217,6 +236,12 @@ class TeamTrackerCard extends LitElement {
     }
     var notFoundLogo = stateObj.attributes.league_logo;
     var notFoundLogoBG = notFoundLogo;
+    var notFoundLeague = null;
+
+    if (stateObj.attributes.league != "XXX") {
+      notFoundLeague = stateObj.attributes.league;
+    }
+
     var playClock = stateObj.attributes.clock;
     var outsDisplay = 'none';
     var basesDisplay = 'none';
@@ -235,7 +260,7 @@ class TeamTrackerCard extends LitElement {
       rankDisplay = 'none';
     }
 
-    var notFoundTerm1 = stateObj.attributes.league + ": " + stateObj.attributes.team_abbr;
+    var notFoundTerm1 = stateObj.attributes.team_abbr;
     var notFoundTerm2 = "NOT_FOUND"
     if (stateObj.attributes.api_message) {
         notFoundTerm2 = t.translate("common.api_error")
@@ -674,23 +699,26 @@ if (sport.includes("hockey")) {
       return html`
         <style>
           .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+          .title { text-align: center; font-size: 1.2em; font-weight: 500; }
           .team-bg { opacity: 0.08; position: absolute; top: -50%; left: -30%; width: 75%; z-index: 0; }
           .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
           .team { text-align: center; width: 50%; }
           .team img { max-width: 90px; }
           .name { font-size: 1.6em; margin-bottom: 4px; }
           .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-          .eos { font-size: 1.8em; line-height: 1.2em; text-align: center; width: 50%; }
+          .eos { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 50%; }
           .eos2 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 50%; display: inline; }
         </style>
         <ha-card>
           <div class="card">
+            <div class="title">${title} </div>
             <img class="team-bg" src="${notFoundLogoBG}" />
             <div class="card-content">
               <div class="team">
                 <img src="${notFoundLogo}" />
+                <div class="title">${notFoundLeague}</div>
               </div>
-              <div><span class="eos">${notFoundTerm1}</span><span class="eos2"><br /><br />${notFoundTerm2}</span></div>
+              <div><span class="eos">${notFoundTerm1}</span><span class="eos2"><br />${notFoundTerm2}</span></div>
           </div>
         </ha-card>
       `;
@@ -699,3 +727,70 @@ if (sport.includes("hockey")) {
 }
 
 customElements.define("teamtracker-card", TeamTrackerCard);
+
+
+//
+//  Add card to list of Custom Cards in the Card Picker
+//
+window.customCards = window.customCards || []; // Create the list if it doesn't exist. Careful not to overwrite it
+window.customCards.push({
+  type: "teamtracker-card",
+  name: "Team Tracker Card",
+  preview: false,
+  description: "Card to display the ha-teamtracker sensor",
+});
+
+//
+//  Define and register the UI Card Editor 
+//
+class MyCustomCardEditor extends LitElement {
+
+  static get properties() {
+    return {
+      hass: {},
+      _config: {},
+    };
+  }
+
+  // setConfig works the same way as for the card itself
+  setConfig(config) {
+    this._config = config;
+  }
+
+  // This function is called when the input element of the editor loses focus
+  entityChanged(ev) {
+
+    // We make a copy of the current config so we don't accidentally overwrite anything too early
+    const _config = Object.assign({}, this._config);
+    // Then we update the entity value with what we just got from the input field
+    _config.entity = ev.target.value;
+    // And finally write back the updated configuration all at once
+    this._config = _config;
+
+    // A config-changed event will tell lovelace we have made changed to the configuration
+    // this make sure the changes are saved correctly later and will update the preview
+    const event = new CustomEvent("config-changed", {
+      detail: { config: _config },
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(event);
+  }
+
+  render() {
+    if (!this.hass || !this._config) {
+      return html``;
+    }
+
+    // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
+    return html`
+    Entity:
+    <input
+    .value=${this._config.entity}
+    @focusout=${this.entityChanged}
+    ></input>
+    `;
+  }
+}
+
+customElements.define("my-custom-card-editor", MyCustomCardEditor);
