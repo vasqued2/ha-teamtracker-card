@@ -668,55 +668,6 @@ if (sport.includes("hockey")) {
         `;
     }
 
-    if (stateObj.state == 'NOT_FOUND') {
-      return html`
-        <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
-          .title { text-align: center; font-size: 1.2em; font-weight: 500; }
-          .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
-          .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
-          .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
-          .team { text-align: center; width: 35%; }
-          .team img { max-width: 90px; }
-          .name { font-size: 1.4em; margin-bottom: 4px; }
-          .rank { font-size:0.8em; display:${rankDisplay}; }
-          .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-          .gameday { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
-          .gametime { font-size: 1.1em; }
-          .sub1 { font-weight: 500; font-size: 1.2em; margin: 6px 0 2px; }
-          .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
-          .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
-          .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide 10s linear infinite; }
-          @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-          .clock { text-align: center; font-size: 1.4em; }
-          .down-distance { text-align: right; font-weight: 700; }
-          .kickoff { text-align: center; margin-top: -24px; }
-        </style>
-        <ha-card>
-            <div class="card">
-            <div class="title">${title}</div>
-            <img class="team-bg" src="${notFoundLogoBG}" />
-            <div class="card-content">
-              <div class="team">
-                <img src="${notFoundLogoBG}" />
-                <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
-                <div class="record">${notFoundLeague}</div>
-              </div>
-              <div class="gamewrapper">
-                <div class="gameday">${notFoundTerm1}</div>
-                <div class="gameday">${notFoundTerm2}</div>
-              </div>
-            </div>
-          </div>
-          </ha-card>
-      `;
-  }
-
-
-
-
-
-
     if (stateObj.state == 'BYE') {
       return html`
         <style>
@@ -744,32 +695,33 @@ if (sport.includes("hockey")) {
       `;
     }
 
-    if (stateObj.state == 'NOT_FOUND2') {
+    if (stateObj.state == 'NOT_FOUND') {
       return html`
         <style>
           .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
           .title { text-align: center; font-size: 1.2em; font-weight: 500; }
-          .team-bg { opacity: 0.08; position: absolute; top: -50%; left: -30%; width: 75%; z-index: 0; }
+          .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
           .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
-          .team { text-align: center; width: 50%; }
+          .team { text-align: center; width: 35%; }
           .team img { max-width: 90px; }
-          .name { font-size: 1.6em; margin-bottom: 4px; }
-          .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-          .eos { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 50%; }
-          .eos2 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 50%; display: inline; }
+          .gameday { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
         </style>
         <ha-card>
-          <div class="card">
-            <div class="title">${title} </div>
+            <div class="card">
+            <div class="title">${title}</div>
             <img class="team-bg" src="${notFoundLogoBG}" />
             <div class="card-content">
               <div class="team">
-                <img src="${notFoundLogo}" />
-                <div class="title">${notFoundLeague}</div>
+                <img src="${notFoundLogoBG}" />
+                <div class="record">${notFoundLeague}</div>
               </div>
-              <div><span class="eos">${notFoundTerm1}</span><span class="eos2"><br />${notFoundTerm2}</span></div>
+              <div class="gamewrapper">
+                <div class="gameday">${notFoundTerm1}</div>
+                <div class="gameday">${notFoundTerm2}</div>
+              </div>
+            </div>
           </div>
-        </ha-card>
+          </ha-card>
       `;
     }
   }
