@@ -60,6 +60,7 @@ class TeamTrackerCard extends LitElement {
     var logoBG = [];
     var logo = [];
     var name = [];
+    var initials = [];
     var rank = [];
     var record = [];
     var score = [];
@@ -242,6 +243,7 @@ class TeamTrackerCard extends LitElement {
       notFoundLeague = stateObj.attributes.league;
     }
 
+    var initialsDisplay = 'none';
     var playClock = stateObj.attributes.clock;
     var outsDisplay = 'none';
     var basesDisplay = 'none';
@@ -408,6 +410,13 @@ if (sport.includes("hockey")) {
       barLabel[team] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
       barLabel[oppo] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
 
+      if (stateObj.attributes.league.includes("NASCAR")) {
+        logo[team] = null;
+        logo[oppo] = null;
+        initials[team] = name[team].split(" ").map((n)=>n[0]).join("");
+        initials[oppo] = name[oppo].split(" ").map((n)=>n[0]).join("");
+        initialsDisplay = 'inline';
+      }
     }
 
 
@@ -453,6 +462,7 @@ if (sport.includes("hockey")) {
           .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
           .team { text-align: center; width: 35%;}
           .team img { max-width: 90px; }
+          .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
           .score { font-size: 3em; text-align: center; }
           .score1op { opacity: ${scoreOp[1]}; }
           .score2op { opacity: ${scoreOp[2]}; }
@@ -470,6 +480,7 @@ if (sport.includes("hockey")) {
             <div class="card-content">
               <div class="team">
                 <img src="${logo[1]}" />
+                <div class="circle">${initials[1]}</div>
                 <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
                 <div class="record">${record[1]}</div>
               </div>
@@ -478,6 +489,7 @@ if (sport.includes("hockey")) {
               <div class="score score2op">${score[2]}</div>
               <div class="team">
                 <img src="${logo[2]}" />
+                <div class="circle">${initials[2]}</div>
                 <div class="name"><span class="rank">${rank[2]}</span> ${name[2]}</div>
                 <div class="record">${record[2]}</div>
               </div>
@@ -498,6 +510,7 @@ if (sport.includes("hockey")) {
             .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
             .team { text-align: center; width:35%; }
             .team img { max-width: 90px; }
+            .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
             .possession, .possession1, .possession2 { font-size: 2.5em; text-align: center; opacity: 0; font-weight:900; }
             .possession1 {opacity: ${possessionOp[1]} !important; }
             .possession2 {opacity: ${possessionOp[2]} !important; }
@@ -544,6 +557,7 @@ if (sport.includes("hockey")) {
             <div class="card-content">
               <div class="team">
                 <img src="${logo[1]}" />
+                <div class="circle">${initials[1]}</div>
                 <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
                 <div class="record">${record[1]}</div>
                 <div class="timeouts">
@@ -559,6 +573,7 @@ if (sport.includes("hockey")) {
               <div class="possession2">&bull;</div>
               <div class="team">
                 <img src="${logo[2]}" />
+                <div class="circle">${initials[2]}</div>
                 <div class="name"><span class="rank">${rank[2]}</span> ${name[2]}</div>
                 <div class="record">${record[2]}</div>
                 <div class="timeouts">
