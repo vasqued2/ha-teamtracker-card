@@ -74,7 +74,7 @@ class TeamTrackerCard extends LitElement {
     var team = 1;
     var oppo = 2;
     if (((homeSide == "RIGHT") && (stateObj.attributes.team_homeaway == "home")) ||
-        ((homeSide == "LEFT")  && (stateObj.attributes.opponent_homeaway == "home"))) { 
+        ((homeSide == "LEFT")  && (stateObj.attributes.opponent_homeaway == "home"))) {
         team = 2;
         oppo = 1;
     }
@@ -102,8 +102,41 @@ class TeamTrackerCard extends LitElement {
 
     var t = new Translator(lang);
 
+    function dateDiff(first, second) {
+      return Math.round((second.getTime() - first.getTime()) / (1000 * 60 * 60 * 24));
+    }
+
+    function dateDiffWholeDays(first,second) {
+      var f = new Date(first.getTime());
+      var s = new Date(second.getTime());
+      f.setHours(0,0,0,0);
+      s.setHours(0,0,0,0);
+      return dateDiff(f,s);
+    }
+
+    function isToday(first, second) {
+      return dateDiffWholeDays(first,second) == 0;
+    }
+
+    function isTomorrow(first, second) {
+      return dateDiffWholeDays(first,second) == 1;
+    }
+
+    const rightNow = new Date();
     var dateForm = new Date (stateObj.attributes.date);
     var gameDay = dateForm.toLocaleDateString(lang, { weekday: 'long' });
+    var gameDateShort = "" ;
+    if (dateDiff(rightNow,dateForm) >= 7) {
+      gameDateShort = dateForm.toLocaleDateString(lang, { month: 'short', day: 'numeric' });
+    }
+    else if (isToday(rightNow,dateForm)) {
+      gameDay = t.translate("common.today");
+      gameDateShort= dateForm.toLocaleDateString(lang, { weekday: 'long' });
+    }
+    else if (isTomorrow(rightNow,dateForm)) {
+      gameDay = t.translate("common.tomorrow");
+      gameDateShort= dateForm.toLocaleDateString(lang, { weekday: 'long' });
+    }
     var gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
     if (time_format == "24") {
       gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:false });
@@ -174,7 +207,7 @@ class TeamTrackerCard extends LitElement {
         </style>
         <ha-card>
           Sensor unavailable: ${this._config.entity}
-        </ha-card> 
+        </ha-card>
       `;
     }
 //
@@ -272,7 +305,7 @@ class TeamTrackerCard extends LitElement {
           notFoundTerm2 = t.translate("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
         }
     }
-    
+
 //
 //  MLB Specific Changes
 //
@@ -348,7 +381,7 @@ if (sport.includes("hockey")) {
       barDisplay = 'none';
       barWrapDisplay = "none";
     }
-  
+
 //
 //  Tennis Specific Changes
 //
@@ -404,7 +437,7 @@ if (sport.includes("hockey")) {
         finalTerm = finalTerm + " (" + stateObj.attributes.quarter + ")";
       }
       timeoutsDisplay = 'none';
-      
+
       barLength[team] = stateObj.attributes.team_total_shots;
       barLength[oppo] = stateObj.attributes.team_total_shots;
       barLabel[team] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
@@ -451,7 +484,7 @@ if (sport.includes("hockey")) {
     if (stateObj.attributes.league.includes("NCAA")) {
       notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
-    
+
     if (stateObj.state == 'POST') {
       return html`
         <style>
@@ -634,6 +667,7 @@ if (sport.includes("hockey")) {
             .rank { font-size:0.8em; display:${rankDisplay}; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .gameday { font-size: 1.4em; margin-bottom: 4px; }
+            .gamedateshort { font-size: 1.1em; }
             .gametime { font-size: 1.1em; }
             .sub1 { font-weight: 500; font-size: 1.2em; margin: 6px 0 2px; }
             .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
@@ -657,6 +691,7 @@ if (sport.includes("hockey")) {
                 </div>
                 <div class="gamewrapper">
                   <div class="gameday">${gameDay}</div>
+                  <div class="gamedateshort">${gameDateShort}</div>
                   <div class="gametime">${gameTime}</div>
                 </div>
                 <div class="team">
@@ -744,6 +779,7 @@ if (sport.includes("hockey")) {
 
 customElements.define("teamtracker-card", TeamTrackerCard);
 
+=====
 
 //
 //  Add card to list of Custom Cards in the Card Picker
