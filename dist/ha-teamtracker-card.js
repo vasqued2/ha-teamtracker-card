@@ -477,7 +477,7 @@ if (sport.includes("hockey")) {
     if (stateObj.state == 'POST') {
       return html`
         <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
           .title { text-align: center; font-size: 1.2em; font-weight: 500; }
           .team-bg { opacity: 0.08; position: absolute; top: -30%; left: -20%; width: 58%; z-index: 0; }
           .opponent-bg { opacity: 0.08; position: absolute; top: -30%; right: -20%; width: 58%; z-index: 0; }
@@ -525,7 +525,7 @@ if (sport.includes("hockey")) {
     if (stateObj.state == 'IN') {
         return html`
           <style>
-            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
             .title { text-align: center; font-size: 1.2em; font-weight: 500; }
             .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
             .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
@@ -645,7 +645,7 @@ if (sport.includes("hockey")) {
     if (stateObj.state == 'PRE') {
         return html`
           <style>
-            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
             .title { text-align: center; font-size: 1.2em; font-weight: 500; }
             .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
             .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
@@ -710,7 +710,7 @@ if (sport.includes("hockey")) {
     if (stateObj.state == 'BYE') {
       return html`
         <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
           .team-bg { opacity: 0.08; position: absolute; top: -20%; left: -30%; width: 75%; z-index: 0; }
           .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
           .team { text-align: center; width: 50%; }
@@ -737,7 +737,7 @@ if (sport.includes("hockey")) {
     if (stateObj.state == 'NOT_FOUND') {
       return html`
         <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; }
+          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
           .title { text-align: center; font-size: 1.2em; font-weight: 500; }
           .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
           .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
