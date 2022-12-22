@@ -102,54 +102,43 @@ class TeamTrackerCard extends LitElement {
 
     var t = new Translator(lang);
 
-    function dateDiff(first, second) {
-      return Math.round((second.getTime() - first.getTime()) / (1000 * 60 * 60 * 24));
+    var gameDate = new Date (stateObj.attributes.date);
+    var gameDateStr = gameDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
+
+    var todayDate = new Date();
+    var todayDateStr = todayDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
+
+    var tomorrowDate = new Date();
+    tomorrowDate.setDate(todayDate.getDate() + 1);
+    var tomorrowDateStr = tomorrowDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
+
+    var nextweekDate = new Date();
+    nextweekDate.setDate(todayDate.getDate() + 6);
+
+    var gameWeekday = gameDate.toLocaleDateString(lang, { weekday: 'long' });
+    if (gameDateStr === todayDateStr) {
+        gameWeekday = t.translate("common.today");
+    }
+    else if (gameDateStr === tomorrowDateStr) {
+        gameWeekday = t.translate("common.tomorrow");
+    }
+    var gameDatePOST = gameDateStr;
+    var gameDatePRE = null;
+    if (gameDate > nextweekDate) {
+        gameDatePRE = gameDateStr;
     }
 
-    function dateDiffWholeDays(first,second) {
-      var f = new Date(first.getTime());
-      var s = new Date(second.getTime());
-      f.setHours(0,0,0,0);
-      s.setHours(0,0,0,0);
-      return dateDiff(f,s);
-    }
-
-    function isToday(first, second) {
-      return dateDiffWholeDays(first,second) == 0;
-    }
-
-    function isTomorrow(first, second) {
-      return dateDiffWholeDays(first,second) == 1;
-    }
-
-    const rightNow = new Date();
-    var dateForm = new Date (stateObj.attributes.date);
-    var gameDay = dateForm.toLocaleDateString(lang, { weekday: 'long' });
-    var gameDateShort = "" ;
-    if (dateDiff(rightNow,dateForm) >= 7) {
-      gameDateShort = dateForm.toLocaleDateString(lang, { month: 'short', day: 'numeric' });
-    }
-    else if (isToday(rightNow,dateForm)) {
-      gameDay = t.translate("common.today");
-      gameDateShort= dateForm.toLocaleDateString(lang, { weekday: 'long' });
-    }
-    else if (isTomorrow(rightNow,dateForm)) {
-      gameDay = t.translate("common.tomorrow");
-      gameDateShort= dateForm.toLocaleDateString(lang, { weekday: 'long' });
-    }
-    var gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
+    var gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
     if (time_format == "24") {
-      gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:false });
+      gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:false });
     }
     if (time_format == "12") {
-      gameTime = dateForm.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:true });
+      gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:true });
     }
     if (time_format == "system") {
       var sys_lang = navigator.language || "en"
-      gameTime = dateForm.toLocaleTimeString(sys_lang, { hour: '2-digit', minute:'2-digit' });
+      gameTime = gameDate.toLocaleTimeString(sys_lang, { hour: '2-digit', minute:'2-digit' });
     }
-    var gameMonth = dateForm.toLocaleDateString(lang, { month: 'short' });
-    var gameDate = dateForm.toLocaleDateString(lang, { day: '2-digit' });
     var outColor = outlineColor;
 
     if (outline == true) {
@@ -236,7 +225,7 @@ class TeamTrackerCard extends LitElement {
       logoBG[oppo] = stateObj.attributes.league_logo
     }
 
-    var finalTerm = t.translate("common.finalTerm", "%s", gameMonth + " " + gameDate);
+    var finalTerm = t.translate("common.finalTerm", "%s", gameDatePOST);
     var startTerm = t.translate(sport + ".startTerm");
     var startTime =stateObj.attributes.kickoff_in;
     var venue = stateObj.attributes.venue;
@@ -690,8 +679,8 @@ if (sport.includes("hockey")) {
                   <div class="record">${record[1]}</div>
                 </div>
                 <div class="gamewrapper">
-                  <div class="gameday">${gameDay}</div>
-                  <div class="gamedateshort">${gameDateShort}</div>
+                  <div class="gameday">${gameWeekday}</div>
+                  <div class="gametime">${gameDatePRE}</div>
                   <div class="gametime">${gameTime}</div>
                 </div>
                 <div class="team">
@@ -779,7 +768,7 @@ if (sport.includes("hockey")) {
 
 customElements.define("teamtracker-card", TeamTrackerCard);
 
-=====
+//=====
 
 //
 //  Add card to list of Custom Cards in the Card Picker
