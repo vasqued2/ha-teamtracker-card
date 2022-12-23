@@ -377,9 +377,11 @@ if (sport.includes("hockey")) {
     if (sport.includes("tennis")) {
       venue = stateObj.attributes.event_name;
       pre1 = t.translate("common.tourney" + stateObj.attributes.odds)
+      in1 = pre1;
+      finalTerm = t.translate("common.finalTerm", "%s", gameDatePOST  + " (" + pre1 + ")");
+
 //      pre2 = null;
 //      pre3 = null;
-
       gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock);
       barLength[team] = stateObj.attributes.team_score;
       barLength[oppo] = stateObj.attributes.opponent_score;
@@ -423,7 +425,7 @@ if (sport.includes("hockey")) {
       if (stateObj.attributes.quarter) {
         pre1 = stateObj.attributes.quarter;
         in1 = stateObj.attributes.quarter;
-        finalTerm = finalTerm + " (" + stateObj.attributes.quarter + ")";
+        finalTerm = t.translate("common.finalTerm", "%s", gameDatePOST  + " (" + stateObj.attributes.quarter + ")");
       }
       timeoutsDisplay = 'none';
 
