@@ -225,7 +225,7 @@ class TeamTrackerCard extends LitElement {
       logoBG[oppo] = stateObj.attributes.league_logo
     }
 
-    var finalTerm = t.translate("common.finalTerm", "%s", gameDatePOST);
+    var finalTerm = stateObj.attributes.clock + " - " + gameDatePOST;
     var startTerm = t.translate(sport + ".startTerm");
     var startTime =stateObj.attributes.kickoff_in;
     var venue = stateObj.attributes.venue;
@@ -378,7 +378,7 @@ if (sport.includes("hockey")) {
       venue = stateObj.attributes.event_name;
       pre1 = t.translate("common.tourney" + stateObj.attributes.odds)
       in1 = pre1;
-      finalTerm = t.translate("common.finalTerm", "%s", gameDatePOST  + " (" + pre1 + ")");
+      finalTerm = stateObj.attributes.clock + " - " + gameDatePOST  + " (" + pre1 + ")";
 
 //      pre2 = null;
 //      pre3 = null;
@@ -425,7 +425,7 @@ if (sport.includes("hockey")) {
       if (stateObj.attributes.quarter) {
         pre1 = stateObj.attributes.quarter;
         in1 = stateObj.attributes.quarter;
-        finalTerm = t.translate("common.finalTerm", "%s", gameDatePOST  + " (" + stateObj.attributes.quarter + ")");
+        stateObj.attributes.clock + " - " + gameDatePOST  + " (" + stateObj.attributes.quarter + ")";
       }
       timeoutsDisplay = 'none';
 
