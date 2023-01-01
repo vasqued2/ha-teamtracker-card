@@ -65,6 +65,7 @@ class TeamTrackerCard extends LitElement {
     var record = [];
     var score = [];
     var scoreOp = [];
+    var scoreSize = "3em";
     var barLabel= [];
     var barLength = [];
     var color = [];
@@ -513,6 +514,14 @@ if (sport.includes("hockey")) {
       notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
     }
 
+//
+//  Reduce score font size if needed
+//
+
+    if (Math.max(String(score[1]).length, String(score[2]).length) > 6) {
+        scoreSize = "2em"
+    }
+
     if (stateObj.state == 'POST') {
       return html`
         <style>
@@ -524,7 +533,7 @@ if (sport.includes("hockey")) {
           .team { text-align: center; width: 35%;}
           .team img { max-width: 90px; }
           .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
-          .score { font-size: 3em; text-align: center; }
+          .score { font-size: ${scoreSize}; text-align: center; line-height: 1; }
           .score1op { opacity: ${scoreOp[1]}; }
           .score2op { opacity: ${scoreOp[2]}; }
           .divider { font-size: 2.5em; text-align: center; opacity: 0; }
@@ -575,7 +584,7 @@ if (sport.includes("hockey")) {
             .possession, .possession1, .possession2 { font-size: 2.5em; text-align: center; opacity: 0; font-weight:900; }
             .possession1 {opacity: ${possessionOp[1]} !important; }
             .possession2 {opacity: ${possessionOp[2]} !important; }
-            .score { font-size: 3em; text-align: center; }
+            .score { font-size: ${scoreSize}; text-align: center; }
             .divider { font-size: 2.5em; text-align: center; margin: 0 4px; }
             .name { font-size: 1.4em; margin-bottom: 4px; }
             .rank { font-size:0.8em; display: ${rankDisplay}; }
