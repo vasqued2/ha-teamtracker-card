@@ -531,7 +531,12 @@ if (sport.includes("hockey")) {
     if (this._config.debug) {
         var lastUpdate = new Date (stateObj.attributes.last_update);
         var updateTime = lastUpdate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', second:'2-digit'});
-        title = this._config.entity + ":" + title + "(" + updateTime + ")"
+
+        title = this._config.entity + " " + title + "(";
+        if (stateObj.attributes.api_message) {
+          title = title + stateObj.attributes.api_message[0];
+        }
+        title = title + updateTime + ")";
     }
 
 
