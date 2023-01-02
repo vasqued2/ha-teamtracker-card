@@ -438,9 +438,13 @@ if (sport.includes("hockey")) {
       if (stateObj.attributes.league.includes("NASCAR")) {
         logo[team] = null;
         logo[oppo] = null;
-        initials[team] = name[team].split(" ").map((n)=>n[0]).join("");
-        initials[oppo] = name[oppo].split(" ").map((n)=>n[0]).join("");
-        initialsDisplay = 'inline';
+        initials[team] = "";
+        initials[oppo] = "";
+        if (name[team] && name[oppo]) {
+          initials[team] = name[team].split(" ").map((n)=>n[0]).join("");
+          initials[oppo] = name[oppo].split(" ").map((n)=>n[0]).join("");
+          initialsDisplay = 'inline';
+        }
       }
     }
 
@@ -477,6 +481,10 @@ if (sport.includes("hockey")) {
         var runs = [];
         var subscores = [];
 
+        timeoutsDisplay = 'none';
+        barDisplay = "none";
+        barWrapDisplay = "none";  
+
         subscores[1] = score[1].split("(");
         subscores[2] = score[2].split("(");
 
@@ -502,8 +510,6 @@ if (sport.includes("hockey")) {
         scoreOp[1] = 0.6;
         scoreOp[2] = 1.0;
       }
-
-
     }
 
 
@@ -518,9 +524,17 @@ if (sport.includes("hockey")) {
 //  Reduce score font size if needed
 //
 
-    if (Math.max(String(score[1]).length, String(score[2]).length) > 6) {
+    if (Math.max(String(score[1]).length, String(score[2]).length) > 4) {
         scoreSize = "2em"
     }
+
+    if (this._config.debug) {
+        var lastUpdate = new Date (stateObj.attributes.last_update);
+        var updateTime = lastUpdate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', second:'2-digit'});
+        title = this._config.entity + ":" + title + "(" + updateTime + ")"
+    }
+
+
 
     if (stateObj.state == 'POST') {
       return html`
