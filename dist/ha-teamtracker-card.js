@@ -486,6 +486,7 @@ if (sport.includes("hockey")) {
         barWrapDisplay = "none";  
 
         in1 = stateObj.attributes.odds;
+        in2 = stateObj.attributes.quarter;
 
         if (score != []) {
             subscores[1] = score[1].split("(");
