@@ -489,29 +489,31 @@ if (sport.includes("hockey")) {
         in2 = stateObj.attributes.quarter;
 
         if (score != []) {
-            subscores[1] = score[1].split("(");
-            subscores[2] = score[2].split("(");
+            if (score[1] && score[2]) {
+              subscores[1] = score[1].split("(");
+              subscores[2] = score[2].split("(");
 
-            score[1] = subscores[1][0];
-            score[2] = subscores[2][0];
+              score[1] = subscores[1][0];
+              score[2] = subscores[2][0];
 
-            if (subscores[1].length > 1) {
-                record[1] = "(" + subscores[1][1];
-            }
-            if (subscores[2].length > 1) {
-                record[2] = "(" + subscores[2][1];
-            }
-        }
-        runs[1] = score[1].split("/");
-        runs[2] = score[2].split("/");
+              if (subscores[1].length > 1) {
+                  record[1] = "(" + subscores[1][1];
+              }
+              if (subscores[2].length > 1) {
+                  record[2] = "(" + subscores[2][1];
+              }
+              runs[1] = score[1].split("/");
+              runs[2] = score[2].split("/");
 
-        if (Number(runs[1][0]) > Number(runs[2][0])) {
-            scoreOp[1] = 1.0;
-            scoreOp[2] = 0.6;
-        }
-        if (Number(runs[1][0]) < Number(runs[2][0])) {
-            scoreOp[1] = 0.6;
-            scoreOp[2] = 1.0;
+              if (Number(runs[1][0]) > Number(runs[2][0])) {
+                  scoreOp[1] = 1.0;
+                  scoreOp[2] = 0.6;
+              }
+              if (Number(runs[1][0]) < Number(runs[2][0])) {
+                  scoreOp[1] = 0.6;
+                  scoreOp[2] = 1.0;
+              }
+          }
         }
     }
 
