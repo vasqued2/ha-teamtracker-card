@@ -489,7 +489,7 @@ if (sport.includes("hockey")) {
         in2 = stateObj.attributes.quarter;
 
         if (score != []) {
-            if (score[1] && score[2]) {
+            if (score[1] || score[2]) {
                 subscores[1] = score[1].split("(");
                 subscores[2] = score[2].split("(");
 
