@@ -84,5 +84,65 @@ export const sk_SK = {
         "gameBar": "Strely na bránu",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
+    },
+    "mma": {
+        "startTerm": "Štart",
+        "overUnder": "Viac/Menej: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Pravdepodobnosť výhry",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "racing": {
+        "startTerm": "Štart",
+        "overUnder": "Viac/Menej: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Okruhy",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "soccer": {
+        "startTerm": "Výkop",
+        "overUnder": "Viac/Menej: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Strely (Na bránu)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "tennis": {
+        "startTerm": "Prvý servis",
+        "overUnder": "Viac/Menej: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "volleyball": {
+        "startTerm": "Prvý servis",
+        "overUnder": "Viac/Menej: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s Skóre",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "default": {
+        "startTerm": "Štart",
+        "overUnder": "Viac/Menej: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Pravdepodobnosť výhry",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
     }
 }
