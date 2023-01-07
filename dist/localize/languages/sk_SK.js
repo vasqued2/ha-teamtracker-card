@@ -84,6 +84,5 @@ export const sk_SK = {
         "gameBar": "Strely na bránu",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
-    },
-    "mma": {
-        "startTerm": "Štart",
+    }
+}
