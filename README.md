@@ -33,10 +33,20 @@ This card was strongly based on the fantastic [ha-nfl-card](https://github.com/D
 ![NF-football](https://user-images.githubusercontent.com/17114183/187316983-998527e7-c75d-421a-8833-d00e7ddb4ddc.png)
 
 ## HACS Installation
- - In the HACS UI, click the 3 dots in the upper right
- - Click 'Add Custom Repository'
- - Fill in the repo url https://github.com/vasqued2/ha-teamtracker-card and choose 'Lovelace' category.
- - Install the custom card
+
+Use this button:
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=vasqued2&repository=ha-teamtracker-card&category=frontend)
+
+_OR_ Manually
+
+1. Open the HACS section of Home Assistant.
+2. Click the "+ EXPLORE & DOWNLOAD REPOSITORIES" button in the bottom right corner.
+3. In the window that opens search for "Team Tracker Card".
+4. Select "Team Tracker Card" from the list
+5. Select the "Download" button in the buttom right corner.
+6. Select "Download" from the window to download the button.
+7. When given the Option, Reload.
+
  - HACS should automatically add the following to your resources:
 ```
 url: /hacsfiles/ha-teamtracker-card/ha-teamtracker-card.js
