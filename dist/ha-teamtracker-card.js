@@ -736,6 +736,7 @@ if (sport.includes("hockey")) {
             .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 99; }
             .team { text-align: center; width: 35%; }
             .team img { max-width: 90px; }
+            .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
             .name { font-size: 1.4em; margin-bottom: 4px; }
             .rank { font-size:0.8em; display:${rankDisplay}; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
@@ -759,6 +760,7 @@ if (sport.includes("hockey")) {
               <div class="card-content">
                 <div class="team">
                   <img src="${logo[1]}" />
+                  <div class="circle">${initials[1]}</div>
                   <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
                   <div class="record">${record[1]}</div>
                 </div>
@@ -769,6 +771,7 @@ if (sport.includes("hockey")) {
                 </div>
                 <div class="team">
                   <img src="${logo[2]}" />
+                  <div class="circle">${initials[2]}</div>
                   <div class="name"><span class="rank">${rank[2]}</span> ${name[2]}</div>
                   <div class="record">${record[2]}</div>
                 </div>
