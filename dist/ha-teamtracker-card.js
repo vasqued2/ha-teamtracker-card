@@ -533,8 +533,10 @@ if (sport.includes("hockey")) {
 //
 //  NCAA Specific Changes
 //
-    if (stateObj.attributes.league.includes("NCAA")) {
-      notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
+    if (stateObj.attributes.league) {
+      if (stateObj.attributes.league.includes("NCAA")) {
+          notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
+      }
     }
 
 //
