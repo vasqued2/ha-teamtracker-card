@@ -1,4 +1,5 @@
-import { html, LitElement } from "https://unpkg.com/lit?module";
+//import { html, LitElement } from "https://unpkg.com/lit?module";
+import { html, LitElement } from "https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js";
 import { Translator } from "./localize/translator.js";
 
 class TeamTrackerCard extends LitElement {
