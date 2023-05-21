@@ -1,4 +1,35 @@
 //
+//  Call function to set the data for the sport
+//
+export function setSportData(sport, t, stateObj, c, team, oppo) {
+
+    switch (sport) {
+        case "baseball":
+            return setBaseball(t, stateObj, c, team, oppo);
+        case "basketball":
+            return setBasketball(t, stateObj, c, team, oppo);
+        case "cricket":
+            return setCricket(t, stateObj, c, team, oppo);
+        case "golf":
+            return setGolf(t, stateObj, c, team, oppo);
+        case "hockey":
+            return setHockey(t, stateObj, c, team, oppo);
+        case "mma":
+            return setMMA(t, stateObj, c, team, oppo);
+        case "racing":
+            return setRacing(t, stateObj, c, team, oppo);
+        case "soccer":
+            return setSoccer(t, stateObj, c, team, oppo);
+        case "tennis":
+            return setTennis(t, stateObj, c, team, oppo);
+        case "volleyball":
+            return setVolleyball(t, stateObj, c, team, oppo);
+        default:
+            return;
+    }
+}
+
+//
 //  setBaseball()
 //    in1 = balls
 //    in2 = strikes
