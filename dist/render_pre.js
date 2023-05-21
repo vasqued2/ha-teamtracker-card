@@ -12,22 +12,17 @@ export function renderPre(c) {
         .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
         .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
         .team { text-align: center; width: 35%; }
+        .logo { max-height: 6.5em; }
         .team img { max-width: 90px; }
-        .circle { display:${c.initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
+        .circle { display:${c.initialsDisplay}; width: 1em; height: 1em; padding: 10px; line-height: 3em; border: 2px solid gray; border-radius: 50%; font-size: 2em; color: white; text-align: center; background: black }
         .name { font-size: 1.4em; margin-bottom: 4px; }
         .rank { font-size:0.8em; display:${c.rankDisplay}; }
         .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-        .gameday { font-size: 1.4em; margin-bottom: 4px; }
-        .gamedateshort { font-size: 1.1em; }
-        .gametime { font-size: 1.1em; }
-        .sub1 { font-weight: 500; font-size: 1.2em; margin: 6px 0 2px; }
-        .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
-        .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
-        .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide 10s linear infinite; }
-        @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-        .clock { text-align: center; font-size: 1.4em; }
-        .down-distance { text-align: right; font-weight: 700; }
-        .kickoff { text-align: center; margin-top: -24px; }
+        .gameday { font-size: 1.4em; height: 1.4em; }
+        .gamedate { font-size: 1.1em; height: 1.1em; }
+        .gametime { font-size: 1.1em; height: 1.1em; }
+        .startin { font-weight: 500; font-size: 1.2em; height: 1.1em; margin: 6px 0 2px; }
+        .startin, .venue, .location { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
     </style>
     <ha-card>
         <div class="card">
@@ -36,33 +31,33 @@ export function renderPre(c) {
             <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
                 <div class="team">
-                    <img src="${c.logo[1]}" />
+                    <img class="logo" src="${c.logo[1]}" />
                     <div class="circle">${c.initials[1]}</div>
                     <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
                     <div class="record">${c.record[1]}</div>
                 </div>
                 <div class="gamewrapper">
                     <div class="gameday">${c.gameWeekday}</div>
-                    <div class="gametime">${c.gameDatePRE}</div>
+                    <div class="gamedate">${c.gameDatePRE}</div>
                     <div class="gametime">${c.gameTime}</div>
                 </div>
                 <div class="team">
-                    <img src="${c.logo[2]}" />
+                    <img class="logo" src="${c.logo[2]}" />
                     <div class="circle">${c.initials[2]}</div>
                     <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
                     <div class="record">${c.record[2]}</div>
                 </div>
             </div>
             <div class="line"></div>
-            <div class="sub1">
+            <div class="startin">
                 <div class="date">${c.startTerm} ${c.startTime}</div>
                 <div class="odds">${c.pre1}</div>
             </div>
-            <div class="sub2">
+            <div class="venue">
                 <div class="venue">${c.venue}</div>
                 <div class="overunder"> ${c.pre2}</div>
             </div>
-            <div class="sub3">
+            <div class="location">
                 <div class="location">${c.location}</div>
                 <div class="network">${c.pre3}</div>
             </div>
