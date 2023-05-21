@@ -1,6 +1,11 @@
 //import { html, LitElement } from "https://unpkg.com/lit?module";
 import { html, LitElement } from "https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js";
 import { Translator } from "./localize/translator.js";
+import { MyCustomCardEditor } from "./card_editor.js";
+import { renderBye } from './render_bye.js';
+import { renderNotFound } from './render_not_found.js';
+import { renderPost } from './render_post.js';
+import { renderPre } from './render_pre.js';
 
 class TeamTrackerCard extends LitElement {
 //
@@ -38,6 +43,8 @@ class TeamTrackerCard extends LitElement {
   }
 
   render() {
+    var c = {};
+
     if (!this.hass || !this._config) {
       return html``;
     }
@@ -58,15 +65,15 @@ class TeamTrackerCard extends LitElement {
 //    const showTicker = this._config.show_ticker;
     var homeSide = String(this._config.home_side).toUpperCase();
 
-    var logoBG = [];
-    var logo = [];
-    var name = [];
-    var initials = [];
-    var rank = [];
-    var record = [];
-    var score = [];
-    var scoreOp = [];
-    var scoreSize = "3em";
+    c.logoBG = [];
+    c.logo = [];
+    c.name = [];
+    c.initials = [];
+    c.rank = [];
+    c.record = [];
+    c.score = [];
+    c.scoreOp = [];
+    c.scoreSize = "3em";
     var barLabel= [];
     var barLength = [];
     var color = [];
@@ -89,8 +96,8 @@ class TeamTrackerCard extends LitElement {
     if (stateObj.attributes.opponent_win_probability) {
         barLength[oppo] = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
     }
-    score[team] = stateObj.attributes.team_score;
-    score[oppo] = stateObj.attributes.opponent_score;
+    c.score[team] = stateObj.attributes.team_score;
+    c.score[oppo] = stateObj.attributes.opponent_score;
 
     var time_format = "language";
     try {
@@ -113,29 +120,29 @@ class TeamTrackerCard extends LitElement {
     var nextweekDate = new Date();
     nextweekDate.setDate(todayDate.getDate() + 6);
 
-    var gameWeekday = gameDate.toLocaleDateString(lang, { weekday: 'long' });
+    c.gameWeekday = gameDate.toLocaleDateString(lang, { weekday: 'long' });
     if (gameDateStr === todayDateStr) {
-        gameWeekday = t.translate("common.today");
+        c.gameWeekday = t.translate("common.today");
     }
     else if (gameDateStr === tomorrowDateStr) {
-        gameWeekday = t.translate("common.tomorrow");
+        c.gameWeekday = t.translate("common.tomorrow");
     }
     var gameDatePOST = gameDateStr;
-    var gameDatePRE = null;
+    c.gameDatePRE = null;
     if (gameDate > nextweekDate) {
-        gameDatePRE = gameDateStr;
+        c.gameDatePRE = gameDateStr;
     }
 
-    var gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
+    c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit' });
     if (time_format == "24") {
-      gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:false });
+      c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:false });
     }
     if (time_format == "12") {
-      gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:true });
+      c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', hour12:true });
     }
     if (time_format == "system") {
       var sys_lang = navigator.language || "en"
-      gameTime = gameDate.toLocaleTimeString(sys_lang, { hour: '2-digit', minute:'2-digit' });
+      c.gameTime = gameDate.toLocaleTimeString(sys_lang, { hour: '2-digit', minute:'2-digit' });
     }
 
     var clrOut = 0;
@@ -152,13 +159,13 @@ class TeamTrackerCard extends LitElement {
       outColor = '#ffffff';
     }
 
-    scoreOp[1] = 1;
-    scoreOp[2] = 1;
-    if (Number(score[1]) < Number(score[2])) {
-        scoreOp[1] = 0.6;
+    c.scoreOp[1] = 1;
+    c.scoreOp[2] = 1;
+    if (Number(c.score[1]) < Number(c.score[2])) {
+        c.scoreOp[1] = 0.6;
     }
-    if (Number(score[2]) < Number(score[1])) {
-        scoreOp[2] = 0.6;
+    if (Number(c.score[2]) < Number(c.score[1])) {
+        c.scoreOp[2] = 0.6;
     }
 
     if (stateObj.attributes.team_homeaway == 'home') {
@@ -200,40 +207,40 @@ class TeamTrackerCard extends LitElement {
 //  Set default values for variable components
 //
 
-    var byeTerm = t.translate("common.byeTerm");
-    var title = cardTitle;
+    c.byeTerm = t.translate("common.byeTerm");
+    c.title = cardTitle;
     if (showLeague) {
-      title = title || stateObj.attributes.league
+      c.title = c.title || stateObj.attributes.league
     }
 
-    logo[team] = stateObj.attributes.team_logo;
-    logoBG[team] = stateObj.attributes.team_logo;
-    name[team] = stateObj.attributes.team_name;
-    rank[team] = stateObj.attributes.team_rank;
-    record[team] = stateObj.attributes.team_record;
-    logo[oppo] = stateObj.attributes.opponent_logo;
-    logoBG[oppo] = stateObj.attributes.opponent_logo;
-    name[oppo] = stateObj.attributes.opponent_name;
-    rank[oppo] = stateObj.attributes.opponent_rank;
-    record[oppo] = stateObj.attributes.opponent_record;
+    c.logo[team] = stateObj.attributes.team_logo;
+    c.logoBG[team] = stateObj.attributes.team_logo;
+    c.name[team] = stateObj.attributes.team_name;
+    c.rank[team] = stateObj.attributes.team_rank;
+    c.record[team] = stateObj.attributes.team_record;
+    c.logo[oppo] = stateObj.attributes.opponent_logo;
+    c.logoBG[oppo] = stateObj.attributes.opponent_logo;
+    c.name[oppo] = stateObj.attributes.opponent_name;
+    c.rank[oppo] = stateObj.attributes.opponent_rank;
+    c.record[oppo] = stateObj.attributes.opponent_record;
 
     if (showLeague) {
-      logoBG[team] = stateObj.attributes.league_logo
-      logoBG[oppo] = stateObj.attributes.league_logo
+      c.logoBG[team] = stateObj.attributes.league_logo
+      c.logoBG[oppo] = stateObj.attributes.league_logo
     }
 
-    var finalTerm = stateObj.attributes.clock + " - " + gameDatePOST;
-    var startTerm = t.translate(sport + ".startTerm");
-    var startTime =stateObj.attributes.kickoff_in;
-    var venue = stateObj.attributes.venue;
-    var location = stateObj.attributes.location;
+    c.finalTerm = stateObj.attributes.clock + " - " + gameDatePOST;
+    c.startTerm = t.translate(sport + ".startTerm");
+    c.startTime =stateObj.attributes.kickoff_in;
+    c.venue = stateObj.attributes.venue;
+    c.location = stateObj.attributes.location;
 
-    var pre1 = stateObj.attributes.odds;
-    var pre2 = '';
+    c.pre1 = stateObj.attributes.odds;
+    c.pre2 = '';
     if (stateObj.attributes.overunder) {
-      pre2 = t.translate(sport + ".overUnder", "%s", String(stateObj.attributes.overunder));
+      c.pre2 = t.translate(sport + ".overUnder", "%s", String(stateObj.attributes.overunder));
     }
-    var pre3 = stateObj.attributes.tv_network;
+    c.pre3 = stateObj.attributes.tv_network;
 
     var in0 = '';
     var in1 = '';
@@ -254,15 +261,15 @@ class TeamTrackerCard extends LitElement {
     if (lastPlay) {
       lastPlaySpeed = 18 + Math.floor(lastPlay.length/40) * 5;
     }
-    var notFoundLogo = stateObj.attributes.league_logo;
-    var notFoundLogoBG = notFoundLogo;
-    var notFoundLeague = null;
+    c.notFoundLogo = stateObj.attributes.league_logo;
+    c.notFoundLogoBG = c.notFoundLogo;
+    c.notFoundLeague = null;
 
     if (stateObj.attributes.league != "XXX") {
-      notFoundLeague = stateObj.attributes.league;
+      c.notFoundLeague = stateObj.attributes.league;
     }
 
-    var initialsDisplay = 'none';
+    c.initialsDisplay = 'none';
     var playClock = stateObj.attributes.clock;
     var outsDisplay = 'none';
     var basesDisplay = 'none';
@@ -276,19 +283,19 @@ class TeamTrackerCard extends LitElement {
       timeoutsDisplay = 'none';
     }
 
-    var rankDisplay = 'inline';
+    c.rankDisplay = 'inline';
     if (this._config.show_rank == false) {
-      rankDisplay = 'none';
+      c.rankDisplay = 'none';
     }
 
-    var notFoundTerm1 = stateObj.attributes.team_abbr;
-    var notFoundTerm2 = "NOT_FOUND"
+    c.notFoundTerm1 = stateObj.attributes.team_abbr;
+    c.notFoundTerm2 = "NOT_FOUND"
     if (stateObj.attributes.api_message) {
-        notFoundTerm2 = t.translate("common.api_error")
+        c.notFoundTerm2 = t.translate("common.api_error")
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
         if (apiTail.slice(-1) == "Z") {
           var lastDateForm = new Date (apiTail)
-          notFoundTerm2 = t.translate("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
+          c.notFoundTerm2 = t.translate("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
         }
     }
 
@@ -366,13 +373,11 @@ if (sport.includes("hockey")) {
 //  Tennis Specific Changes
 //
     if (sport.includes("tennis")) {
-      venue = stateObj.attributes.event_name;
-      pre1 = t.translate("common.tourney" + stateObj.attributes.odds)
-      in1 = pre1;
-      finalTerm = stateObj.attributes.clock + " - " + gameDatePOST  + " (" + pre1 + ")";
+      c.venue = stateObj.attributes.event_name;
+      c.pre1 = t.translate("common.tourney" + stateObj.attributes.odds)
+      in1 = c.pre1;
+      c.finalTerm = stateObj.attributes.clock + " - " + gameDatePOST  + " (" + c.pre1 + ")";
 
-//      pre2 = null;
-//      pre3 = null;
       gameBar = t.translate("tennis.gameBar", "%s", stateObj.attributes.clock);
       barLength[team] = stateObj.attributes.team_score;
       barLength[oppo] = stateObj.attributes.opponent_score;
@@ -392,7 +397,7 @@ if (sport.includes("hockey")) {
       }
       timeouts[team] = stateObj.attributes.team_sets_won;
       timeouts[oppo] = stateObj.attributes.opponent_sets_won;
-      title = title || stateObj.attributes.event_name
+      c.title = c.title || stateObj.attributes.event_name
 
       timeoutsDisplay = 'inline';
     }
@@ -402,7 +407,7 @@ if (sport.includes("hockey")) {
 //  MMA Specific Changes
 //
     if (sport.includes("mma")) {
-      title = title || stateObj.attributes.event_name;
+      c.title = c.title || stateObj.attributes.event_name;
       timeoutsDisplay = 'none';
       barDisplay = "none";
       barWrapDisplay = "none";
@@ -412,9 +417,9 @@ if (sport.includes("hockey")) {
 //  Racing Specific Changes
 //
     if (sport.includes("racing")) {
-      title = title || stateObj.attributes.event_name;
+      c.title = c.title || stateObj.attributes.event_name;
       if (stateObj.attributes.quarter) {
-        pre1 = stateObj.attributes.quarter;
+        c.pre1 = stateObj.attributes.quarter;
         in1 = stateObj.attributes.quarter;
         stateObj.attributes.clock + " - " + gameDatePOST  + " (" + stateObj.attributes.quarter + ")";
       }
@@ -426,14 +431,14 @@ if (sport.includes("hockey")) {
       barLabel[oppo] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
 
       if (stateObj.attributes.league.includes("NASCAR")) {
-        logo[team] = null;
-        logo[oppo] = null;
-        initials[team] = "";
-        initials[oppo] = "";
-        if (name[team] && name[oppo]) {
-          initials[team] = name[team].split(" ").map((n)=>n[0]).join("");
-          initials[oppo] = name[oppo].split(" ").map((n)=>n[0]).join("");
-          initialsDisplay = 'inline';
+        c.logo[team] = null;
+        c.logo[oppo] = null;
+        c.initials[team] = "";
+        c.initials[oppo] = "";
+        if (c.name[team] && c.name[oppo]) {
+          c.initials[team] = c.name[team].split(" ").map((n)=>n[0]).join("");
+          c.initials[oppo] = c.name[oppo].split(" ").map((n)=>n[0]).join("");
+          c.initialsDisplay = 'inline';
         }
       }
     }
@@ -443,24 +448,24 @@ if (sport.includes("hockey")) {
 //  Golf Specific Changes
 //
     if (sport.includes("golf")) {
-      title = title || stateObj.attributes.event_name;
-      venue = stateObj.attributes.event_name;
+      c.title = c.title || stateObj.attributes.event_name;
+      c.venue = stateObj.attributes.event_name;
       barLength[team] = stateObj.attributes.team_shots_on_target;
       barLength[oppo] = stateObj.attributes.opponent_shots_on_target;
       barLabel[team] = t.translate("golf.teamBarLabel", "%s", stateObj.attributes.team_total_shots +'(' + stateObj.attributes.team_shots_on_target + ')');
       barLabel[oppo] = t.translate("golf.oppoBarLabel", "%s", stateObj.attributes.opponent_total_shots +'(' + stateObj.attributes.opponent_shots_on_target + ')');
-      finalTerm = stateObj.attributes.clock;
+      c.finalTerm = stateObj.attributes.clock;
       timeoutsDisplay = 'none';
     }
 
     if (sport.includes("golf") || sport.includes("racing")) {
-        if (Number(score[1]) < Number(score[2])) {
-            scoreOp[1] = 1.0;
-            scoreOp[2] = 0.6;
+        if (Number(c.score[1]) < Number(c.score[2])) {
+            c.scoreOp[1] = 1.0;
+            c.scoreOp[2] = 0.6;
         }
-        if (Number(score[2]) < Number(score[1])) {
-          scoreOp[1] = 0.6;
-          scoreOp[2] = 1.0;
+        if (Number(c.score[2]) < Number(c.score[1])) {
+          c.scoreOp[1] = 0.6;
+          c.scoreOp[2] = 1.0;
         }
     }
 
@@ -481,24 +486,24 @@ if (sport.includes("hockey")) {
         in1 = stateObj.attributes.odds;
         in2 = stateObj.attributes.quarter;
 
-        if (score != []) {
-            if (score[1] || score[2]) {
-                subscores[1] = score[1].split("(");
-                subscores[2] = score[2].split("(");
+        if (c.score != []) {
+            if (c.score[1] || c.score[2]) {
+                subscores[1] = c.score[1].split("(");
+                subscores[2] = c.score[2].split("(");
 
-                score[1] = subscores[1][0];
-                score[2] = subscores[2][0];
+                c.score[1] = subscores[1][0];
+                c.score[2] = subscores[2][0];
 
                 if (subscores[1].length > 1) {
-                    record[1] = "(" + subscores[1][1];
+                    c.record[1] = "(" + subscores[1][1];
                 }
                 if (subscores[2].length > 1) {
-                    record[2] = "(" + subscores[2][1];
+                    c.record[2] = "(" + subscores[2][1];
                 }
 
                 if (stateObj.state == 'POST') {
-                    runs_substring[1] = score[1].split("/");
-                    runs_substring[2] = score[2].split("/");
+                    runs_substring[1] = c.score[1].split("/");
+                    runs_substring[2] = c.score[2].split("/");
 
                     runs[1] = runs_substring[1][0].split("&");
                     runs[2] = runs_substring[2][0].split("&");
@@ -518,12 +523,12 @@ if (sport.includes("hockey")) {
                     }
 
                     if (total_runs[1] > total_runs[2]) {
-                        scoreOp[1] = 1.0;
-                        scoreOp[2] = 0.6;
+                        c.scoreOp[1] = 1.0;
+                        c.scoreOp[2] = 0.6;
                     }
                     if (total_runs[1] < total_runs[2]) {
-                        scoreOp[1] = 0.6;
-                        scoreOp[2] = 1.0;
+                        c.scoreOp[1] = 0.6;
+                        c.scoreOp[2] = 1.0;
                     }
                 }
             }
@@ -536,7 +541,7 @@ if (sport.includes("hockey")) {
 //
     if (stateObj.attributes.league) {
       if (stateObj.attributes.league.includes("NCAA")) {
-          notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
+          c.notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
       }
     }
 
@@ -544,70 +549,23 @@ if (sport.includes("hockey")) {
 //  Reduce score font size if needed
 //
 
-    if (Math.max(String(score[1]).length, String(score[2]).length) > 4) {
-        scoreSize = "2em"
+    if (Math.max(String(c.score[1]).length, String(c.score[2]).length) > 4) {
+        c.scoreSize = "2em"
     }
 
     if (this._config.debug) {
         var lastUpdate = new Date (stateObj.attributes.last_update);
         var updateTime = lastUpdate.toLocaleTimeString(lang, { hour: '2-digit', minute:'2-digit', second:'2-digit'});
 
-        title = this._config.entity + " " + title + "(";
+        c.title = this._config.entity + " " + c.title + "(";
         if (stateObj.attributes.api_message) {
-          title = title + stateObj.attributes.api_message[0];
+          c.title = c.title + stateObj.attributes.api_message[0];
         }
-        title = title + updateTime + ")";
+        c.title = c.title + updateTime + ")";
     }
 
 
 
-    if (stateObj.state == 'POST') {
-      return html`
-        <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
-          .title { text-align: center; font-size: 1.2em; font-weight: 500; }
-          .team-bg { opacity: 0.08; position: absolute; top: -30%; left: -20%; width: 58%; z-index: 0; }
-          .opponent-bg { opacity: 0.08; position: absolute; top: -30%; right: -20%; width: 58%; z-index: 0; }
-          .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
-          .team { text-align: center; width: 35%;}
-          .team img { max-width: 90px; }
-          .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
-          .score { font-size: ${scoreSize}; text-align: center; line-height: 1; }
-          .score1op { opacity: ${scoreOp[1]}; }
-          .score2op { opacity: ${scoreOp[2]}; }
-          .divider { font-size: 2.5em; text-align: center; opacity: 0; }
-          .name { font-size: 1.4em; margin-bottom: 4px; }
-          .rank { font-size:0.8em; display: ${rankDisplay}; }
-          .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-          .status { font-size: 1.2em; text-align: center; }
-        </style>
-        <ha-card>
-          <div class="card">
-            <div class="title">${title}</div>
-            <img class="team-bg" src="${logoBG[1]}" />
-            <img class="opponent-bg" src="${logoBG[2]}" />
-            <div class="card-content">
-              <div class="team">
-                <img src="${logo[1]}" />
-                <div class="circle">${initials[1]}</div>
-                <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
-                <div class="record">${record[1]}</div>
-              </div>
-              <div class="score score1op">${score[1]}</div>
-              <div class="divider">&nbsp&nbsp&nbsp</div>
-              <div class="score score2op">${score[2]}</div>
-              <div class="team">
-                <img src="${logo[2]}" />
-                <div class="circle">${initials[2]}</div>
-                <div class="name"><span class="rank">${rank[2]}</span> ${name[2]}</div>
-                <div class="record">${record[2]}</div>
-              </div>
-            </div>
-            <div class="status">${finalTerm}</div>
-          </div>
-        </ha-card>
-      `;
-    }
 
     if (stateObj.state == 'IN') {
         return html`
@@ -619,14 +577,14 @@ if (sport.includes("hockey")) {
             .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
             .team { text-align: center; width:35%; }
             .team img { max-width: 90px; }
-            .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
+            .circle { display:${c.initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
             .possession, .possession1, .possession2 { font-size: 2.5em; text-align: center; opacity: 0; font-weight:900; }
             .possession1 {opacity: ${possessionOp[1]} !important; }
             .possession2 {opacity: ${possessionOp[2]} !important; }
-            .score { font-size: ${scoreSize}; text-align: center; }
+            .score { font-size: ${c.scoreSize}; text-align: center; }
             .divider { font-size: 2.5em; text-align: center; margin: 0 4px; }
             .name { font-size: 1.4em; margin-bottom: 4px; }
-            .rank { font-size:0.8em; display: ${rankDisplay}; }
+            .rank { font-size:0.8em; display: ${c.rankDisplay}; }
             .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
             .timeouts { margin: 0 auto; width: 70%; display: ${timeoutsDisplay}; }
             .timeouts div.timeouts2:nth-child(-n + ${timeouts[2]})  { opacity: 1; }
@@ -660,15 +618,15 @@ if (sport.includes("hockey")) {
           </style>
           <ha-card>
             <div class="card">
-            <div class="title">${title}</div>
-            <img class="team-bg" src="${logoBG[1]}" />
-            <img class="opponent-bg" src="${logoBG[2]}" />
+            <div class="title">${c.title}</div>
+            <img class="team-bg" src="${c.logoBG[1]}" />
+            <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
               <div class="team">
-                <img src="${logo[1]}" />
-                <div class="circle">${initials[1]}</div>
-                <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
-                <div class="record">${record[1]}</div>
+                <img src="${c.logo[1]}" />
+                <div class="circle">${c.initials[1]}</div>
+                <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
+                <div class="record">${c.record[1]}</div>
                 <div class="timeouts">
                   <div class="timeouts1"></div>
                   <div class="timeouts1"></div>
@@ -676,15 +634,15 @@ if (sport.includes("hockey")) {
                 </div>
               </div>
               <div class="possession1">&bull;</div>
-              <div class="score">${score[1]}</div>
+              <div class="score">${c.score[1]}</div>
               <div class="divider">&nbsp&nbsp&nbsp</div>
-              <div class="score">${score[2]}</div>
+              <div class="score">${c.score[2]}</div>
               <div class="possession2">&bull;</div>
               <div class="team">
-                <img src="${logo[2]}" />
-                <div class="circle">${initials[2]}</div>
-                <div class="name"><span class="rank">${rank[2]}</span> ${name[2]}</div>
-                <div class="record">${record[2]}</div>
+                <img src="${c.logo[2]}" />
+                <div class="circle">${c.initials[2]}</div>
+                <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
+                <div class="record">${c.record[2]}</div>
                 <div class="timeouts">
                   <div class="timeouts2"></div>
                   <div class="timeouts2"></div>
@@ -704,11 +662,11 @@ if (sport.includes("hockey")) {
             <div class="outs">${in0}</div>
             <div class="line"></div>
             <div class="sub2">
-              <div class="venue">${venue}</div>
+              <div class="venue">${c.venue}</div>
               <div class="down-distance">${in1}</div>
             </div>
             <div class="sub3">
-              <div class="location">${location}</div>
+              <div class="location">${c.location}</div>
               <div class="network">${in2}</div>
             </div>
             <div class="line"></div>
@@ -730,135 +688,24 @@ if (sport.includes("hockey")) {
     }
 
     if (stateObj.state == 'PRE') {
-        return html`
-          <style>
-            .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
-            .title { text-align: center; font-size: 1.2em; font-weight: 500; }
-            .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
-            .opponent-bg { opacity: 0.08; position:absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
-            .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
-            .team { text-align: center; width: 35%; }
-            .team img { max-width: 90px; }
-            .circle { display:${initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
-            .name { font-size: 1.4em; margin-bottom: 4px; }
-            .rank { font-size:0.8em; display:${rankDisplay}; }
-            .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-            .gameday { font-size: 1.4em; margin-bottom: 4px; }
-            .gamedateshort { font-size: 1.1em; }
-            .gametime { font-size: 1.1em; }
-            .sub1 { font-weight: 500; font-size: 1.2em; margin: 6px 0 2px; }
-            .sub1, .sub2, .sub3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
-            .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
-            .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide 10s linear infinite; }
-            @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
-            .clock { text-align: center; font-size: 1.4em; }
-            .down-distance { text-align: right; font-weight: 700; }
-            .kickoff { text-align: center; margin-top: -24px; }
-          </style>
-          <ha-card>
-              <div class="card">
-              <div class="title">${title}</div>
-              <img class="team-bg" src="${logoBG[1]}" />
-              <img class="opponent-bg" src="${logoBG[2]}" />
-              <div class="card-content">
-                <div class="team">
-                  <img src="${logo[1]}" />
-                  <div class="circle">${initials[1]}</div>
-                  <div class="name"><span class="rank">${rank[1]}</span> ${name[1]}</div>
-                  <div class="record">${record[1]}</div>
-                </div>
-                <div class="gamewrapper">
-                  <div class="gameday">${gameWeekday}</div>
-                  <div class="gametime">${gameDatePRE}</div>
-                  <div class="gametime">${gameTime}</div>
-                </div>
-                <div class="team">
-                  <img src="${logo[2]}" />
-                  <div class="circle">${initials[2]}</div>
-                  <div class="name"><span class="rank">${rank[2]}</span> ${name[2]}</div>
-                  <div class="record">${record[2]}</div>
-                </div>
-              </div>
-              <div class="line"></div>
-              <div class="sub1">
-                <div class="date">${startTerm} ${startTime}</div>
-                <div class="odds">${pre1}</div>
-              </div>
-              <div class="sub2">
-                <div class="venue">${venue}</div>
-                <div class="overunder"> ${pre2}</div>
-              </div>
-              <div class="sub3">
-                <div class="location">${location}</div>
-                <div class="network">${pre3}</div>
-              </div>
-            </div>
-            </ha-card>
-        `;
+      return renderPre(c);
+    }
+
+    if (stateObj.state == 'POST') {
+      return renderPost(c);
     }
 
     if (stateObj.state == 'BYE') {
-      return html`
-        <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
-          .team-bg { opacity: 0.08; position: absolute; top: -20%; left: -30%; width: 75%; z-index: 0; }
-          .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
-          .team { text-align: center; width: 50%; }
-          .team img { max-width: 90px; }
-          .name { font-size: 1.6em; margin-bottom: 4px; }
-          .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-          .bye { font-size: 1.8em; text-align: center; width: 50%; }
-        </style>
-        <ha-card>
-          <div class="card">
-            <img class="team-bg" src="${logoBG[team]}" />
-            <div class="card-content">
-              <div class="team">
-                <img src="${logo[team]}" />
-                <div class="name">${name[team]}</div>
-              </div>
-              <div class="bye">${byeTerm}</div>
-            </div>
-          </div>
-        </ha-card>
-      `;
+      return renderBye(c);
     }
 
     if (stateObj.state == 'NOT_FOUND') {
-      return html`
-        <style>
-          .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
-          .title { text-align: center; font-size: 1.2em; font-weight: 500; }
-          .team-bg { opacity: 0.08; position:absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
-          .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
-          .team { text-align: center; width: 35%; }
-          .team img { max-width: 90px; }
-          .gameday { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
-        </style>
-        <ha-card>
-            <div class="card">
-            <div class="title">${title}</div>
-            <img class="team-bg" src="${notFoundLogoBG}" />
-            <div class="card-content">
-              <div class="team">
-                <img src="${notFoundLogoBG}" />
-                <div class="record">${notFoundLeague}</div>
-              </div>
-              <div class="gamewrapper">
-                <div class="gameday">${notFoundTerm1}</div>
-                <div class="gameday">${notFoundTerm2}</div>
-              </div>
-            </div>
-          </div>
-          </ha-card>
-      `;
+      return renderNotFound(c);
     }
   }
 }
 
 customElements.define("teamtracker-card", TeamTrackerCard);
-
-//=====
 
 //
 //  Add card to list of Custom Cards in the Card Picker
@@ -870,58 +717,5 @@ window.customCards.push({
   preview: false,
   description: "Card to display the ha-teamtracker sensor",
 });
-
-//
-//  Define and register the UI Card Editor 
-//
-class MyCustomCardEditor extends LitElement {
-
-  static get properties() {
-    return {
-      hass: {},
-      _config: {},
-    };
-  }
-
-  // setConfig works the same way as for the card itself
-  setConfig(config) {
-    this._config = config;
-  }
-
-  // This function is called when the input element of the editor loses focus
-  entityChanged(ev) {
-
-    // We make a copy of the current config so we don't accidentally overwrite anything too early
-    const _config = Object.assign({}, this._config);
-    // Then we update the entity value with what we just got from the input field
-    _config.entity = ev.target.value;
-    // And finally write back the updated configuration all at once
-    this._config = _config;
-
-    // A config-changed event will tell lovelace we have made changed to the configuration
-    // this make sure the changes are saved correctly later and will update the preview
-    const event = new CustomEvent("config-changed", {
-      detail: { config: _config },
-      bubbles: true,
-      composed: true,
-    });
-    this.dispatchEvent(event);
-  }
-
-  render() {
-    if (!this.hass || !this._config) {
-      return html``;
-    }
-
-    // @focusout below will call entityChanged when the input field loses focus (e.g. the user tabs away or clicks outside of it)
-    return html`
-    Entity:
-    <input
-    .value=${this._config.entity}
-    @focusout=${this.entityChanged}
-    ></input>
-    `;
-  }
-}
 
 customElements.define("my-custom-card-editor", MyCustomCardEditor);
