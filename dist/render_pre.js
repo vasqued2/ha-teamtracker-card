@@ -21,7 +21,7 @@ export function renderPre(c) {
         .gameday { font-size: 1.4em; height: 1.4em; }
         .gamedate { font-size: 1.1em; height: 1.1em; }
         .gametime { font-size: 1.1em; height: 1.1em; }
-        .startin { font-weight: 500; font-size: 1.2em; height: 1.1em; margin: 6px 0 2px; }
+        .startin { font-weight: 500; font-size: 1.2em; height: 1.2em; margin: 6px 0 2px; }
         .startin, .venue, .location { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
     </style>
     <ha-card>

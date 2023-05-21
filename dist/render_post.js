@@ -14,14 +14,13 @@ export function renderPost(c) {
         .team { text-align: center; width: 35%;}
         .logo { max-height: 6.5em; }
         .team img { max-width: 90px; }
-        .circle { display:${c.initialsDisplay}; width: 90px; height: 90px; padding: 10px; line-height: 90px; border: 2px solid gray; border-radius: 50%; font-size: 40px; color: white; text-align: center; background: black }
+        .circle { display:${c.initialsDisplay}; width: 1em; height: 1em; padding: 10px; line-height: 3em; border: 2px solid gray; border-radius: 50%; font-size: 2em; color: white; text-align: center; background: black }
         .score { font-size: ${c.scoreSize}; text-align: center; line-height: 1; }
         .score1op { opacity: ${c.scoreOp[1]}; }
         .score2op { opacity: ${c.scoreOp[2]}; }
         .divider { font-size: 2.5em; text-align: center; opacity: 0; }
         .name { font-size: 1.4em; margin-bottom: 4px; }
         .rank { font-size:0.8em; display: ${c.rankDisplay}; }
-        .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
         .status { font-size: 1.2em; text-align: center; }
     </style>
     <ha-card>
