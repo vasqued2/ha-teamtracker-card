@@ -23,6 +23,63 @@ export function initCardData(c) {
 //
 export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
 
+    // Set default sections to display / hide
+
+    c.initialsDisplay = 'none';
+    c.outsDisplay = 'none';
+    c.basesDisplay = 'none';
+    c.barDisplay = 'inherit';
+    c.barWrapDisplay = "flex";
+    c.timeoutsDisplay = 'inline';
+    c.rankDisplay = 'inline';
+
+    if (o.show_timeouts == false) {
+        c.timeoutsDisplay = 'none';
+    }
+    if (o.show_rank == false) {
+        c.rankDisplay = 'none';
+    }
+    c.onFirstOp = 0.2;
+    c.onSecondOp = 0.2;
+    c.onThirdOp = 0.2;
+    if (stateObj.attributes.on_first) {
+        c.onFirstOp = 1;
+    }
+    if (stateObj.attributes.on_second) {
+        c.onSecondOp = 1;
+    }
+    if (stateObj.attributes.on_third) {
+        c.onThirdOp = 1;
+    }
+
+    // Set Title data
+
+    c.title = o.cardTitle;
+    if (o.showLeague) {
+        c.title = c.title || stateObj.attributes.league
+    }
+
+    // Set Scoreboard data
+
+    c.logo[team] = stateObj.attributes.team_logo;
+    c.logoBG[team] = stateObj.attributes.team_logo;
+    c.name[team] = stateObj.attributes.team_name;
+    c.rank[team] = stateObj.attributes.team_rank;
+    c.record[team] = stateObj.attributes.team_record;
+    c.logo[oppo] = stateObj.attributes.opponent_logo;
+    c.logoBG[oppo] = stateObj.attributes.opponent_logo;
+    c.name[oppo] = stateObj.attributes.opponent_name;
+    c.rank[oppo] = stateObj.attributes.opponent_rank;
+    c.record[oppo] = stateObj.attributes.opponent_record;
+    c.playClock = stateObj.attributes.clock;
+    if (o.showLeague) {
+        c.logoBG[team] = stateObj.attributes.league_logo
+        c.logoBG[oppo] = stateObj.attributes.league_logo
+    }
+
+    c.score[team] = stateObj.attributes.team_score;
+    c.score[oppo] = stateObj.attributes.opponent_score;
+
     c.scoreOp[1] = 1;
     c.scoreOp[2] = 1;
     if (Number(c.score[1]) < Number(c.score[2])) {
@@ -53,41 +110,11 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
     if (stateObj.attributes.possession == stateObj.attributes.opponent_id) {
         c.possessionOp[oppo] = 1;
     }
+    c.timeouts[team] = stateObj.attributes.team_timeouts;
+    c.timeouts[oppo] = stateObj.attributes.opponent_timeouts;
 
-    c.barLength[team] = 0;
-    if (stateObj.attributes.team_win_probability) {
-        c.barLength[team] = (stateObj.attributes.team_win_probability * 100).toFixed(0);
-    }
-    c.barLength[oppo] = 0;
-    if (stateObj.attributes.opponent_win_probability) {
-        c.barLength[oppo] = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
-    }
-    c.score[team] = stateObj.attributes.team_score;
-    c.score[oppo] = stateObj.attributes.opponent_score;
+    // Set Location / Context data
 
-    c.byeTerm = t.translate("common.byeTerm");
-    c.title = o.cardTitle;
-    if (o.showLeague) {
-        c.title = c.title || stateObj.attributes.league
-    }
-
-    c.logo[team] = stateObj.attributes.team_logo;
-    c.logoBG[team] = stateObj.attributes.team_logo;
-    c.name[team] = stateObj.attributes.team_name;
-    c.rank[team] = stateObj.attributes.team_rank;
-    c.record[team] = stateObj.attributes.team_record;
-    c.logo[oppo] = stateObj.attributes.opponent_logo;
-    c.logoBG[oppo] = stateObj.attributes.opponent_logo;
-    c.name[oppo] = stateObj.attributes.opponent_name;
-    c.rank[oppo] = stateObj.attributes.opponent_rank;
-    c.record[oppo] = stateObj.attributes.opponent_record;
-
-    if (o.showLeague) {
-        c.logoBG[team] = stateObj.attributes.league_logo
-        c.logoBG[oppo] = stateObj.attributes.league_logo
-    }
-
-    c.finalTerm = stateObj.attributes.clock + " - " + c.gameDatePOST;
     c.startTerm = t.translate(sport + ".startTerm");
     c.startTime = stateObj.attributes.kickoff_in;
     c.venue = stateObj.attributes.venue;
@@ -109,41 +136,38 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
     if (stateObj.attributes.tv_network) {
         c.in2 = t.translate(sport + ".gameStat2", "%s", stateObj.attributes.tv_network);
     }
+    c.finalTerm = stateObj.attributes.clock + " - " + c.gameDatePOST;
 
-    c.gameBar = t.translate(sport + ".gameBar");
-    c.barLabel[team] = t.translate(sport + ".teamBarLabel", "%s", String(c.barLength[team]));
-    c.barLabel[oppo] = t.translate(sport + ".oppoBarLabel", "%s", String(c.barLength[oppo]));
+    // Set Play data
 
     c.lastPlay = stateObj.attributes.last_play;
     c.lastPlaySpeed = 18;
     if (c.lastPlay) {
         c.lastPlaySpeed = 18 + Math.floor(c.lastPlay.length / 40) * 5;
     }
+
+    // Set Game Bar data
+
+    c.gameBar = t.translate(sport + ".gameBar");
+    c.barLabel[team] = t.translate(sport + ".teamBarLabel", "%s", String(c.barLength[team]));
+    c.barLabel[oppo] = t.translate(sport + ".oppoBarLabel", "%s", String(c.barLength[oppo]));
+    c.barLength[team] = 0;
+    if (stateObj.attributes.team_win_probability) {
+        c.barLength[team] = (stateObj.attributes.team_win_probability * 100).toFixed(0);
+    }
+    c.barLength[oppo] = 0;
+    if (stateObj.attributes.opponent_win_probability) {
+        c.barLength[oppo] = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
+    }
+
+    // Situation specific data
+
     c.notFoundLogo = stateObj.attributes.league_logo;
     c.notFoundLogoBG = c.notFoundLogo;
     c.notFoundLeague = null;
 
     if (stateObj.attributes.league != "XXX") {
         c.notFoundLeague = stateObj.attributes.league;
-    }
-
-    c.initialsDisplay = 'none';
-    c.playClock = stateObj.attributes.clock;
-    c.outsDisplay = 'none';
-    c.basesDisplay = 'none';
-    c.barDisplay = 'inherit';
-    c.barWrapDisplay = "flex";
-    c.timeouts[team] = stateObj.attributes.team_timeouts;
-    c.timeouts[oppo] = stateObj.attributes.opponent_timeouts;
-
-    c.timeoutsDisplay = 'inline';
-    if (o.show_timeouts == false) {
-        c.timeoutsDisplay = 'none';
-    }
-
-    c.rankDisplay = 'inline';
-    if (o.show_rank == false) {
-        c.rankDisplay = 'none';
     }
 
     c.notFoundTerm1 = stateObj.attributes.team_abbr;
@@ -157,21 +181,8 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
         }
     }
 
-    //
-    //  Set default baseball values
-    //
-    c.onFirstOp = 0.2;
-    c.onSecondOp = 0.2;
-    c.onThirdOp = 0.2;
-    if (stateObj.attributes.on_first) {
-        c.onFirstOp = 1;
-    }
-    if (stateObj.attributes.on_second) {
-        c.onSecondOp = 1;
-    }
-    if (stateObj.attributes.on_third) {
-        c.onThirdOp = 1;
-    }
+    c.byeTerm = t.translate("common.byeTerm");
+
 }
 
 export function setCardFormat(o, c) {

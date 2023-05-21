@@ -2,14 +2,12 @@ import { html } from "https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.j
 
 
 export function renderMissingConfig() {
-    // Render the HTML template using the provided object `c`
     const htmlTemplate = html``;
     // Return the HTML template
     return htmlTemplate;
 }
 
 export function renderMissingObj(entity) {
-    // Render the HTML template using the provided object `c`
     const htmlTemplate = html`
         <ha-card>Unknown entity: ${entity}</ha-card> 
     `;
@@ -18,7 +16,6 @@ export function renderMissingObj(entity) {
 }
 
 export function renderStateUnavailable(entity) {
-    // Render the HTML template using the provided object `c`
     const htmlTemplate = html`
     <style>
         ha-card {padding: 10px 16px;}
@@ -32,7 +29,6 @@ export function renderStateUnavailable(entity) {
 }
 
 export function renderStateInvalid() {
-    // Render the HTML template using the provided object `c`
     const htmlTemplate = html`
     <style>
         ha-card {padding: 10px 16px;}
