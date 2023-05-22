@@ -149,8 +149,6 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
     // Set Game Bar data
 
     c.gameBar = t.translate(sport + ".gameBar");
-    c.barLabel[team] = t.translate(sport + ".teamBarLabel", "%s", String(c.barLength[team]));
-    c.barLabel[oppo] = t.translate(sport + ".oppoBarLabel", "%s", String(c.barLength[oppo]));
     c.barLength[team] = 0;
     if (stateObj.attributes.team_win_probability) {
         c.barLength[team] = (stateObj.attributes.team_win_probability * 100).toFixed(0);
@@ -159,6 +157,8 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
     if (stateObj.attributes.opponent_win_probability) {
         c.barLength[oppo] = (stateObj.attributes.opponent_win_probability * 100).toFixed(0);
     }
+    c.barLabel[team] = t.translate(sport + ".teamBarLabel", "%s", String(c.barLength[team]));
+    c.barLabel[oppo] = t.translate(sport + ".oppoBarLabel", "%s", String(c.barLength[oppo]));
 
     // Situation specific data
 
@@ -188,14 +188,10 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
 export function setCardFormat(o, c) {
 
     c.clrOut = 0;
-    c.toRadius = 3;
-    c.probRadius = 6;
     c.outColor = o.outlineColor;
 
     if (o.outline == true) {
         c.clrOut = 1;
-        c.toRadius = 4;
-        c.probRadius = 7;
     }
 }
 
