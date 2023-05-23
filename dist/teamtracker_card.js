@@ -56,6 +56,7 @@ export class TeamTrackerCard extends LitElement {
         o.homeSide = String(this._config.home_side).toUpperCase();
         o.showTimeouts = this._config.show_timeouts || true;
         o.showRank = this._config.show_rank || true;
+        o.debug = this._config.debug
 
         //
         //  Set sport, team, and oppo 
@@ -112,7 +113,7 @@ export class TeamTrackerCard extends LitElement {
         //  Add info to title if debug mode is turned on
         //
 
-        if (this._config.debug) {
+        if (o.debug) {
             var lastUpdate = new Date(stateObj.attributes.last_update);
             var updateTime = lastUpdate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 
