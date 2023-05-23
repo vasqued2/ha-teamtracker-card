@@ -11,7 +11,7 @@ export function renderIn(c) {
         .team-bg { opacity: 0.08; position: absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
         .opponent-bg { opacity: 0.08; position: absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
         .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
-        .team { text-align: center; width:35%; }
+        .team { text-align: center; width: 35%; }
         .team img { max-width: 90px; }
         .logo { max-height: 6.5em; }
         .circle { display:${c.initialsDisplay}; width: 1em; height: 1em; padding: 10px; line-height: 3em; border: 2px solid gray; border-radius: 50%; font-size: 2em; color: white; text-align: center; background: black }
@@ -21,7 +21,7 @@ export function renderIn(c) {
         .score { font-size: ${c.scoreSize}; text-align: center; }
         .divider { font-size: 2.5em; text-align: center; margin: 0 4px; }
         .name { font-size: 1.4em; margin-bottom: 4px; }
-        .rank { font-size:0.8em; height 1.4em; display: ${c.rankDisplay}; }
+        .rank { font-size:0.8em; display: ${c.rankDisplay}; }
         .record { font-size:1.0em; height 1.0em; }
         .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
         .timeouts { margin: 0.4em auto; width: 70%; display: ${c.timeoutsDisplay}; }
@@ -119,6 +119,6 @@ export function renderIn(c) {
             </div>
         </div>
     </ha-card>
-`;    // Return the HTML template
+    `;    // Return the HTML template
     return htmlTemplate;
 }

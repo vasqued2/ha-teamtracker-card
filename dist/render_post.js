@@ -48,6 +48,6 @@ export function renderPost(c) {
             <div class="status">${c.finalTerm}</div>
         </div>
     </ha-card>
-`;    // Return the HTML template
+    `;    // Return the HTML template
     return htmlTemplate;
 }
