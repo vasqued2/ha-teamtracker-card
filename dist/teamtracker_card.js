@@ -49,13 +49,19 @@ export class TeamTrackerCard extends LitElement {
         //
         //  Set card options based on configuration
         //
-        o.cardTitle = this._config.card_title;
+        o.cardTitle = this._config.card_title || "";
         o.outline = this._config.outline;
         o.outlineColor = this._config.outline_color || '#ffffff';
         o.showLeague = this._config.show_league;
         o.homeSide = String(this._config.home_side).toUpperCase();
-        o.showTimeouts = this._config.show_timeouts || true;
-        o.showRank = this._config.show_rank || true;
+        o.show_timeouts = true;
+        if (this._config.show_timeouts == false) {
+            o.show_timeouts = false;
+        }
+        o.show_rank = true;
+        if (this._config.show_rank == false) {
+            o.show_rank = false;
+        }
         o.debug = this._config.debug
 
         //
