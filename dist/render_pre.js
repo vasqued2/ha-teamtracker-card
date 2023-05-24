@@ -21,8 +21,8 @@ export function renderPre(c) {
         .gameday { font-size: 1.4em; height: 1.4em; }
         .gamedate { font-size: 1.1em; height: 1.1em; }
         .gametime { font-size: 1.1em; height: 1.1em; }
-        .startin { font-weight: 500; font-size: 1.2em; height: 1.2em; margin: 6px 0 2px; }
-        .startin, .venue, .location { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
+        .pre-row1 { font-weight: 500; font-size: 1.2em; height: 1.2em; margin: 6px 0 2px; }
+        .pre-row1, .pre-row2, .pre-row3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
     </style>
     <ha-card>
         <div class="card">
@@ -49,15 +49,15 @@ export function renderPre(c) {
                 </div>
             </div>
             <div class="line"></div>
-            <div class="startin">
+            <div class="pre-row1">
                 <div class="date">${c.startTerm} ${c.startTime}</div>
                 <div class="odds">${c.pre1}</div>
             </div>
-            <div class="venue">
+            <div class="pre-row2">
                 <div class="venue">${c.venue}</div>
                 <div class="overunder"> ${c.pre2}</div>
             </div>
-            <div class="location">
+            <div class="pre-row3">
                 <div class="location">${c.location}</div>
                 <div class="network">${c.pre3}</div>
             </div>

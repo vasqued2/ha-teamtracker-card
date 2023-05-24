@@ -34,9 +34,9 @@ export function renderIn(c) {
         .on-second { opacity: ${c.onSecondOp}; display: inline-block; }
         .on-third { opacity: ${c.onThirdOp}; display: inline-block; }
         .pitcher { opacity: 0.0; display: inline-block; }
-        .game-status1 { font-size: 1em; height: 1em; margin: 6px 0 2px; }
-        .game-status2 { ; font-size: 1em; height: 1em; margin: 6px 0 2px; }
-        .game-status1, .game-status2 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
+        .in-row1 { font-size: 1em; height: 1em; margin: 6px 0 2px; }
+        .in-row2 { ; font-size: 1em; height: 1em; margin: 6px 0 2px; }
+        .in-row1, .in-row2 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
         .last-play { font-size: 1.2em; width: 100%; white-space: nowrap; overflow: hidden; box-sizing: border-box; }
         .last-play p { display: inline-block; padding-left: 100%; margin: 2px 0 12px; animation : slide ${c.lastPlaySpeed}s linear infinite; }
         @keyframes slide { 0%   { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
@@ -96,11 +96,11 @@ export function renderIn(c) {
             </div>
             <div class="outs">${c.in0}</div>
             <div class="line"></div>
-            <div class="game-status1">
+            <div class="in-row1">
                 <div class="venue">${c.venue}</div>
                 <div class="down-distance">${c.in1}</div>
             </div>
-            <div class="game-status2">
+            <div class="in-row2">
                 <div class="location">${c.location}</div>
                 <div class="network">${c.in2}</div>
             </div>

@@ -21,7 +21,7 @@ export function renderPost(c) {
         .divider { font-size: 2.5em; text-align: center; opacity: 0; }
         .name { font-size: 1.4em; margin-bottom: 4px; }
         .rank { font-size:0.8em; display: ${c.rankDisplay}; }
-        .status { font-size: 1.2em; text-align: center; }
+        .post-row1 { font-size: 1.2em; text-align: center; }
     </style>
     <ha-card>
         <div class="card">
@@ -45,7 +45,7 @@ export function renderPost(c) {
                     <div class="record">${c.record[2]}</div>
                 </div>
             </div>
-            <div class="status">${c.finalTerm}</div>
+            <div class="post-row1">${c.finalTerm}</div>
         </div>
     </ha-card>
     `;    // Return the HTML template

@@ -196,22 +196,22 @@ export function setCardFormat(o, c) {
 }
 
 
-export function setStartInfo(c, stateObj, t, time_format) {
+export function setStartInfo(c, stateObj, t, lang, time_format) {
 
     var gameDate = new Date(stateObj.attributes.date);
-    var gameDateStr = gameDate.toLocaleDateString(t.lang, { month: 'short', day: '2-digit' });
+    var gameDateStr = gameDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
 
     var todayDate = new Date();
-    var todayDateStr = todayDate.toLocaleDateString(t.lang, { month: 'short', day: '2-digit' });
+    var todayDateStr = todayDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
 
     var tomorrowDate = new Date();
     tomorrowDate.setDate(todayDate.getDate() + 1);
-    var tomorrowDateStr = tomorrowDate.toLocaleDateString(t.lang, { month: 'short', day: '2-digit' });
+    var tomorrowDateStr = tomorrowDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
 
     var nextweekDate = new Date();
     nextweekDate.setDate(todayDate.getDate() + 6);
 
-    c.gameWeekday = gameDate.toLocaleDateString(t.lang, { weekday: 'long' });
+    c.gameWeekday = gameDate.toLocaleDateString(lang, { weekday: 'long' });
     if (gameDateStr === todayDateStr) {
         c.gameWeekday = t.translate("common.today");
     }
@@ -224,12 +224,12 @@ export function setStartInfo(c, stateObj, t, time_format) {
         c.gameDatePRE = gameDateStr;
     }
 
-    c.gameTime = gameDate.toLocaleTimeString(t.lang, { hour: '2-digit', minute: '2-digit' });
+    c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit' });
     if (time_format == "24") {
-        c.gameTime = gameDate.toLocaleTimeString(t.lang, { hour: '2-digit', minute: '2-digit', hour12: false });
+        c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: false });
     }
     if (time_format == "12") {
-        c.gameTime = gameDate.toLocaleTimeString(t.lang, { hour: '2-digit', minute: '2-digit', hour12: true });
+        c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: true });
     }
     if (time_format == "system") {
         var sys_lang = navigator.language || "en"
