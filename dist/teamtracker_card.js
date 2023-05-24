@@ -25,7 +25,22 @@ export class TeamTrackerCard extends LitElement {
     }
 
     getCardSize() {
-        return 5;
+        const stateObj = this.hass.states[this._config.entity];
+
+        switch (stateObj.state) {
+            case 'PRE':
+                return 7;
+            case 'IN':
+                return 10;
+            case 'POST':
+                return 5;
+            case 'BYE':
+                return 4;
+            case 'NOT_FOUND':
+                return 4;
+            default:
+                return 4;
+        }
     }
 
     render() {

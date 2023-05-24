@@ -23,7 +23,8 @@ export function renderIn(c) {
         .name { font-size: 1.4em; margin-bottom: 4px; }
         .rank { font-size:0.8em; display: ${c.rankDisplay}; }
         .record { font-size:1.0em; height 1.0em; }
-        .line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
+        .line1 { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
+        .line2 { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
         .timeouts { margin: 0.4em auto; width: 70%; display: ${c.timeoutsDisplay}; }
         .timeouts div.timeouts2:nth-child(-n + ${c.timeouts[2]})  { opacity: 1; }
         .timeouts div.timeouts1:nth-child(-n + ${c.timeouts[1]})  { opacity: 1; }
@@ -47,7 +48,7 @@ export function renderIn(c) {
         .bar-flex { width: 100%; display: flex; justify-content: center; margin-top: 4px; }
         .bar2-length { width: ${c.barLength[2]}%; background-color: ${c.color[2]}; height: 0.8em; border-radius: 0 0.4em 0.4em 0; border: ${c.clrOut}px solid ${c.outColor}; border-left: 0; transition: all 1s ease-out; }
         .bar1-length { width: ${c.barLength[1]}%; background-color: ${c.color[1]}; height: 0.8em; border-radius: 0.4em 0 0 0.4em; border: ${c.clrOut}px solid ${c.outColor}; border-right: 0; transition: all 1s ease-out; }
-        .bar-wrapper { display: ${c.barWrapDisplay}; align-items: center; }
+        .bar { display: ${c.barWrapDisplay}; align-items: center; }
         .bar1-label { flex: 0 0 10px; padding: 0 10px 0 0; margin-top: 4px; }
         .bar2-label { flex: 0 0 10px; padding: 0 0 0 10px; text-align: right; margin-top: 4px; }
     </style>
@@ -95,7 +96,7 @@ export function renderIn(c) {
                 <div class="on-first">&bull;</div>
             </div>
             <div class="outs">${c.in0}</div>
-            <div class="line"></div>
+            <div class="line1"></div>
             <div class="in-row1">
                 <div class="venue">${c.venue}</div>
                 <div class="down-distance">${c.in1}</div>
@@ -104,18 +105,20 @@ export function renderIn(c) {
                 <div class="location">${c.location}</div>
                 <div class="network">${c.in2}</div>
             </div>
-            <div class="line"></div>
+            <div class="line2"></div>
             <div class="last-play">
                 <p>${c.lastPlay}</p>
             </div>
-            <div class="bar-text">${c.gameBar}</div>
             <div class="bar-wrapper">
-                <div class="bar1-label">${c.barLabel[1]}</div>
-                <div class="bar-flex">
-                    <div class="bar1-length"></div>
-                    <div class="bar2-length"></div>
+                <div class="bar-text">${c.gameBar}</div>
+                <div class="bar">
+                    <div class="bar1-label">${c.barLabel[1]}</div>
+                    <div class="bar-flex">
+                        <div class="bar1-length"></div>
+                        <div class="bar2-length"></div>
+                    </div>
+                    <div class="bar2-label">${c.barLabel[2]}</div>
                 </div>
-                <div class="bar2-label">${c.barLabel[2]}</div>
             </div>
         </div>
     </ha-card>
