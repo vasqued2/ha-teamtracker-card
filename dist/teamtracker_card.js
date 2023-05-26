@@ -110,7 +110,7 @@ export class TeamTrackerCard extends LitElement {
         initCardData(c);
         setStartInfo(c, stateObj, t, lang, time_format);
         setCardFormat(o, c);
-        setDefaults(t, stateObj, c, o, sport, team, oppo);
+        setDefaults(t, lang, stateObj, c, o, sport, team, oppo);
         setSportData(sport, t, stateObj, c, team, oppo)
 
         //

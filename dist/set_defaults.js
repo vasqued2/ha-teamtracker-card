@@ -21,7 +21,7 @@ export function initCardData(c) {
 //
 //  Set default values for variable components
 //
-export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
+export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
 
     // Set default sections to display / hide
 
@@ -177,7 +177,7 @@ export function setDefaults(t, stateObj, c, o, sport, team, oppo) {
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
         if (apiTail.slice(-1) == "Z") {
             var lastDateForm = new Date(apiTail)
-            c.notFoundTerm2 = t.translate("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(t.lang))
+            c.notFoundTerm2 = t.translate("common.no_upcoming_games", "%s", lastDateForm.toLocaleDateString(lang))
         }
     }
 
