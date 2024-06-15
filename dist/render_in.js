@@ -61,7 +61,7 @@ export function renderIn(c) {
             <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
                 <div class="team">
-                    <img class="logo" src="${c.logo[1]}" />
+                    <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='https://cdn-icons-png.freepik.com/512/9706/9706583.png';" />
                     <div class="circle">${c.initials[1]}</div>
                     <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
                     <div class="record">${c.record[1]}</div>
@@ -77,7 +77,7 @@ export function renderIn(c) {
                 <div class="score">${c.score[2]}</div>
                 <div class="possession2">&bull;</div>
                 <div class="team">
-                    <img class="logo" src="${c.logo[2]}" />
+                    <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='https://cdn-icons-png.freepik.com/512/9706/9706583.png';" />
                     <div class="circle">${c.initials[2]}</div>
                     <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
                     <div class="record">${c.record[2]}</div>
