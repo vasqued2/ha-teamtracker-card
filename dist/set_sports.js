@@ -1,3 +1,5 @@
+import { GOLF_HEADSHOT_URL, MMA_HEADSHOT_URL, RACING_HEADSHOT_URL, TENNIS_HEADSHOT_URL } from "./const.js";
+
 //
 //  Call function to set the data for the sport
 //
@@ -119,8 +121,8 @@ export function setGolf(t, stateObj, c, team, oppo) {
     c.finalTerm = stateObj.attributes.clock;
     c.timeoutsDisplay = 'none';
 
-    c.logo[team] = "https://a.espncdn.com/i/headshots/golf/players/full/" + stateObj.attributes.team_id + ".png";
-    c.logo[oppo] = "https://a.espncdn.com/i/headshots/golf/players/full/" + stateObj.attributes.opponent_id + ".png";
+    c.logo[team] = GOLF_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
+    c.logo[oppo] = GOLF_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
 }
 
 //
@@ -152,8 +154,8 @@ export function setMMA(t, stateObj, c, team, oppo) {
     c.barDisplay = "none";
     c.barWrapDisplay = "none";
 
-    c.logo[team] = "https://a.espncdn.com/i/headshots/mma/players/full/" + stateObj.attributes.team_id + ".png";
-    c.logo[oppo] = "https://a.espncdn.com/i/headshots/mma/players/full/" + stateObj.attributes.opponent_id + ".png";
+    c.logo[team] = MMA_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
+    c.logo[oppo] = MMA_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
 }
 
 
@@ -193,8 +195,8 @@ export function setRacing(t, stateObj, c, team, oppo) {
 //            c.initialsDisplay = 'inline';
 //       }
 //    }
-    c.logo[team] = "https://a.espncdn.com/i/headshots/rpm/players/full/" + stateObj.attributes.team_id + ".png";
-    c.logo[oppo] = "https://a.espncdn.com/i/headshots/rpm/players/full/" + stateObj.attributes.opponent_id + ".png";
+    c.logo[team] = RACING_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
+    c.logo[oppo] = RACING_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
 }
 
 //
@@ -256,8 +258,8 @@ export function setTennis(t, stateObj, c, team, oppo) {
     c.timeouts[team] = stateObj.attributes.team_sets_won;
     c.timeouts[oppo] = stateObj.attributes.opponent_sets_won;
 
-    c.logo[team] = "https://a.espncdn.com/i/headshots/tennis/players/full/" + stateObj.attributes.team_id + ".png";
-    c.logo[oppo] = "https://a.espncdn.com/i/headshots/tennis/players/full/" + stateObj.attributes.opponent_id + ".png";
+    c.logo[team] = TENNIS_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
+    c.logo[oppo] = TENNIS_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
 
     c.title = c.title || stateObj.attributes.event_name
 
