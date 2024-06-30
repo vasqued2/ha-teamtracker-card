@@ -34,7 +34,7 @@ export function renderPost(c) {
             <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
                 <div class="team">
-                    <a class="left-clickable" href="https://www.google.com" target="_blank"; >
+                    <a class="left-clickable" href="${c.url[1]}" target="_blank"; >
                         <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
                         <div class="circle">${c.initials[1]}</div>
                         <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
@@ -45,7 +45,7 @@ export function renderPost(c) {
                 <div class="divider">&nbsp&nbsp&nbsp</div>
                 <div class="score score2op">${c.score[2]}</div>
                 <div class="team">
-                    <a class="right-clickable" href="https://www.bing.com" target="_blank"; >
+                    <a class="right-clickable" href="${c.url[2]}" target="_blank"; >
                         <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
                         <div class="circle">${c.initials[2]}</div>
                         <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
@@ -53,7 +53,7 @@ export function renderPost(c) {
                     </a>
                 </div>
             </div>
-            <a class="bottom-clickable" href="https://www.amazon.com" target="_blank";>
+            <a class="bottom-clickable" href="${c.bottomURL}" target="_blank";>
                 <div class="post-row1">${c.finalTerm}</div>
                 <div class="post-series-info">${c.seriesSummary}</div>
             </a>

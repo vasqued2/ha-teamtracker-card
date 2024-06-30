@@ -35,7 +35,7 @@ export function renderPre(c) {
             <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
                 <div class="team">
-                    <a class="left-clickable" href="https://www.google.com" target="_blank"; >
+                    <a class="left-clickable" href="${c.url[1]}" target="_blank"; >
                         <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
                         <div class="circle">${c.initials[1]}</div>
                         <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
@@ -48,7 +48,7 @@ export function renderPre(c) {
                     <div class="gametime">${c.gameTime}</div>
                 </div>
                 <div class="team">
-                    <a class="right-clickable" href="https://www.bing.com" target="_blank"; >
+                    <a class="right-clickable" href="${c.url[2]}" target="_blank"; >
                         <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
                         <div class="circle">${c.initials[2]}</div>
                         <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
@@ -58,7 +58,7 @@ export function renderPre(c) {
             </div>
             <div class="pre-series-info">${c.seriesSummary}</div>
             <div class="line"></div>
-            <a class="bottom-clickable" href="https://www.amazon.com" target="_blank";>
+            <a class="bottom-clickable" href="${c.bottomURL}" target="_blank";>
                 <div class="pre-row1">
                     <div class="date">${c.startTerm} ${c.startTime}</div>
                     <div class="odds">${c.pre1}</div>
