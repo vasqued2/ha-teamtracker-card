@@ -69,9 +69,9 @@ export class TeamTrackerCard extends LitElement {
         o.outlineColor = this._config.outline_color || '#ffffff';
         o.showLeague = this._config.show_league;
         o.homeSide = String(this._config.home_side).toUpperCase();
-        o.home_url = this._config.team_url;
-        o.opponent_url = this._config.opponent_url;
-        o.bottomURL = "https://www.espn.com"
+        o.teamURL = this._config.team_url;
+        o.opponentURL = this._config.opponent_url;
+        o.bottomURL = this._config.bottom_url;
         o.show_timeouts = true;
         if (this._config.show_timeouts == false) {
             o.show_timeouts = false;
