@@ -24,9 +24,9 @@ export function renderPre(c) {
         .pre-series-info { display:${c.seriesSummaryDisplay}; font-size: 1.2em; text-align: center; margin: 4px; }
         .pre-row1 { font-weight: 500; font-size: 1.2em; height: 1.2em; margin: 6px 0 2px; }
         .pre-row1, .pre-row2, .pre-row3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
-        .left-clickable { href="https://www.google.com" target="_blank"; text-decoration: none; color: inherit; }
-        .right-clickable { href="https://www.bing.com" target="_blank"; text-decoration: none; color: inherit; }
-        .bottom-clickable { href="https://www.amazon.com" target="_blank"; text-decoration: none; color: inherit; }
+        .left-clickable { text-decoration: none; color: inherit; }
+        .right-clickable { text-decoration: none; color: inherit; }
+        .bottom-clickable { text-decoration: none; color: inherit; }
     </style>
     <ha-card>
         <div class="card">

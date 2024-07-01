@@ -23,9 +23,9 @@ export function renderPost(c) {
         .rank { font-size:0.8em; display: ${c.rankDisplay}; }
         .post-series-info { display:${c.seriesSummaryDisplay}; font-size: 1.2em; text-align: center; margin: 4px; }
         .post-row1 { font-size: 1.2em; text-align: center; }
-        .left-clickable { href="https://www.google.com" target="_blank"; text-decoration: none; color: inherit; }
-        .right-clickable { href="https://www.bing.com" target="_blank"; text-decoration: none; color: inherit; }
-        .bottom-clickable { href="https://www.amazon.com" target="_blank"; text-decoration: none; color: inherit; }
+        .left-clickable { text-decoration: none; color: inherit; }
+        .right-clickable { text-decoration: none; color: inherit; }
+        .bottom-clickable { text-decoration: none; color: inherit; }
     </style>
     <ha-card>
         <div class="card">
