@@ -23,6 +23,9 @@ export function renderPost(c) {
         .rank { font-size:0.8em; display: ${c.rankDisplay}; }
         .post-series-info { display:${c.seriesSummaryDisplay}; font-size: 1.2em; text-align: center; margin: 4px; }
         .post-row1 { font-size: 1.2em; text-align: center; }
+        .left-clickable { text-decoration: none; color: inherit; }
+        .right-clickable { text-decoration: none; color: inherit; }
+        .bottom-clickable { text-decoration: none; color: inherit; }
     </style>
     <ha-card>
         <div class="card">
@@ -31,23 +34,29 @@ export function renderPost(c) {
             <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
                 <div class="team">
-                    <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
-                    <div class="circle">${c.initials[1]}</div>
-                    <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
-                    <div class="record">${c.record[1]}</div>
+                    <a class="left-clickable" href="${c.url[1]}" target="_blank"; >
+                        <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
+                        <div class="circle">${c.initials[1]}</div>
+                        <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
+                        <div class="record">${c.record[1]}</div>
+                    </a>
                 </div>
                 <div class="score score1op">${c.score[1]}</div>
                 <div class="divider">&nbsp&nbsp&nbsp</div>
                 <div class="score score2op">${c.score[2]}</div>
                 <div class="team">
-                    <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
-                    <div class="circle">${c.initials[2]}</div>
-                    <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
-                    <div class="record">${c.record[2]}</div>
+                    <a class="right-clickable" href="${c.url[2]}" target="_blank"; >
+                        <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
+                        <div class="circle">${c.initials[2]}</div>
+                        <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
+                        <div class="record">${c.record[2]}</div>
+                    </a>
                 </div>
             </div>
-            <div class="post-row1">${c.finalTerm}</div>
-            <div class="post-series-info">${c.seriesSummary}</div>
+            <a class="bottom-clickable" href="${c.bottomURL}" target="_blank";>
+                <div class="post-row1">${c.finalTerm}</div>
+                <div class="post-series-info">${c.seriesSummary}</div>
+            </a>
         </div>
     </ha-card>
     `;    // Return the HTML template
