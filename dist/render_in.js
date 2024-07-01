@@ -55,7 +55,7 @@ export function renderIn(c) {
         .left-clickable { text-decoration: none; color: inherit; }
         .right-clickable { text-decoration: none; color: inherit; }
         .bottom-clickable { text-decoration: none; color: inherit; }
-        </style>
+    </style>
     <ha-card>
         <div class="card">
             <div class="title">${c.title}</div>
