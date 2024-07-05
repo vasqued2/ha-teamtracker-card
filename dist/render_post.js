@@ -26,6 +26,7 @@ export function renderPost(c) {
         .left-clickable { text-decoration: none; color: inherit; }
         .right-clickable { text-decoration: none; color: inherit; }
         .bottom-clickable { text-decoration: none; color: inherit; }
+        .disabled { pointer-events: none; cursor: default; }
     </style>
     <ha-card>
         <div class="card">
@@ -34,7 +35,7 @@ export function renderPost(c) {
             <img class="opponent-bg" src="${c.logoBG[2]}" />
             <div class="card-content">
                 <div class="team">
-                    <a class="left-clickable" href="${c.url[1]}" target="_blank"; >
+                    <a class="left-clickable ${!c.url[1] ? 'disabled' : ''}" href="${c.url[1] ? c.url[1] : '#'}" target="_blank">
                         <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
                         <div class="circle">${c.initials[1]}</div>
                         <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
@@ -45,7 +46,7 @@ export function renderPost(c) {
                 <div class="divider">&nbsp&nbsp&nbsp</div>
                 <div class="score score2op">${c.score[2]}</div>
                 <div class="team">
-                    <a class="right-clickable" href="${c.url[2]}" target="_blank"; >
+                    <a class="right-clickable ${!c.url[2] ? 'disabled' : ''}" href="${c.url[2] ? c.url[2] : '#'}" target="_blank">
                         <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
                         <div class="circle">${c.initials[2]}</div>
                         <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
@@ -53,12 +54,21 @@ export function renderPost(c) {
                     </a>
                 </div>
             </div>
-            <a class="bottom-clickable" href="${c.bottomURL}" target="_blank";>
+            <a class="bottom-clickable ${!c.bottomURL ? 'disabled' : ''}" href="${c.bottomURL ? c.bottomURL : '#'}" target="_blank">
                 <div class="post-row1">${c.finalTerm}</div>
                 <div class="post-series-info">${c.seriesSummary}</div>
             </a>
         </div>
     </ha-card>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a.disabled').forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                });
+            });
+        });
+    </script>
     `;    // Return the HTML template
     return htmlTemplate;
 }
