@@ -76,9 +76,9 @@ Add a Manual card to the dashboard and enter the YAML to configure it as desired
 | `show_timeouts` | Specifies if timeout indicators should be shown. | `true` | No |  `true` `false`  |
 | `show_rank` | Specifies if team rank should be shown. | `true` | No |  `true` `false`  |
 | `show_league` | Specifies if league should be shown at the top of the card. | `false` | No |  `true` `false`  |
-| `team_url` | Provides an override url when the Home logo is tapped. | No override | No |  Any valid URL (i.e. "https://www.espn.com")  |
-| `opponent_url` | Provides an override url when the Oppenent logo is tapped. | No override | No |  Any valid URL (i.e. "https://www.espn.com")  |
-| `bottom_url` | Provides an override url when the bottom of the card is tapped. | No override | No |  Any valid URL (i.e. "https://www.espn.com")  |
+| `team_url` | Provides an override url when the Home logo is tapped or 'more-info' to allow for more-info to be displayed on double-tap. | No override | No |  Any valid URL (i.e. "https://www.espn.com") or "more-info"  |
+| `opponent_url` | Provides an override url when the Oppenent logo is tapped or 'more-info' to allow for more-info to be displayed on double-tap. | No override | No |  Any valid URL (i.e. "https://www.espn.com") or "more-info"  |
+| `bottom_url` | Provides an override url when the bottom of the card is tapped or 'more-info' to allow for more-info to be displayed double-tap. | No override | No |  Any valid URL (i.e. "https://www.espn.com") or "more-info"  |
 
 ### Examples
 #### Example 1
