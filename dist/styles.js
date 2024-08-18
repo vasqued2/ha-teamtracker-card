@@ -56,4 +56,9 @@ export const cardStyles = css`
 .post-row1 { font-size: 1.2em; text-align: center; }
 .post-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 
+.notFound1 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
+.notFound2 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
+
+.bye { font-size: 1.8em; text-align: center; width: 50%; }
+
 `;
