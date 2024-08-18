@@ -1,4 +1,4 @@
-import { html } from "https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js";
+import { html, styleMap } from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
 
 
 // Define the rendering function
@@ -14,7 +14,6 @@ export function renderPost(c) {
         .team { text-align: center; width: 35%; }
         .logo { max-height: 6.5em; }
         .team img { max-width: 90px; }
-        .circle { display:${c.initialsDisplay}; width: 1em; height: 1em; padding: 10px; line-height: 3em; border: 2px solid gray; border-radius: 50%; font-size: 2em; color: white; text-align: center; background: black }
         .score { font-size: ${c.scoreSize}; text-align: center; line-height: 1; }
         .score1op { opacity: ${c.scoreOp[1]}; }
         .score2op { opacity: ${c.scoreOp[2]}; }
@@ -37,26 +36,24 @@ export function renderPost(c) {
                 <div class="team">
                     <a class="left-clickable ${!c.url[1] ? 'disabled' : ''}" href="${c.url[1] ? c.url[1] : '#'}" target="_blank">
                         <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
-                        <div class="circle">${c.initials[1]}</div>
-                        <div class="name"><span class="rank">${c.rank[1]}</span> ${c.name[1]}</div>
+                        <div class="name"><span class="rank" style=${styleMap({ '--rank-display': c.rankDisplay })}>${c.rank[1]}</span> ${c.name[1]}</div>
                         <div class="record">${c.record[1]}</div>
                     </a>
                 </div>
-                <div class="score score1op">${c.score[1]}</div>
+                <div class="score" style=${styleMap({ '--score_opacity': c.scoreOp[1], "--score_size": c.scoreSize })}>${c.score[1]}</div>
                 <div class="divider">&nbsp&nbsp&nbsp</div>
-                <div class="score score2op">${c.score[2]}</div>
+                <div class="score" style=${styleMap({ '--score_opacity': c.scoreOp[2], "--score_size": c.scoreSize })}>${c.score[2]}</div>
                 <div class="team">
                     <a class="right-clickable ${!c.url[2] ? 'disabled' : ''}" href="${c.url[2] ? c.url[2] : '#'}" target="_blank">
                         <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
-                        <div class="circle">${c.initials[2]}</div>
-                        <div class="name"><span class="rank">${c.rank[2]}</span> ${c.name[2]}</div>
+                        <div class="name"><span class="rank" style=${styleMap({ '--rank-display': c.rankDisplay })}>${c.rank[2]}</span> ${c.name[2]}</div>
                         <div class="record">${c.record[2]}</div>
                     </a>
                 </div>
             </div>
             <a class="bottom-clickable ${!c.bottomURL ? 'disabled' : ''}" href="${c.bottomURL ? c.bottomURL : '#'}" target="_blank">
                 <div class="post-row1">${c.finalTerm}</div>
-                <div class="post-series-info">${c.seriesSummary}</div>
+                <div class="post-series-info" style=${styleMap({ '--series-summary-display': c.seriesSummaryDisplay })}>${c.seriesSummary}</div>
             </a>
         </div>
     </ha-card>
