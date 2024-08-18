@@ -16,10 +16,10 @@ export function renderIn(c) {
                     <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
                     <div class="name"><span class="rank" style=${styleMap({"--rank-display": `${c.rankDisplay}`})}>${c.rank[1]}</span> ${c.name[1]}</div>
                     <div class="record">${c.record[1]}</div>
-                    <div class="timeouts" style=${styleMap({"--timeouts-display": `${c.timeoutsDisplay}`})}>
-                        <div class="timeouts1" style=${styleMap({"--timeouts1-color": `${c.color[1]}`, "--timeouts-border": `${c.clrOut}px`, "--timeouts-border-color": `${c.outColor}`})}></div>
-                        <div class="timeouts1" style=${styleMap({"--timeouts1-color": `${c.color[1]}`, "--timeouts-border": `${c.clrOut}px`, "--timeouts-border-color": `${c.outColor}`})}></div>
-                        <div class="timeouts1" style=${styleMap({"--timeouts1-color": `${c.color[1]}`, "--timeouts-border": `${c.clrOut}px`, "--timeouts-border-color": `${c.outColor}`})}></div>
+                    <div class="timeouts-wrapper" style=${styleMap({"--timeouts-display": `${c.timeoutsDisplay}`})}>
+                        <div class="timeout" style=${styleMap({"--timeout-opacity": `${c.timeouts[1]} >= 1 ? 1 : 0.2`, "--timeout-color": `${c.color[1]}`, "--timeout-border": `${c.outlineWidth}px`, "--timeout-border-color": `${c.outlineColor}`})}></div>
+                        <div class="timeout" style=${styleMap({"--timeout-opacity": `${c.timeouts[1]} >= 2 ? 1 : 0.2`, "--timeout-color": `${c.color[1]}`, "--timeout-border": `${c.outlineWidth}px`, "--timeout-border-color": `${c.outlineColor}`})}></div>
+                        <div class="timeout" style=${styleMap({"--timeout-opacity": `${c.timeouts[1]} >= 3 ? 1 : 0.2`, "--timeout-color": `${c.color[1]}`, "--timeout-border": `${c.outlineWidth}px`, "--timeout-border-color": `${c.outlineColor}`})}></div>
                     </div>
                     </a>
                 </div>
@@ -33,26 +33,26 @@ export function renderIn(c) {
                     <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
                     <div class="name"><span class="rank" style=${styleMap({"--rank-display": `${c.rankDisplay}`})}>${c.rank[2]}</span> ${c.name[2]}</div>
                     <div class="record">${c.record[2]}</div>
-                    <div class="timeouts" style=${styleMap({"--timeouts-display": `${c.timeoutsDisplay}`})}>
-                        <div class="timeouts2" style=${styleMap({"--timeouts2-color": `${c.color[2]}`, "--timeouts-border": `${c.clrOut}px`, "--timeouts-border-color": `${c.outColor}`})}></div>
-                        <div class="timeouts2" style=${styleMap({"--timeouts2-color": `${c.color[2]}`, "--timeouts-border": `${c.clrOut}px`, "--timeouts-border-color": `${c.outColor}`})}></div>
-                        <div class="timeouts2" style=${styleMap({"--timeouts2-color": `${c.color[2]}`, "--timeouts-border": `${c.clrOut}px`, "--timeouts-border-color": `${c.outColor}`})}></div>
-                    </div>
+                    <div class="timeouts-wrapper" style=${styleMap({"--timeouts-display": `${c.timeoutsDisplay}`})}>
+                    <div class="timeout" style=${styleMap({"--timeout-opacity": `${c.timeouts[2]} >= 1 ? 1 : 0.2`, "--timeout-color": `${c.color[2]}`, "--timeout-border": `${c.outlineWidth}px`, "--timeout-border-color": `${c.outlineColor}`})}></div>
+                    <div class="timeout" style=${styleMap({"--timeout-opacity": `${c.timeouts[2]} >= 2 ? 1 : 0.2`, "--timeout-color": `${c.color[2]}`, "--timeout-border": `${c.outlineWidth}px`, "--timeout-border-color": `${c.outlineColor}`})}></div>
+                    <div class="timeout" style=${styleMap({"--timeout-opacity": `${c.timeouts[2]} >= 3 ? 1 : 0.2`, "--timeout-color": `${c.color[2]}`, "--timeout-border": `${c.outlineWidth}px`, "--timeout-border-color": `${c.outlineColor}`})}></div>
+                </div>
                     </a>
                 </div>
             </div>
             <div class="play-clock">${c.playClock}</div>
             <div class="bases" style=${styleMap({"--bases-display": `${c.basesDisplay}`})}>
-                <div class="on-second" style=${styleMap({"--on-second-opacity": `${c.onSecondOp}`})}>&bull;</div>
+                <div class="on-base" style=${styleMap({"--on-base-opacity": `${c.onSecondOp}`})}>&bull;</div>
             </div>
             <div class="bases" style=${styleMap({"--bases-display": `${c.basesDisplay}`})}>
-                <div class="on-third" style=${styleMap({"--on-third-opacity": `${c.onThirdOp}`})}>&bull;</div>
+                <div class="on-base" style=${styleMap({"--on-base-opacity": `${c.onThirdOp}`})}>&bull;</div>
                 <div class="pitcher"></div>
-                <div class="on-first" style=${styleMap({"--on-first-opacity": `${c.onFirstOp}`})}>&bull;</div>
+                <div class="on-base" style=${styleMap({"--on-base-opacity": `${c.onFirstOp}`})}>&bull;</div>
             </div>
             <div class="outs" style=${styleMap({"--outs-display": `${c.outsDisplay}`})}>${c.in0}</div>
             <div class="in-series-info" style=${styleMap({"--series_summary-display": `${c.seriesSummaryDisplay}`})}>${c.seriesSummary}</div>
-            <div class="line1"></div>
+            <div class="line"></div>
             <a class="bottom-clickable ${!c.bottomURL ? 'disabled' : ''}" href="${c.bottomURL ? c.bottomURL : '#'}" target="_blank">
                 <div class="in-row1">
                     <div class="venue">${c.venue}</div>
@@ -62,17 +62,17 @@ export function renderIn(c) {
                     <div class="location">${c.location}</div>
                     <div class="network">${c.in2}</div>
                 </div>
-                <div class="line2"></div>
+                <div class="line"></div>
                 <div class="last-play" style=${styleMap({"--last-play-speed": `${c.lastPlaySpeed}s`})}>
                     <p>${c.lastPlay}</p>
                 </div>
-                <div class="bar-wrapper">
-                    <div class="bar-text" style=${styleMap({"--bar-display": `${c.barDisplay}`})}>${c.gameBar}</div>
-                    <div class="bar" style=${styleMap({"--bar-wrapper-display": `${c.barwrapperDisplay}`})}>
+                <div class="bar-wrapper" style=${styleMap({"--bar-display": `${c.barDisplay}`})}>
+                    <div class="bar-text">${c.gameBar}</div>
+                    <div class="bar">
                         <div class="bar1-label">${c.barLabel[1]}</div>
                         <div class="bar-flex">
-                            <div class="bar1-length" style=${styleMap({"--bar1-length": `${c.barLength[1]}%`, "--bar1-color": `${c.color[1]}`, "--bar1-border": `${c.clrOut}px`, "--bar1-border-color": `${c.outColor}`})}></div>
-                            <div class="bar2-length" style=${styleMap({"--bar2-length": `${c.barLength[2]}%`, "--bar2-color": `${c.color[2]}`, "--bar2-border": `${c.clrOut}px`, "--bar2-border-color": `${c.outColor}`})}></div>
+                            <div class="bar-left"  style=${styleMap({"--bar-length": `${c.barLength[1]}%`, "--bar-color": `${c.color[1]}`, "--bar-border": `${c.outlineWidth}px`, "--bar-border-color": `${c.outlineColor}`})}></div>
+                            <div class="bar-right" style=${styleMap({"--bar-length": `${c.barLength[2]}%`, "--bar-color": `${c.color[2]}`, "--bar-border": `${c.outlineWidth}px`, "--bar-border-color": `${c.outlineColor}`})}></div>
                         </div>
                         <div class="bar2-label">${c.barLabel[2]}</div>
                     </div>

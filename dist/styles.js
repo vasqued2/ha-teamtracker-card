@@ -9,26 +9,23 @@ export const cardStyles = css`
 .team { text-align: center; width: 35%; }
 .team img { max-width: 90px; }
 .logo { max-height: 6.5em; }
+.score { font-size: var(--score_size, 3em); opacity: var(--score_opacity, 1); text-align: center; line-height: 1; }
+.line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
+.left-clickable { text-decoration: none; color: inherit; }
+.right-clickable { text-decoration: none; color: inherit; }
+.bottom-clickable { text-decoration: none; color: inherit; }
+.disabled { pointer-events: none; cursor: default; }
+
 .possession { opacity: var(--possession-opacity, 1); font-size: 2.5em; text-align: center; font-weight:900; }
-.possession1 { opacity: var(--possession1-opacity, 1); font-size: 2.5em; text-align: center; font-weight:900; }
-.possession2 { opacity: var(--possession2-opacity, 1); font-size: 2.5em; text-align: center; font-weight:900; }
 .divider { font-size: 2.5em; text-align: center; margin: 0 4px; }
 .name { font-size: 1.4em; margin-bottom: 4px; }
 .rank { display: var(--rank-display, inline); font-size:0.8em; }
 .record { font-size:1.0em; height 1.0em; }
-.line1 { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-.line2 { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
-.timeouts { margin: 0.4em auto; width: 70%; display: var(--timeouts-display, inline); }
-.timeouts div.timeouts2:nth-child(-n + 2) { opacity: 1; }
-.timeouts div.timeouts1:nth-child(-n + 2) { opacity: 1; }
-.timeouts1 { height: 0.6em; border-radius: 0.3em; background-color: var(--timeouts1-color, #000000); border: var(--timeouts-border, 1px) solid var(--timeouts-border-color, #ffffff); width: 20%; display: inline-block; margin: 0.4em auto; position: relative; opacity: 0.2; }
-.timeouts2 { height: 0.6em; border-radius: 0.3em; background-color: var(--timeouts2-color, #000000); border: var(--timeouts-border, 1px) solid var(--timeouts-border-color, #ffffff); width: 20%; display: inline-block; margin: 0.4em auto; position: relative; opacity: 0.2; }
+.timeouts-wrapper { margin: 0.4em auto; width: 70%; display: var(--timeouts-display, inline); }
+.timeout { height: 0.6em; border-radius: 0.3em; background-color: var(--timeout-color, #000000); border: var(--timeout-border, 1px) solid var(--timeout-border-color, #ffffff); width: 20%; display: inline-block; margin: 0.4em auto; position: relative; opacity: var(--timeout-opacity, 0.2); }
 .bases { display: var(--bases-display, inherit); font-size: 2.5em; text-align: center; font-weight:900; }
-.on-first { opacity: var(--on-first-opacity, 1); display: inline-block; }
-.on-second { opacity: var(--on-second-opacity, 1); display: inline-block; }
-.on-third { opacity: var(--on-third-opacity, 1); display: inline-block; }
+.on-base { opacity: var(--on-base-opacity, 1); display: inline-block; }
 .pitcher { opacity: 0.0; display: inline-block; }
-.in-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 .in-row1 { font-size: 1em; height: 1em; margin: 6px 0 2px; }
 .in-row2 { ; font-size: 1em; height: 1em; margin: 6px 0 2px; }
 .in-row1, .in-row2 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
@@ -38,28 +35,25 @@ export const cardStyles = css`
 .down-distance { text-align: right; }
 .play-clock { font-size: 1.4em; height: 1.4em; text-align: center; }
 .outs { display: var(--outs-display, inherit); text-align: center; }
-.bar-text { display: var(--bar-display, inherit); text-align: center; }
+
+.bar-wrapper { display: var(--bar-display, inherit) }
+.bar-text { text-align: center; }
 .bar-flex { width: 100%; display: flex; justify-content: center; margin-top: 4px; }
-.bar1-length { width: var(--bar1-length, 100%); background-color: var(--bar1-color, #000000); height: 0.8em; border-radius: 0.4em 0 0 0.4em; border: var(--bar1-border, 1px) solid var(--bar1-border-color, #ffffff); border-right: 0; transition: all 1s ease-out; }
-.bar2-length { width: var(--bar2-length, 100%); background-color: var(--bar2-color, #ffffff); height: 0.8em; border-radius: 0 0.4em 0.4em 0; border: var(--bar2-border, 1px) solid var(--bar2-border-color, #ffffff); border-left: 0; transition: all 1s ease-out; }
-.bar { display: var(--bar-wrapper-display, flex); align-items: center; }
+.bar-right { width: var(--bar-length, 0); background-color: var(--bar-color, red); height: 0.8em; border-radius: 0 0.4em 0.4em 0; border: var(--bar-border, 1px) solid var(--bar-border-color, lightgrey); border-left: 0; transition: all 1s ease-out; }
+.bar-left { width: var(--bar-length, 0); background-color: var(--bar-color, blue); height: 0.8em; border-radius: 0.4em 0 0 0.4em; border: var(--bar-border, 1px) solid var(--bar-border-color, lightgrey); border-right: 0; transition: all 1s ease-out; }
+.bar { display: flex; align-items: center; }
 .bar1-label { flex: 0 0 10px; padding: 0 10px 0 0; margin-top: 4px; }
 .bar2-label { flex: 0 0 10px; padding: 0 0 0 10px; text-align: right; margin-top: 4px; }
-.left-clickable { text-decoration: none; color: inherit; }
-.right-clickable { text-decoration: none; color: inherit; }
-.bottom-clickable { text-decoration: none; color: inherit; }
-.disabled { pointer-events: none; cursor: default; }
+.in-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 
-.line { height: 1px; background-color: var(--primary-text-color); margin:10px 0; }
 .gameday { font-size: 1.4em; height: 1.4em; }
 .gamedate { font-size: 1.1em; height: 1.1em; }
 .gametime { font-size: 1.1em; height: 1.1em; }
-.pre-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 .pre-row1 { font-weight: 500; font-size: 1.2em; height: 1.2em; margin: 6px 0 2px; }
 .pre-row1, .pre-row2, .pre-row3 { display: flex; justify-content: space-between; align-items: center; margin: 2px 0; }
+.pre-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 
-.score { font-size: var(--score_size, 3em); opacity: var(--score_opacity, 1); text-align: center; line-height: 1; }
-.post-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 .post-row1 { font-size: 1.2em; text-align: center; }
+.post-series-info { display: var(--series-summary-display, none); font-size: 1.2em; text-align: center; margin: 4px; }
 
 `;

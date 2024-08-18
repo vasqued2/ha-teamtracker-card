@@ -54,12 +54,10 @@ export function setBaseball(t, stateObj, c, team, oppo) {
 //  setBasketball()
 //    timeoutsDisplay = 'none';
 //    barDisplay = "none";
-//    barWrapDisplay = "none";
 //
 export function setBasketball(t, stateObj, c, team, oppo) {
     c.timeoutsDisplay = 'none';
     c.barDisplay = 'none';
-    c.barWrapDisplay = "none";
 }
 
 
@@ -67,7 +65,6 @@ export function setBasketball(t, stateObj, c, team, oppo) {
 //  SetCricket()
 //    timeoutsDisplay = 'none';
 //    barDisplay = "none";
-//    barWrapDisplay = "none";
 //    in1 = odds;
 //    in2 = quarter;
 //    score = split score into 2 parts
@@ -78,7 +75,6 @@ export function setCricket(t, stateObj, c, team, oppo) {
 
     c.timeoutsDisplay = 'none';
     c.barDisplay = "none";
-    c.barWrapDisplay = "none";  
 
     c.in1 = stateObj.attributes.odds;
     c.in2 = stateObj.attributes.quarter;
@@ -146,13 +142,11 @@ export function setHockey(t, stateObj, c, team, oppo) {
 //    title = use event_name if title is not set
 //    timeoutsDisplay = 'none';
 //    barDisplay = "none";
-//    barWrapDisplay = "none";
 //
 export function setMMA(t, stateObj, c, team, oppo) {
     c.title = c.title || stateObj.attributes.event_name;
     c.timeoutsDisplay = 'none';
     c.barDisplay = "none";
-    c.barWrapDisplay = "none";
 
     c.logo[team] = MMA_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = MMA_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";

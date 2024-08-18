@@ -34,7 +34,6 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     c.outsDisplay = 'none';
     c.basesDisplay = 'none';
     c.barDisplay = 'inherit';
-    c.barWrapDisplay = "flex";
     c.timeoutsDisplay = 'inline';
     c.rankDisplay = 'inline';
     c.seriesSummaryDisplay = 'none';
@@ -218,11 +217,11 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
 
 export function setCardFormat(o, c) {
 
-    c.clrOut = 0;
-    c.outColor = o.outlineColor;
+    c.outlineWidth = 0;
+    c.outlineColor = o.outlineColor;
 
     if (o.outline == true) {
-        c.clrOut = 1;
+        c.outlineWidth = 1;
     }
 }
 
