@@ -249,8 +249,12 @@ export function setTennis(t, stateObj, c, team, oppo) {
     else {
         c.barLabel[oppo] = t.translate("tennis.oppoBarLabel", "%s", String(stateObj.attributes.opponent_score ));
     }
-    c.timeouts[team] = stateObj.attributes.team_sets_won;
-    c.timeouts[oppo] = stateObj.attributes.opponent_sets_won;
+    c.timeoutsOp[team][1] = stateObj.attributes.team_sets_won >= 1 ? 1 : 0.2
+    c.timeoutsOp[team][2] = stateObj.attributes.team_sets_won >= 2 ? 1 : 0.2
+    c.timeoutsOp[team][3] = stateObj.attributes.team_sets_won >= 3 ? 1 : 0.2
+    c.timeoutsOp[oppo][1] = stateObj.attributes.opponent_sets_won >= 1 ? 1 : 0.2
+    c.timeoutsOp[oppo][2] = stateObj.attributes.opponent_sets_won >= 2 ? 1 : 0.2
+    c.timeoutsOp[oppo][3] = stateObj.attributes.opponent_sets_won >= 3 ? 1 : 0.2
 
     c.logo[team] = TENNIS_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = TENNIS_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
@@ -274,7 +278,12 @@ export function setVolleyball(t, stateObj, c, team, oppo) {
     c.barLength[oppo] = stateObj.attributes.opponent_score;
     c.barLabel[team] = t.translate("volleyball.teamBarLabel", "%s", String(stateObj.attributes.team_score));
     c.barLabel[oppo] = t.translate("volleyball.oppoBarLabel", "%s", String(stateObj.attributes.opponent_score));
-    c.timeouts[team] = stateObj.attributes.team_sets_won;
-    c.timeouts[oppo] = stateObj.attributes.opponent_sets_won;
+    c.timeoutsOp[team][1] = stateObj.attributes.team_sets_won >= 1 ? 1 : 0.2
+    c.timeoutsOp[team][2] = stateObj.attributes.team_sets_won >= 2 ? 1 : 0.2
+    c.timeoutsOp[team][3] = stateObj.attributes.team_sets_won >= 3 ? 1 : 0.2
+    c.timeoutsOp[oppo][1] = stateObj.attributes.opponent_sets_won >= 1 ? 1 : 0.2
+    c.timeoutsOp[oppo][2] = stateObj.attributes.opponent_sets_won >= 2 ? 1 : 0.2
+    c.timeoutsOp[oppo][3] = stateObj.attributes.opponent_sets_won >= 3 ? 1 : 0.2
+
     c.timeoutsDisplay = 'inline';
 }

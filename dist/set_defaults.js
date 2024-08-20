@@ -18,9 +18,11 @@ export function initCardData(c) {
     c.barLabel = [];
     c.barLength = [];
     c.color = [];
-    c.timeouts = [];
     c.possessionOp = [];
     c.winner = [];
+    c.timeoutsOp = [];
+    c.timeoutsOp[1] = [];
+    c.timeoutsOp[2] = [];
 }
 
 //
@@ -136,9 +138,13 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     if (stateObj.attributes.possession == stateObj.attributes.opponent_id) {
         c.possessionOp[oppo] = 1;
     }
-    c.timeouts[team] = stateObj.attributes.team_timeouts;
-    c.timeouts[oppo] = stateObj.attributes.opponent_timeouts;
-
+    c.timeoutsOp[team][1] = stateObj.attributes.team_timeouts >= 1 ? 1 : 0.2
+    c.timeoutsOp[team][2] = stateObj.attributes.team_timeouts >= 2 ? 1 : 0.2;
+    c.timeoutsOp[team][3] = stateObj.attributes.team_timeouts >= 3 ? 1 : 0.2;
+    c.timeoutsOp[oppo][1] = stateObj.attributes.opponent_timeouts >= 1 ? 1 : 0.2
+    c.timeoutsOp[oppo][2] = stateObj.attributes.opponent_timeouts >= 2 ? 1 : 0.2;
+    c.timeoutsOp[oppo][3] = stateObj.attributes.opponent_timeouts >= 3 ? 1 : 0.2;
+    
     // Set Location / Context data
 
     c.startTerm = t.translate(sport + ".startTerm");
