@@ -212,10 +212,10 @@ export class TeamTrackerCard extends LitElement {
 // Trigger the UI Card Editor from Card Picker
 //    Uncomment to enable visual editor
 //
-    //  static getConfigElement() {
-    //    // Create and return an editor element
-    //    return document.createElement("my-custom-card-editor");
-    //  }
+    static getConfigElement() {
+    // Create and return an editor element
+        return document.createElement("teamtracker-card-editor");
+    }
     //
     //  static getStubConfig() {
     //    // Return a minimal configuration that will result in a working card configuration
