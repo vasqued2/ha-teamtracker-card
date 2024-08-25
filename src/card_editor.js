@@ -1,7 +1,7 @@
 //
 //  Define and register the UI Card Editor 
 //
-import { html, LitElement } from "./lit/lit-all.min.js";
+import { html, LitElement } from "lit";
 
 
 export class TeamtrackerCardEditor extends LitElement {

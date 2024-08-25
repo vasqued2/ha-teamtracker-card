@@ -1,4 +1,4 @@
-import { LitElement, css } from "./lit/lit-all.min.js";
+import { LitElement, css } from "lit";
 import { Translator } from "./localize/translator.js";
 import { VERSION } from "./const.js";
 import { renderBye } from './render_bye.js';

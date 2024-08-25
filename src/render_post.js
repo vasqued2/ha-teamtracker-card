@@ -1,4 +1,5 @@
-import { html, styleMap } from "./lit/lit-all.min.js";
+import { html } from "lit";
+import { styleMap } from 'lit/directives/style-map.js';
 
 
 // Define the rendering function

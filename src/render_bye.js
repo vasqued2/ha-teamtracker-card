@@ -1,4 +1,4 @@
-import { html } from "./lit/lit-all.min.js";
+import { html } from "lit";
 
 
 // Define the rendering function
