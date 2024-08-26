@@ -1,4 +1,5 @@
-import { html, styleMap } from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
+import { html } from "lit";
+import { styleMap } from 'lit/directives/style-map.js';
 
 
 // Define the rendering function

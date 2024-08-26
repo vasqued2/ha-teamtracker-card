@@ -1,4 +1,4 @@
-import { css } from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
+import { css } from "lit";
 
 export const cardStyles = css`
 .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }

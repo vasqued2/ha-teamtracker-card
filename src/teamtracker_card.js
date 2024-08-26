@@ -1,4 +1,4 @@
-import { LitElement, css } from "https://cdn.jsdelivr.net/gh/lit/dist@3/all/lit-all.min.js";
+import { LitElement, css } from "lit";
 import { Translator } from "./localize/translator.js";
 import { VERSION } from "./const.js";
 import { renderBye } from './render_bye.js';

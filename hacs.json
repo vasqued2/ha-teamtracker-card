@@ -2,6 +2,5 @@
   "name": "Team Tracker Card",
   "filename": "ha-teamtracker-card.js",
   "render_readme": true,
-  "homeassistant": "0.95.4",
-  "country": ["US"]
+  "homeassistant": "0.95.4"
 }

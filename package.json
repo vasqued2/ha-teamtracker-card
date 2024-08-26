@@ -1,0 +1,19 @@
+{
+  "source": "./src/ha-teamtracker-card.js",
+  "module": "./dist/ha-teamtracker-card.js",
+  "targets": {
+    "module": {
+      "includeNodeModules": true
+    }
+  },
+  "scripts": {
+    "watch": "parcel watch",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "lit": "^3.2.0"
+  }
+}
