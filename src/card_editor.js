@@ -251,6 +251,36 @@ export class TeamtrackerCardEditor extends LitElement {
                     Show Outline
                 </label>
             </div>
+            <div class="switch-container">    
+                <ha-switch
+                    @change="${(e) => this._valueChanged(e, 'odds')}"
+                    .checked="${this._config.odds=== true}"
+                    >
+                </ha-switch>
+                <label class="switch-label">
+                    Show Odds
+                </label>
+            </div> 
+            <div class="switch-container">    
+                <ha-switch
+                    @change="${(e) => this._valueChanged(e, 'tv_network')}"
+                    .checked="${this._config.tv_network=== true}"
+                    >
+                </ha-switch>
+                <label class="switch-label">
+                    Show TV-Network
+                </label>
+            </div>
+            <div class="switch-container">    
+                <ha-switch
+                    @change="${(e) => this._valueChanged(e, 'overunder')}"
+                    .checked="${this._config.overunder=== true}"
+                    >
+                </ha-switch>
+                <label class="switch-label">
+                    Show Overunder
+                </label>
+            </div>                                    
             <div class="indented-container">
                 <ha-textfield
                     label="Outline Color"

@@ -1,6 +1,6 @@
 import { LitElement, css } from "lit";
-import { Translator } from "./localize/translator.js";
 import { VERSION } from "./const.js";
+import { Translator } from "./localize/translator.js";
 import { renderBye } from './render_bye.js';
 import { renderMissingConfig, renderMissingObj, renderStateInvalid, renderStateUnavailable } from './render_error.js';
 import { renderIn } from './render_in.js';
@@ -99,6 +99,21 @@ export class TeamTrackerCard extends LitElement {
         o.show_rank = true;
         if (this._config.show_rank == false) {
             o.show_rank = false;
+        }
+
+        o.odds = true;
+        if (this._config.odds == false) {
+            o.odds = false;
+        }
+
+        o.tv_network = true;
+        if (this._config.tv_network == false) {
+            o.tv_network = false;
+        }
+
+        o.overunder = true;
+        if (this._config.overunder == false) {
+            o.overunder = false;
         }
         o.debug = this._config.debug
 

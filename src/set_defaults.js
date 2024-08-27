@@ -81,7 +81,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
         c.url[team] = null;
     }
     else {
-        c.url[team] = o.teamURL || stateObj.attributes.team_url ;
+        c.url[team] = o.teamURL || stateObj.attributes.team_url;
     }
     c.rank[team] = stateObj.attributes.team_rank;
     c.record[team] = stateObj.attributes.team_record;
@@ -94,7 +94,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
         c.url[oppo] = null;
     }
     else {
-        c.url[oppo] = o.opponentURL || stateObj.attributes.opponent_url ;
+        c.url[oppo] = o.opponentURL || stateObj.attributes.opponent_url;
     }
     c.rank[oppo] = stateObj.attributes.opponent_rank;
     c.record[oppo] = stateObj.attributes.opponent_record;
@@ -152,12 +152,26 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     c.venue = stateObj.attributes.venue;
     c.location = stateObj.attributes.location;
 
-    c.pre1 = stateObj.attributes.odds;
-    c.pre2 = '';
-    if (stateObj.attributes.overunder) {
-        c.pre2 = t.translate(sport + ".overUnder", "%s", String(stateObj.attributes.overunder));
+    if (o.odds == false) {
+        c.pre1 = 'none';
+    } else { 
+        c.pre1 = stateObj.attributes.odds;
     }
-    c.pre3 = stateObj.attributes.tv_network;
+
+    c.pre2 = '';
+    if (o.overunder == false) {
+        o.overunder = 'none';
+    } else {
+        if (stateObj.attributes.overunder) {
+            c.pre2 = t.translate(sport + ".overUnder", "%s", String(stateObj.attributes.overunder));
+        }
+    }
+
+    if (o.tv_network == false) {
+        o.tv_network = 'none';
+    } else {
+        c.pre3 = stateObj.attributes.tv_network;
+    }
 
     c.in0 = '';
     c.in1 = '';
