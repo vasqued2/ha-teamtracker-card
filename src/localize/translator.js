@@ -1,4 +1,5 @@
 import {de} from "./languages/de.js"
+import {el} from "./languages/el.js"
 import {en} from "./languages/en.js"
 import {en_US} from "./languages/en_US.js"
 import {es} from "./languages/es.js"
@@ -12,6 +13,7 @@ import {sk_SK} from "./languages/sk_SK.js"
 
 var languages = {
     de: de,
+    el: el,
     en: en,
     en_US: en_US,
     es: es,
