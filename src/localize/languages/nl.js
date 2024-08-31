@@ -1,7 +1,7 @@
 export const nl = {
     "common": {
         "api_error": "API Error",
-        "no_upcoming_games": "Geen aankomende wedstrijden door %s",
+        "no_upcoming_games": "Geen aankomende wedstrijden tot %s",
         "finalTerm": "%s - Finale",
         "byeTerm": "BYE",
         "tourney2": "Finale",
@@ -28,9 +28,9 @@ export const nl = {
     "baseball": {
         "startTerm": "Eerste Worp",
         "overUnder": "O/U: %s",
-        "gameStat1": "Ballen %s",
-        "gameStat2": "Slagen %s",
-        "gameStat3": "%s Outs",
+        "gameStat1": "Wijd %s",
+        "gameStat2": "Slag %s",
+        "gameStat3": "%s Uit",
         "gameBar": "Winstwaarschijnlijkheid",
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
