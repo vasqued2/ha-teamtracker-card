@@ -1,4 +1,4 @@
-let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.14.5";
+let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.14.6";
 let $4fcaa3c95ba349ea$export$6df7962ea75d9a39 = "https://a.espncdn.com/i/headshots/golf/players/full/";
 let $4fcaa3c95ba349ea$export$7e154a1de2266268 = "https://a.espncdn.com/i/headshots/mma/players/full/";
 let $4fcaa3c95ba349ea$export$c8a00e33d990d0fa = "https://a.espncdn.com/i/headshots/rpm/players/full/";
@@ -1032,6 +1032,156 @@ const $044e49bbd03ccfb1$export$2fa162a495d26869 = {
         "gameStat2": "%s",
         "gameStat3": "",
         "gameBar": "Gewinnchance",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    }
+};
+
+
+const $e5e336768a089693$export$c3da0dad1b44eea9 = {
+    "common": {
+        "api_error": "\u03A3\u03C6\u03AC\u03BB\u03BC\u03B1 API",
+        "no_upcoming_games": "\u0394\u03B5\u03BD \u03C5\u03C0\u03AC\u03C1\u03C7\u03BF\u03C5\u03BD \u03C0\u03C1\u03BF\u03C3\u03B5\u03C7\u03B5\u03AF\u03C2 \u03B1\u03B3\u03CE\u03BD\u03B5\u03C2 \u03AD\u03C9\u03C2 %s",
+        "finalTerm": "%s - \u03A4\u03B5\u03BB\u03B9\u03BA\u03CC\u03C2",
+        "byeTerm": "\u0391\u039D\u0391\u03A0\u0391\u03A5\u03A3\u0397",
+        "tourney2": "\u03A4\u03B5\u03BB\u03B9\u03BA\u03CC\u03C2",
+        "tourney4": "\u0397\u03BC\u03B9\u03C4\u03B5\u03BB\u03B9\u03BA\u03BF\u03AF",
+        "tourney8": "\u03A0\u03C1\u03BF\u03B7\u03BC\u03B9\u03C4\u03B5\u03BB\u03B9\u03BA\u03BF\u03AF",
+        "tourney16": "\u03A6\u03AC\u03C3\u03B7 \u03C4\u03C9\u03BD 16",
+        "tourney32": "\u03A6\u03AC\u03C3\u03B7 \u03C4\u03C9\u03BD 32",
+        "tourney64": "\u03A6\u03AC\u03C3\u03B7 \u03C4\u03C9\u03BD 64",
+        "tourney128": "\u03A0\u03C1\u03CE\u03B9\u03BC\u03B5\u03C2 \u03A6\u03AC\u03C3\u03B5\u03B9\u03C2",
+        "tourney256": "\u03A0\u03C1\u03CE\u03B9\u03BC\u03B5\u03C2 \u03A6\u03AC\u03C3\u03B5\u03B9\u03C2",
+        "today": "\u03A3\u03AE\u03BC\u03B5\u03C1\u03B1",
+        "tomorrow": "\u0391\u03CD\u03C1\u03B9\u03BF"
+    },
+    "australian-football": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "baseball": {
+        "startTerm": "\u03A0\u03C1\u03CE\u03C4\u03B7 \u03A1\u03AF\u03C8\u03B7",
+        "overUnder": "O/U: %s",
+        "gameStat1": "\u039C\u03C0\u03AC\u03BB\u03B5\u03C2 %s",
+        "gameStat2": "\u03A7\u03C4\u03C5\u03C0\u03AE\u03BC\u03B1\u03C4\u03B1 %s",
+        "gameStat3": "%s \u0386\u03BF\u03C5\u03C4",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "basketball": {
+        "startTerm": "\u03A4\u03B6\u03AC\u03BC\u03C0\u03BF\u03BB",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "cricket": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "football": {
+        "startTerm": "\u03A3\u03AD\u03BD\u03C4\u03C1\u03B1",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "golf": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7 \u0393\u03CD\u03C1\u03BF\u03C5",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A7\u03C4\u03C5\u03C0\u03AE\u03BC\u03B1\u03C4\u03B1 (\u039C\u03AD\u03C7\u03C1\u03B9)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "hockey": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7 \u03A0\u03B1\u03B9\u03C7\u03BD\u03B9\u03B4\u03B9\u03BF\u03CD",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A3\u03BF\u03C5\u03C4 \u03C3\u03C4\u03BF \u03A4\u03AD\u03C1\u03BC\u03B1",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "mma": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "racing": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u0393\u03CD\u03C1\u03BF\u03B9",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "soccer": {
+        "startTerm": "\u03A3\u03AD\u03BD\u03C4\u03C1\u03B1",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A3\u03BF\u03C5\u03C4 (\u03A3\u03C4\u03BF\u03BD \u03A3\u03C4\u03CC\u03C7\u03BF)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "tennis": {
+        "startTerm": "\u03A0\u03C1\u03CE\u03C4\u03BF \u03A3\u03B5\u03C1\u03B2\u03AF\u03C2",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "volleyball": {
+        "startTerm": "\u03A0\u03C1\u03CE\u03C4\u03BF \u03A3\u03B5\u03C1\u03B2\u03AF\u03C2",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A3\u03BA\u03BF\u03C1 %s",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "default": {
+        "startTerm": "\u0388\u03BD\u03B1\u03C1\u03BE\u03B7",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "\u03A0\u03B9\u03B8\u03B1\u03BD\u03CC\u03C4\u03B7\u03C4\u03B1 \u039D\u03AF\u03BA\u03B7\u03C2",
         "teamBarLabel": "%s%",
         "oppoBarLabel": "%s%"
     }
@@ -2482,6 +2632,7 @@ const $125926858f90b59c$export$b2bcf639de11a4af = {
 
 var $cfd70fadc94c42c5$var$languages = {
     de: (0, $044e49bbd03ccfb1$export$2fa162a495d26869),
+    el: (0, $e5e336768a089693$export$c3da0dad1b44eea9),
     en: (0, $9bf8d9821f43b5a3$export$84584c2a98eb6753),
     en_US: (0, $738479ced03534bd$export$25dc44e90bc68e13),
     es: (0, $fa59b11c3970eda2$export$ca5e4045a55e76d2),
