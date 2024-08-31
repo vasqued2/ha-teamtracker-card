@@ -1,4 +1,4 @@
-export let VERSION = "v0.14.4";
+export let VERSION = "v0.14.5";
 
 export let GOLF_HEADSHOT_URL = "https://a.espncdn.com/i/headshots/golf/players/full/";
 export let MMA_HEADSHOT_URL = "https://a.espncdn.com/i/headshots/mma/players/full/";
