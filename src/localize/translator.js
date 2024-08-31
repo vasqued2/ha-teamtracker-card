@@ -1,3 +1,4 @@
+import {de} from "./languages/de.js"
 import {en} from "./languages/en.js"
 import {en_US} from "./languages/en_US.js"
 import {es} from "./languages/es.js"
@@ -10,6 +11,7 @@ import {sk} from "./languages/sk.js"
 import {sk_SK} from "./languages/sk_SK.js"
 
 var languages = {
+    de: de,
     en: en,
     en_US: en_US,
     es: es,
@@ -19,7 +21,7 @@ var languages = {
     it: it,
     pt_BR: pt_BR,
     sk: sk,    
-    sk_SK: sk_SK,    
+    sk_SK: sk_SK,
 };
 
 export class Translator {
