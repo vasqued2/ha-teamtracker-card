@@ -2630,6 +2630,153 @@ const $125926858f90b59c$export$b2bcf639de11a4af = {
 };
 
 
+const $f594c62d0c6e32a5$export$65540e5f7f6e7dce = {
+    "common": {
+        "api_error": "API Error",
+        "no_upcoming_games": "Inga kommande matcher %s",
+        "finalTerm": "%s - Final",
+        "byeTerm": "BYE",
+        "tourney2": "Final",
+        "tourney4": "Semifinaler",
+        "tourney8": "Kvartsfinaler",
+        "tourney16": "\xc5ttondelsfinal",
+        "tourney32": "Sextondelsfinal",
+        "today": "Idag",
+        "tomorrow": "Imorgon"
+    },
+    "australian-football": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "baseball": {
+        "startTerm": "F\xf6rsta pitch",
+        "overUnder": "O/U: %s",
+        "gameStat1": "Bollar %s",
+        "gameStat2": "Strikes %s",
+        "gameStat3": "%s Outs",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "basketball": {
+        "startTerm": "Avkast",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "cricket": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "football": {
+        "startTerm": "Avspark",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "golf": {
+        "startTerm": "Omg\xe5ngen startar",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Shots (Thru)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "hockey": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Skott p\xe5 m\xe5l",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "mma": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    },
+    "racing": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Varv",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "soccer": {
+        "startTerm": "Avspark",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Skott (p\xe5 m\xe5l)",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "tennis": {
+        "startTerm": "F\xf6rsta serve",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "volleyball": {
+        "startTerm": "F\xf6rsta serve",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "%s Score",
+        "teamBarLabel": "%s",
+        "oppoBarLabel": "%s"
+    },
+    "default": {
+        "startTerm": "Start",
+        "overUnder": "O/U: %s",
+        "gameStat1": "%s",
+        "gameStat2": "%s",
+        "gameStat3": "",
+        "gameBar": "Vinstsannolikhet",
+        "teamBarLabel": "%s%",
+        "oppoBarLabel": "%s%"
+    }
+};
+
+
 var $cfd70fadc94c42c5$var$languages = {
     de: (0, $044e49bbd03ccfb1$export$2fa162a495d26869),
     el: (0, $e5e336768a089693$export$c3da0dad1b44eea9),
@@ -2642,7 +2789,8 @@ var $cfd70fadc94c42c5$var$languages = {
     it: (0, $d573fc5554189e19$export$3486a10f30cf1ee4),
     pt_BR: (0, $60a4d35e5022a9df$export$9dc8766c8c230075),
     sk: (0, $06041e2b1c26c877$export$d608fa5b5bfd2021),
-    sk_SK: (0, $125926858f90b59c$export$b2bcf639de11a4af)
+    sk_SK: (0, $125926858f90b59c$export$b2bcf639de11a4af),
+    sv: (0, $f594c62d0c6e32a5$export$65540e5f7f6e7dce)
 };
 class $cfd70fadc94c42c5$export$9850010f89e291bb {
     constructor(lang = "en"){
