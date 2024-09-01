@@ -19,7 +19,7 @@ export function renderPost(c) {
                         <div class="record left-record">${c.record[1]}</div>
                     </a>
                 </div>
-                <div class="score right" style=${styleMap({ '--score_opacity': c.scoreOp[1], "--score_size": c.scoreSize })}>${c.score[1]}</div>
+                <div class="score" style=${styleMap({ '--score_opacity': c.scoreOp[1], "--score_size": c.scoreSize })}>${c.score[1]}</div>
                 <div class="divider">&nbsp&nbsp&nbsp</div>
                 <div class="score" style=${styleMap({ '--score_opacity': c.scoreOp[2], "--score_size": c.scoreSize })}>${c.score[2]}</div>
                 <div class="team">
