@@ -10,6 +10,7 @@ import {nl} from "./languages/nl.js"
 import {pt_BR} from "./languages/pt_BR.js"
 import {sk} from "./languages/sk.js"
 import {sk_SK} from "./languages/sk_SK.js"
+import {sv} from "./languages/sv.js"
 
 var languages = {
     de: de,
@@ -24,6 +25,7 @@ var languages = {
     pt_BR: pt_BR,
     sk: sk,    
     sk_SK: sk_SK,
+    sv: sv,
 };
 
 export class Translator {
