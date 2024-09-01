@@ -14,19 +14,19 @@ export function renderPost(c) {
             <div class="card-content">
                 <div class="team">
                     <a class="left-clickable ${!c.url[1] ? 'disabled' : ''}" href="${c.url[1] ? c.url[1] : '#'}" target="_blank">
-                        <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
-                        <div class="name"><span class="rank" style=${styleMap({ '--rank-display': c.rankDisplay })}>${c.rank[1]}</span> ${c.name[1]}</div>
-                        <div class="record">${c.record[1]}</div>
+                        <img class="logo left-logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
+                        <div class="name left-name"><span class="rank" style=${styleMap({ '--rank-display': c.rankDisplay })}>${c.rank[1]}</span> ${c.name[1]}</div>
+                        <div class="record left-record">${c.record[1]}</div>
                     </a>
                 </div>
-                <div class="score" style=${styleMap({ '--score_opacity': c.scoreOp[1], "--score_size": c.scoreSize })}>${c.score[1]}</div>
+                <div class="score right" style=${styleMap({ '--score_opacity': c.scoreOp[1], "--score_size": c.scoreSize })}>${c.score[1]}</div>
                 <div class="divider">&nbsp&nbsp&nbsp</div>
                 <div class="score" style=${styleMap({ '--score_opacity': c.scoreOp[2], "--score_size": c.scoreSize })}>${c.score[2]}</div>
                 <div class="team">
                     <a class="right-clickable ${!c.url[2] ? 'disabled' : ''}" href="${c.url[2] ? c.url[2] : '#'}" target="_blank">
-                        <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
-                        <div class="name"><span class="rank" style=${styleMap({ '--rank-display': c.rankDisplay })}>${c.rank[2]}</span> ${c.name[2]}</div>
-                        <div class="record">${c.record[2]}</div>
+                        <img class="logo right-logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
+                        <div class="name right-name"><span class="rank" style=${styleMap({ '--rank-display': c.rankDisplay })}>${c.rank[2]}</span> ${c.name[2]}</div>
+                        <div class="record right-record">${c.record[2]}</div>
                     </a>
                 </div>
             </div>

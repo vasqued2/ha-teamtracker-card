@@ -2819,11 +2819,11 @@ function $654f96c20a3bcd40$export$3f4c9efb42c5bfd8(c) {
             <div class="card-content">
                 <div class="team">
                     <a class="left-clickable ${!c.url[1] ? "disabled" : ""}" href="${c.url[1] ? c.url[1] : "#"}" target="_blank">
-                        <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
-                        <div class="name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                        <img class="logo left-logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
+                        <div class="name left-name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--rank-display": `${c.rankDisplay}`
     })}>${c.rank[1]}</span> ${c.name[1]}</div>
-                        <div class="record">${c.record[1]}</div>
+                        <div class="record left-record">${c.record[1]}</div>
                         <div class="timeouts-wrapper" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--timeouts-display": `${c.timeoutsDisplay}`
     })}>
@@ -2863,11 +2863,11 @@ function $654f96c20a3bcd40$export$3f4c9efb42c5bfd8(c) {
     })}>&bull;</div>
                 <div class="team">
                     <a class="right-clickable ${!c.url[2] ? "disabled" : ""}" href="${c.url[2] ? c.url[2] : "#"}" target="_blank">
-                        <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
-                        <div class="name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                        <img class="logo right-logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
+                        <div class="name right-name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--rank-display": `${c.rankDisplay}`
     })}>${c.rank[2]}</span> ${c.name[2]}</div>
-                        <div class="record">${c.record[2]}</div>
+                        <div class="record right-record">${c.record[2]}</div>
                         <div class="timeouts-wrapper" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--timeouts-display": `${c.timeoutsDisplay}`
     })}>
@@ -3013,14 +3013,14 @@ function $ba84a5acf45954c4$export$823f4865e91cfbff(c) {
             <div class="card-content">
                 <div class="team">
                     <a class="left-clickable ${!c.url[1] ? "disabled" : ""}" href="${c.url[1] ? c.url[1] : "#"}" target="_blank">
-                        <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
-                        <div class="name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                        <img class="logo left-logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
+                        <div class="name left-name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--rank-display": c.rankDisplay
     })}>${c.rank[1]}</span> ${c.name[1]}</div>
-                        <div class="record">${c.record[1]}</div>
+                        <div class="record left-record">${c.record[1]}</div>
                     </a>
                 </div>
-                <div class="score" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                <div class="score right" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--score_opacity": c.scoreOp[1],
         "--score_size": c.scoreSize
     })}>${c.score[1]}</div>
@@ -3031,11 +3031,11 @@ function $ba84a5acf45954c4$export$823f4865e91cfbff(c) {
     })}>${c.score[2]}</div>
                 <div class="team">
                     <a class="right-clickable ${!c.url[2] ? "disabled" : ""}" href="${c.url[2] ? c.url[2] : "#"}" target="_blank">
-                        <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
-                        <div class="name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                        <img class="logo right-logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
+                        <div class="name right-name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--rank-display": c.rankDisplay
     })}>${c.rank[2]}</span> ${c.name[2]}</div>
-                        <div class="record">${c.record[2]}</div>
+                        <div class="record right-record">${c.record[2]}</div>
                     </a>
                 </div>
             </div>
@@ -3074,11 +3074,11 @@ function $32e2f72be859b718$export$d6bad15bd473a528(c) {
             <div class="card-content">
                 <div class="team">
                     <a class="left-clickable ${!c.url[1] ? "disabled" : ""}" href="${c.url[1] ? c.url[1] : "#"}" target="_blank">
-                        <img class="logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
-                        <div class="name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                        <img class="logo left-logo" src="${c.logo[1]}" onerror="this.onerror=null; this.src='${c.logoError[1]}';" />
+                        <div class="name left-name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--rank-display": `${c.rankDisplay}`
     })}>${c.rank[1]}</span> ${c.name[1]}</div>
-                        <div class="record">${c.record[1]}</div>
+                        <div class="record left-record">${c.record[1]}</div>
                     </a>
                 </div>
                 <div class="gamewrapper">
@@ -3088,11 +3088,11 @@ function $32e2f72be859b718$export$d6bad15bd473a528(c) {
                 </div>
                 <div class="team">
                     <a class="right-clickable ${!c.url[2] ? "disabled" : ""}" href="${c.url[2] ? c.url[2] : "#"}" target="_blank">
-                        <img class="logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
-                        <div class="name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                        <img class="logo right-logo" src="${c.logo[2]}" onerror="this.onerror=null; this.src='${c.logoError[2]}';" />
+                        <div class="name right-name"><span class="rank" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--rank-display": `${c.rankDisplay}`
     })}>${c.rank[2]}</span> ${c.name[2]}</div>
-                        <div class="record">${c.record[2]}</div>
+                        <div class="record right-record">${c.record[2]}</div>
                     </a>
                 </div>
             </div>
