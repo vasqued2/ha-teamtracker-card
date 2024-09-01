@@ -3168,7 +3168,7 @@ function $ba84a5acf45954c4$export$823f4865e91cfbff(c) {
                         <div class="record left-record">${c.record[1]}</div>
                     </a>
                 </div>
-                <div class="score right" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                <div class="score" style=${(0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
         "--score_opacity": c.scoreOp[1],
         "--score_size": c.scoreSize
     })}>${c.score[1]}</div>
