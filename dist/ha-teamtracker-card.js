@@ -3552,6 +3552,8 @@ function $8d10daf0cda71373$export$d4f0019d7c6b6a3d(t, stateObj, c, team, oppo) {
     c.timeoutsDisplay = "none";
     c.logo[team] = (0, $4fcaa3c95ba349ea$export$6df7962ea75d9a39) + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = (0, $4fcaa3c95ba349ea$export$6df7962ea75d9a39) + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
+    c.logoAlternate[oppo] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
 }
 function $8d10daf0cda71373$export$5a6583dd53975e58(t, stateObj, c, team, oppo) {
     c.barLength[team] = stateObj.attributes.team_shots_on_target;
@@ -3566,6 +3568,8 @@ function $8d10daf0cda71373$export$b95402321280aab2(t, stateObj, c, team, oppo) {
     c.barDisplay = "none";
     c.logo[team] = (0, $4fcaa3c95ba349ea$export$7e154a1de2266268) + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = (0, $4fcaa3c95ba349ea$export$7e154a1de2266268) + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
+    c.logoAlternate[oppo] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
 }
 function $8d10daf0cda71373$export$75a82cd3fb272a60(t, stateObj, c, team, oppo) {
     c.title = c.title || stateObj.attributes.event_name;
@@ -3592,6 +3596,8 @@ function $8d10daf0cda71373$export$75a82cd3fb272a60(t, stateObj, c, team, oppo) {
     //    }
     c.logo[team] = (0, $4fcaa3c95ba349ea$export$c8a00e33d990d0fa) + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = (0, $4fcaa3c95ba349ea$export$c8a00e33d990d0fa) + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
+    c.logoAlternate[oppo] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
 }
 function $8d10daf0cda71373$export$215e00a8cdeadf2(t, stateObj, c, team, oppo) {
     c.barLength[team] = stateObj.attributes.team_total_shots;
@@ -3628,6 +3634,8 @@ function $8d10daf0cda71373$export$b80102c1df210e4f(t, stateObj, c, team, oppo) {
     c.timeoutsOp[oppo][3] = stateObj.attributes.opponent_sets_won >= 3 ? 1 : 0.2;
     c.logo[team] = (0, $4fcaa3c95ba349ea$export$54565cc34e8d24d2) + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = (0, $4fcaa3c95ba349ea$export$54565cc34e8d24d2) + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
+    c.logoAlternate[oppo] = (0, $4fcaa3c95ba349ea$export$607dc1951b62972e);
     c.title = c.title || stateObj.attributes.event_name;
     c.timeoutsDisplay = "inline";
 }
