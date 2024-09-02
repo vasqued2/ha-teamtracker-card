@@ -6,6 +6,7 @@ import { ERROR_HEADSHOT_URL } from "./const.js";
 export function initCardData(c) {
     c.logoBG = [];
     c.logo = [];
+    c.logoAlternate = [];
     c.logoError = [];
     c.name = [];
     c.url = [];
@@ -74,6 +75,10 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     // Set Scoreboard data
 
     c.logo[team] = stateObj.attributes.team_logo;
+    c.logoAlternate[team] = stateObj.attributes.team_logo;
+    if (c.logo[team] && o.darkMode) {
+        c.logo[team] = c.logo[team].replace('/500/', '/500-dark/')
+    }
     c.logoError[team] = ERROR_HEADSHOT_URL;
     c.logoBG[team] = stateObj.attributes.team_logo;
     c.name[team] = stateObj.attributes.team_name;
@@ -87,6 +92,10 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     c.record[team] = stateObj.attributes.team_record;
     c.winner[team] = stateObj.attributes.team_winner || false;
     c.logo[oppo] = stateObj.attributes.opponent_logo;
+    c.logoAlternate [oppo] = stateObj.attributes.opponent_logo;
+    if (c.logo[oppo] && o.darkMode) {
+        c.logo[oppo] = c.logo[oppo].replace('/500/', '/500-dark/')
+    }
     c.logoError[oppo] = ERROR_HEADSHOT_URL;
     c.logoBG[oppo] = stateObj.attributes.opponent_logo;
     c.name[oppo] = stateObj.attributes.opponent_name;
