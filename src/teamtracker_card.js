@@ -101,6 +101,7 @@ export class TeamTrackerCard extends LitElement {
             o.show_rank = false;
         }
         o.debug = this._config.debug
+        o.darkMode = this.hass.themes.darkMode
 
         //
         //  Set sport, team, and oppo 

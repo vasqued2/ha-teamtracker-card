@@ -1,4 +1,4 @@
-import { GOLF_HEADSHOT_URL, MMA_HEADSHOT_URL, RACING_HEADSHOT_URL, TENNIS_HEADSHOT_URL } from "./const.js";
+import { GOLF_HEADSHOT_URL, MMA_HEADSHOT_URL, RACING_HEADSHOT_URL, TENNIS_HEADSHOT_URL, ERROR_HEADSHOT_URL } from "./const.js";
 
 //
 //  Call function to set the data for the sport
@@ -119,6 +119,8 @@ export function setGolf(t, stateObj, c, team, oppo) {
 
     c.logo[team] = GOLF_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = GOLF_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = ERROR_HEADSHOT_URL;
+    c.logoAlternate[oppo] = ERROR_HEADSHOT_URL;
 }
 
 //
@@ -150,6 +152,8 @@ export function setMMA(t, stateObj, c, team, oppo) {
 
     c.logo[team] = MMA_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = MMA_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = ERROR_HEADSHOT_URL;
+    c.logoAlternate[oppo] = ERROR_HEADSHOT_URL;
 }
 
 
@@ -191,6 +195,8 @@ export function setRacing(t, stateObj, c, team, oppo) {
 //    }
     c.logo[team] = RACING_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = RACING_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = ERROR_HEADSHOT_URL;
+    c.logoAlternate[oppo] = ERROR_HEADSHOT_URL;
 }
 
 //
@@ -258,6 +264,8 @@ export function setTennis(t, stateObj, c, team, oppo) {
 
     c.logo[team] = TENNIS_HEADSHOT_URL + stateObj.attributes.team_id + ".png";
     c.logo[oppo] = TENNIS_HEADSHOT_URL + stateObj.attributes.opponent_id + ".png";
+    c.logoAlternate[team] = ERROR_HEADSHOT_URL;
+    c.logoAlternate[oppo] = ERROR_HEADSHOT_URL;
 
     c.title = c.title || stateObj.attributes.event_name
 
