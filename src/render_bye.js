@@ -7,10 +7,12 @@ export function renderBye(c) {
     const htmlTemplate = html`
     <ha-card>
         <div class="card">
-            <img class="team-bg" src="${c.logoBG[team]}" />
+            <img class="team-bg" src="${c.logoBG[team]}"
+                onerror="this.onerror=null; this.src='${c.logoBGAlternate[team]}';" />
             <div class="card-content">
                 <div class="team">
-                    <img src="${c.logo[team]}" />
+                    <img class="logo" src="${c.logo[team]}" 
+                        onerror="this.onerror=null; this.src='${c.logoAlternate[team]}'; this.onerror=function() { this.src='${c.logoError[team]}'; };" />
                     <div class="name">${c.name[team]}</div>
                 </div>
                 <div class="bye">${c.byeTerm}</div>

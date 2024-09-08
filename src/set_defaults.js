@@ -5,6 +5,7 @@ import { ERROR_HEADSHOT_URL } from "./const.js";
 //
 export function initCardData(c) {
     c.logoBG = [];
+    c.logoBGAlternate = [];
     c.logo = [];
     c.logoAlternate = [];
     c.logoError = [];
@@ -81,6 +82,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     }
     c.logoError[team] = ERROR_HEADSHOT_URL;
     c.logoBG[team] = stateObj.attributes.team_logo;
+    c.logoBGAlternate[team] = stateObj.attributes.team_logo;
     c.name[team] = stateObj.attributes.team_name;
     if (o.teamURL == 'more-info') {
         c.url[team] = null;
@@ -98,6 +100,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     }
     c.logoError[oppo] = ERROR_HEADSHOT_URL;
     c.logoBG[oppo] = stateObj.attributes.opponent_logo;
+    c.logoBGAlternate[oppo] = stateObj.attributes.opponent_logo;
     c.name[oppo] = stateObj.attributes.opponent_name;
     if (o.opponentURL == 'more-info') {
         c.url[oppo] = null;
@@ -111,7 +114,16 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     c.playClock = stateObj.attributes.clock;
     if (o.showLeague) {
         c.logoBG[team] = stateObj.attributes.league_logo
+        c.logoBGAlternate[team] = stateObj.attributes.league_logo
         c.logoBG[oppo] = stateObj.attributes.league_logo
+        c.logoBGAlternate[oppo] = stateObj.attributes.league_logo
+    }
+    if (c.logoBG[team] && o.darkMode) {
+        c.logoBG[team] = c.logoBG[team].replace('/500/', '/500-dark/')
+    }
+
+    if (c.logoBG[oppo] && o.darkMode) {
+        c.logoBG[oppo] = c.logoBG[oppo].replace('/500/', '/500-dark/')
     }
 
     c.score[team] = stateObj.attributes.team_score;
