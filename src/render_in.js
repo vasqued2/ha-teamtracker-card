@@ -9,8 +9,10 @@ export function renderIn(c) {
     <ha-card>
         <div class="card">
             <div class="title">${c.title}</div>
-            <img class="team-bg" src="${c.logoBG[1]}" />
-            <img class="opponent-bg" src="${c.logoBG[2]}" />
+            <img class="team-bg" src="${c.logoBG[1]}"
+                onerror="this.onerror=null; this.src='${c.logoBGAlternate[1]}';" />
+            <img class="opponent-bg" src="${c.logoBG[2]}"
+                onerror="this.onerror=null; this.src='${c.logoBGAlternate[2]}';" />
             <div class="card-content">
                 <div class="team">
                     <a class="left-clickable ${!c.url[1] ? 'disabled' : ''}" href="${c.url[1] ? c.url[1] : '#'}" target="_blank">
