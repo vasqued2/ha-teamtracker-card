@@ -81,7 +81,7 @@ export const de = {
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Torschüsse",
+        "gameBar": "Schüsse (auf Tor)",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
@@ -111,12 +111,12 @@ export const de = {
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Torschüsse",
+        "gameBar": "Schüsse (auf Tor)",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
     "tennis": {
-        "startTerm": "First Serve",
+        "startTerm": "Aufschlag",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
