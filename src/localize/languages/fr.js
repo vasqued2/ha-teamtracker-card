@@ -36,7 +36,7 @@ export const fr = {
         "oppoBarLabel": "%s%"
     },
     "basketball": {
-        "startTerm": "Astuce",
+        "startTerm": "Engagement",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -56,7 +56,7 @@ export const fr = {
         "oppoBarLabel": "%s%"
     },
     "football": {
-        "startTerm": "Démarrer",
+        "startTerm": "Engagement",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -76,7 +76,7 @@ export const fr = {
         "oppoBarLabel": "%s"
     },
     "hockey": {
-        "startTerm": "Lancer de rondelle",
+        "startTerm": "Mise en jeu",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -86,7 +86,7 @@ export const fr = {
         "oppoBarLabel": "%s"
     },
     "mma": {
-        "startTerm": "Commencer",
+        "startTerm": "Début du combat",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -96,7 +96,7 @@ export const fr = {
         "oppoBarLabel": "%s%"
     },
     "racing": {
-        "startTerm": "Commencer",
+        "startTerm": "Départ de la course",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
@@ -106,7 +106,7 @@ export const fr = {
         "oppoBarLabel": "%s"
     },
     "soccer": {
-        "startTerm": "Démarrer",
+        "startTerm": "Coup d'envoi",
         "overUnder": "O/U: %s",
         "gameStat1": "%s",
         "gameStat2": "%s",
