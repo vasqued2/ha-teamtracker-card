@@ -56,7 +56,7 @@ export function renderIn(c) {
                 <div class="on-base" style=${styleMap({"--on-base-opacity": `${c.onFirstOp}`})}>&bull;</div>
             </div>
             <div class="outs" style=${styleMap({"--outs-display": `${c.outsDisplay}`})}>${c.in0}</div>
-            <div class="in-series-info" style=${styleMap({"--series_summary-display": `${c.seriesSummaryDisplay}`})}>${c.seriesSummary}</div>
+            <div class="in-series-info" style=${styleMap({"--series-summary-display": `${c.seriesSummaryDisplay}`})}>${c.seriesSummary}</div>
             <div class="line"></div>
             <a class="bottom-clickable ${!c.bottomURL ? 'disabled' : ''}" href="${c.bottomURL ? c.bottomURL : '#'}" target="_blank">
                 <div class="in-row1">
