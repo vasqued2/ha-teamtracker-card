@@ -238,7 +238,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
 
     c.seriesSummary = stateObj.attributes.series_summary;
     if (c.seriesSummary) {
-        c.seriesSummaryDisplay= "inherit";
+        c.seriesSummaryDisplay= "block";
     }
 }
 

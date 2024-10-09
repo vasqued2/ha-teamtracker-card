@@ -36,7 +36,7 @@ export function renderPre(c) {
                     </a>
                 </div>
             </div>
-            <div class="pre-series-info" style=${styleMap({"--series_summary-display": `${c.seriesSummaryDisplay}`})}>${c.seriesSummary}</div>
+            <div class="pre-series-info" style=${styleMap({"--series-summary-display": `${c.seriesSummaryDisplay}`})}>${c.seriesSummary}</div>
             <div class="line"></div>
             <a class="bottom-clickable ${!c.bottomURL ? 'disabled' : ''}" href="${c.bottomURL ? c.bottomURL : '#'}" target="_blank">
                 <div class="pre-row1">
