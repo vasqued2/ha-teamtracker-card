@@ -253,7 +253,7 @@ export function setCardFormat(o, c) {
 }
 
 
-export function setStartInfo(c, stateObj, t, lang, time_format) {
+export function setStartInfo(c, stateObj, t, lang, time_format, server_time_zone) {
 
     var gameDate = new Date(stateObj.attributes.date);
     var gameDateStr = gameDate.toLocaleDateString(lang, { month: 'short', day: '2-digit' });
@@ -281,15 +281,30 @@ export function setStartInfo(c, stateObj, t, lang, time_format) {
         c.gameDatePRE = gameDateStr;
     }
 
-    c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit' });
-    if (time_format == "24") {
-        c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: false });
+    if (server_time_zone) {
+        c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', timeZone: server_time_zone });
+        if (time_format == "24") {
+            c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: server_time_zone });
+        }
+        if (time_format == "12") {
+            c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: server_time_zone });
+        }
+        if (time_format == "system") {
+            var sys_lang = navigator.language || "en"
+            c.gameTime = gameDate.toLocaleTimeString(sys_lang, { hour: '2-digit', minute: '2-digit', timeZone: server_time_zone });
+        }
     }
-    if (time_format == "12") {
-        c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: true });
-    }
-    if (time_format == "system") {
-        var sys_lang = navigator.language || "en"
-        c.gameTime = gameDate.toLocaleTimeString(sys_lang, { hour: '2-digit', minute: '2-digit' });
+    else {
+        c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit' });
+        if (time_format == "24") {
+            c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: false });
+        }
+        if (time_format == "12") {
+            c.gameTime = gameDate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+        if (time_format == "system") {
+            var sys_lang = navigator.language || "en"
+            c.gameTime = gameDate.toLocaleTimeString(sys_lang, { hour: '2-digit', minute: '2-digit' });
+        }
     }
 }

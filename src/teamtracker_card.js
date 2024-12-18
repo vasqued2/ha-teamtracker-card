@@ -132,11 +132,15 @@ export class TeamTrackerCard extends LitElement {
             sport = "default";
         }
 
+        var server_time_zone = null;
+        if (this.hass.locale.time_zone == "server") {
+            server_time_zone = this.hass.config.time_zone;
+        }
         //
         //  Set card data
         //
         initCardData(c);
-        setStartInfo(c, stateObj, t, lang, time_format);
+        setStartInfo(c, stateObj, t, lang, time_format, server_time_zone);
         setCardFormat(o, c);
         setDefaults(t, lang, stateObj, c, o, sport, team, oppo);
         setSportData(sport, t, stateObj, c, team, oppo)
@@ -165,7 +169,9 @@ export class TeamTrackerCard extends LitElement {
         if (o.debug) {
             var lastUpdate = new Date(stateObj.attributes.last_update);
             var updateTime = lastUpdate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-
+            if (server_time_zone) {
+                updateTime = lastUpdate.toLocaleTimeString(lang, { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: server_time_zone });
+            }
             c.title = this._config.entity + " " + c.title + "(";
             if (stateObj.attributes.api_message) {
                 c.title = c.title + stateObj.attributes.api_message[0];
