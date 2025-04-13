@@ -1,4 +1,4 @@
-let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.14.14";
+let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.14.15";
 let $4fcaa3c95ba349ea$export$6df7962ea75d9a39 = "https://a.espncdn.com/i/headshots/golf/players/full/";
 let $4fcaa3c95ba349ea$export$7e154a1de2266268 = "https://a.espncdn.com/i/headshots/mma/players/full/";
 let $4fcaa3c95ba349ea$export$c8a00e33d990d0fa = "https://a.espncdn.com/i/headshots/rpm/players/full/";
@@ -1901,7 +1901,7 @@ const $4f808b6be6c4ddc7$export$acb2a88f7d552ebf = {
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Tirs (cadrer)",
+        "gameBar": "Tirs (cadr\xe9s)",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
