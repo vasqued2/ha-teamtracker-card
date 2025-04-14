@@ -111,7 +111,7 @@ export const fr = {
         "gameStat1": "%s",
         "gameStat2": "%s",
         "gameStat3": "",
-        "gameBar": "Tirs (cadrer)",
+        "gameBar": "Tirs (cadrés)",
         "teamBarLabel": "%s",
         "oppoBarLabel": "%s"
     },
