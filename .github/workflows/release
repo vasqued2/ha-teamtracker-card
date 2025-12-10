@@ -1,0 +1,40 @@
+name: Attach Card to Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:  # Allows manual testing
+
+jobs:
+  attach-card:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify dist file exists
+        run: |
+          ls -lh dist/
+          echo "Checking for ha-teamtracker-card.js..."
+          if [ ! -f "dist/ha-teamtracker-card.js" ]; then
+            echo "Error: ha-teamtracker-card.js not found in dist/"
+            exit 1
+          fi
+
+      - name: Upload release asset
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./dist/ha-teamtracker-card.js
+          asset_name: ha-teamtracker-card.js
+          asset_content_type: application/javascript
+      
+      - name: Upload artifact for testing
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: card-build
+          path: dist/ha-teamtracker-card.js
