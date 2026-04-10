@@ -182,7 +182,7 @@ export function setRacing(t, stateObj, c, team, oppo) {
     c.barLabel[team] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
     c.barLabel[oppo] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
 
-//    if (stateObj.attributes.league.includes("NASCAR")) {
+//    if (stateObj.attributes.league_name.includes("NASCAR")) {
 //        c.logo[team] = null;
 //        c.logo[oppo] = null;
 //        c.initials[team] = "";

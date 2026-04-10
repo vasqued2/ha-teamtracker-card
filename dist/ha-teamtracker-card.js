@@ -1,4 +1,4 @@
-let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.14.17";
+let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.15.0";
 let $4fcaa3c95ba349ea$export$6df7962ea75d9a39 = "https://a.espncdn.com/i/headshots/golf/players/full/";
 let $4fcaa3c95ba349ea$export$7e154a1de2266268 = "https://a.espncdn.com/i/headshots/mma/players/full/";
 let $4fcaa3c95ba349ea$export$c8a00e33d990d0fa = "https://a.espncdn.com/i/headshots/rpm/players/full/";
@@ -3337,7 +3337,7 @@ function $84bc952fd23869d6$export$2e2366488d12e20d(t, lang, stateObj, c, o, spor
     if (stateObj.attributes.on_third) c.onThirdOp = 1;
     // Set Title data
     c.title = o.cardTitle;
-    if (o.showLeague) c.title = c.title || stateObj.attributes.league;
+    if (o.showLeague) c.title = c.title || stateObj.attributes.league_name;
     // Set Scoreboard data
     c.logo[team] = stateObj.attributes.team_logo;
     c.logoAlternate[team] = stateObj.attributes.team_logo;
@@ -3626,7 +3626,7 @@ function $8d10daf0cda71373$export$75a82cd3fb272a60(t, stateObj, c, team, oppo) {
     c.barLength[oppo] = stateObj.attributes.team_total_shots;
     c.barLabel[team] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
     c.barLabel[oppo] = t.translate("racing.teamBarLabel", "%s", String(stateObj.attributes.team_total_shots));
-    //    if (stateObj.attributes.league.includes("NASCAR")) {
+    //    if (stateObj.attributes.league_name.includes("NASCAR")) {
     //        c.logo[team] = null;
     //        c.logo[oppo] = null;
     //        c.initials[team] = "";
@@ -3866,8 +3866,8 @@ class $a510245ba2c1e365$export$c12aa10d47d2f051 extends (0, $ab210b2da7b39b9d$ex
         //
         //  NCAA Specific Changes
         //
-        if (stateObj.attributes.league) {
-            if (stateObj.attributes.league.includes("NCAA")) c.notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png';
+        if (stateObj.attributes.league_name) {
+            if (stateObj.attributes.league_name.includes("NCAA")) c.notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png';
         }
         //
         //  Reduce score font size if needed

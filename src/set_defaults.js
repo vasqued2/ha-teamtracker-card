@@ -70,7 +70,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
 
     c.title = o.cardTitle;
     if (o.showLeague) {
-        c.title = c.title || stateObj.attributes.league
+        c.title = c.title || stateObj.attributes.league_name
     }
 
     // Set Scoreboard data

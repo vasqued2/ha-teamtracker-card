@@ -148,8 +148,8 @@ export class TeamTrackerCard extends LitElement {
         //
         //  NCAA Specific Changes
         //
-        if (stateObj.attributes.league) {
-            if (stateObj.attributes.league.includes("NCAA")) {
+        if (stateObj.attributes.league_name) {
+            if (stateObj.attributes.league_name.includes("NCAA")) {
                 c.notFoundLogo = 'https://a.espncdn.com/i/espn/misc_logos/500/ncaa.png'
             }
         }
