@@ -86,35 +86,35 @@ export class TeamtrackerCardEditor extends LitElement {
         if (!this._config) {
             return;
         }
-    
+
+        // ha-selector fires detail.value; ha-switch uses target.checked; others use target.value
+        let value;
+        if (event.detail && event.detail.value !== undefined) {
+            value = event.detail.value;
+        } else if (event.target.checked !== undefined) {
+            value = event.target.checked;
+        } else {
+            value = event.target.value;
+        }
+
         let newConfig = { ...this._config };
-    
+
         if (key.includes('.')) {
             const parts = key.split('.');
             let currentLevel = newConfig;
-    
+
             for (let i = 0; i < parts.length - 1; i++) {
                 const part = parts[i];
-    
+
                 currentLevel[part] = { ...currentLevel[part] };
-    
+                
                 currentLevel = currentLevel[part];
             }
-    
-            const finalKey = parts[parts.length - 1];
-            if (event.target.checked !== undefined) {
-                currentLevel[finalKey] = event.target.checked;
-            } else {
-                currentLevel[finalKey] = event.target.value;
-            }
+            currentLevel[parts[parts.length - 1]] = value;
         } else {
-            if (event.target.checked !== undefined) {
-                newConfig[key] = event.target.checked;
-            } else {
-                newConfig[key] = event.target.value;
-            }
+            newConfig[key] = value;
         }
-    
+
         this.configChanged(newConfig);
         this.requestUpdate();
     }
@@ -183,34 +183,44 @@ export class TeamtrackerCardEditor extends LitElement {
         <div>
             <h4>Teamtracker Sensor:</h4>
             <div class="textfield-container">
-                <ha-select
-                    naturalMenuWidth
-                    fixedMenuPosition
-                    label="Entity"
-                    .configValue=${'entity'}
-                    .value=${this._entity}
-                    @change=${(e) => this._EntityChanged(e, 'entity')}
-                    @closed=${(ev) => ev.stopPropagation()}
-                    >
-                    ${this.entities.map((entity) => {
-                        return html`<ha-list-item .value=${entity}>${entity}</ha-list-item>`;
-                    })}
-                </ha-select>
+                <ha-selector
+                    .value=${this._config.entity ?? ''}
+                    .selector=${{
+                        entity: {
+                            filter: { integration: 'teamtracker' }
+                        }
+                    }}
+                    .hass=${this.hass}
+                    @value-changed=${(e) => {
+                        const newConfig = { ...this._config, entity: e.detail.value };
+                        this._entity = e.detail.value;
+                        this.configChanged(newConfig);
+                        this.requestUpdate();
+                    }}
+                ></ha-selector>
             </div>
             <hr>
             <h4>Settings:</h4>
-            <ha-select
-                naturalMenuWidth
-                fixedMenuPosition
-                .configValue=${'home_side'}
-                .value=${this._config.home_side}
-                @change=${(e) => this._valueChanged(e, 'home_side')}
-                @closed=${(ev) => ev.stopPropagation()}
-                >
-                <ha-list-item .value=${''}>Team on Left</ha-list-item>
-                <ha-list-item .value=${'left'}>Home on Left</ha-list-item>
-                <ha-list-item .value=${'right'}>Home on Right</ha-list-item>
-            </ha-select>
+            <ha-selector
+                label="Home Side"
+                .value=${this._config.home_side || 'team'}
+                .selector=${{
+                    select: {
+                        mode: 'dropdown',
+                        options: [
+                            { value: 'team',  label: 'Team on Left' },
+                            { value: 'left',  label: 'Home on Left' },
+                            { value: 'right', label: 'Home on Right' },
+                        ]
+                    }
+                }}
+                @value-changed=${(e) => {
+                    const val = e.detail.value === 'team' ? '' : e.detail.value;
+                    const newConfig = { ...this._config, home_side: val };
+                    this.configChanged(newConfig);
+                    this.requestUpdate();
+                }}
+            ></ha-selector>
             <div class="switch-container">
                 <ha-switch
                     @change="${(e) => this._valueChanged(e, 'show_league')}"
