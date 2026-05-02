@@ -1,6 +1,7 @@
 export const el = {
     "common": {
         "api_error": "Σφάλμα API",
+        "field_not_set": "Οι κατατακτήριες δοκιμές δεν έχουν ολοκληρωθεί",
         "no_upcoming_games": "Δεν υπάρχουν προσεχείς αγώνες έως %s",
         "finalTerm": "%s - Τελικός",
         "byeTerm": "ΑΝΑΠΑΥΣΗ",

@@ -1,6 +1,7 @@
 export const sv = {
     "common": {
         "api_error": "API Error",
+        "field_not_set": "Kvalificeringen är inte avslutad",
         "no_upcoming_games": "Inga kommande matcher %s",
         "finalTerm": "%s - Final",
         "byeTerm": "BYE",

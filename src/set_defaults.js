@@ -227,6 +227,9 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     c.notFoundTerm2 = "NOT_FOUND"
     if (stateObj.attributes.api_message) {
         c.notFoundTerm2 = t.translate("common.api_error")
+        if (stateObj.attributes.api_message.includes("Field not set")) {
+            c.notFoundTerm2 = t.translate("common.field_not_set")
+        }
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)
         if (apiTail.slice(-1) == "Z") {
             var lastDateForm = new Date(apiTail)

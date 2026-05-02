@@ -1,6 +1,7 @@
 export const nl = {
     "common": {
         "api_error": "API Fout",
+        "field_not_set": "Kwalificatie niet afgerond",
         "no_upcoming_games": "Geen aanstaande wedstrijden t/m %s",
         "finalTerm": "Einduitslag - %s",
         "byeTerm": "Dááág!",

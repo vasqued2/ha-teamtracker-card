@@ -1,6 +1,7 @@
 export const sk_SK = {
     "common": {
         "api_error": "Chyba API",
+        "field_not_set": "Kvalifikácia nie je dokončená",
         "no_upcoming_games": "Žiadný nadchádzajúci zápas do %s",
         "finalTerm": "%s - Koniec",
         "byeTerm": "Voľno",
