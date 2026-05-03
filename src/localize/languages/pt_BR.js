@@ -1,6 +1,7 @@
 export const pt_BR = {
     "common": {
         "api_error": "Erro de API",
+        "field_not_set": "A classificação não foi concluída",
         "no_upcoming_games": "Sem próximos jogos %s",
         "finalTerm": "%s - Final",
         "byeTerm": "DESCANSO",

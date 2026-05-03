@@ -1,6 +1,7 @@
 export const fr = {
     "common": {
         "api_error": "Erreur API",
+        "field_not_set": "Les qualifications ne sont pas terminées",
         "no_upcoming_games": "Aucun match prévu pour l'instant %s",
         "finalTerm": "%s - Terminer",
         "byeTerm": "Au revoir",
