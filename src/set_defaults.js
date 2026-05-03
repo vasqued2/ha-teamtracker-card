@@ -227,7 +227,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     c.notFoundTerm2 = "NOT_FOUND"
     if (stateObj.attributes.api_message) {
         c.notFoundTerm2 = t.translate("common.api_error")
-        if (stateObj.attributes.api_message.includes("Field not set")) {
+        if (stateObj.attributes.api_message.includes("qualifying not complete")) {
             c.notFoundTerm2 = t.translate("common.field_not_set")
         }
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17)

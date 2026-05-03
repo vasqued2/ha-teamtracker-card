@@ -1,4 +1,4 @@
-let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.15.0";
+let $4fcaa3c95ba349ea$export$a4ad2735b021c132 = "v0.17.0";
 let $4fcaa3c95ba349ea$export$6df7962ea75d9a39 = "https://a.espncdn.com/i/headshots/golf/players/full/";
 let $4fcaa3c95ba349ea$export$7e154a1de2266268 = "https://a.espncdn.com/i/headshots/mma/players/full/";
 let $4fcaa3c95ba349ea$export$c8a00e33d990d0fa = "https://a.espncdn.com/i/headshots/rpm/players/full/";
@@ -3476,7 +3476,7 @@ function $84bc952fd23869d6$export$2e2366488d12e20d(t, lang, stateObj, c, o, spor
     c.notFoundTerm2 = "NOT_FOUND";
     if (stateObj.attributes.api_message) {
         c.notFoundTerm2 = t.translate("common.api_error");
-        if (stateObj.attributes.api_message.includes("Field not set")) c.notFoundTerm2 = t.translate("common.field_not_set");
+        if (stateObj.attributes.api_message.includes("qualifying not complete")) c.notFoundTerm2 = t.translate("common.field_not_set");
         var apiTail = stateObj.attributes.api_message.substring(stateObj.attributes.api_message.length - 17);
         if (apiTail.slice(-1) == "Z") {
             var lastDateForm = new Date(apiTail);
