@@ -3674,8 +3674,10 @@ function $8d10daf0cda71373$export$b95402321280aab2(t, stateObj, c, team, oppo) {
 }
 function $8d10daf0cda71373$export$75a82cd3fb272a60(t, stateObj, c, team, oppo) {
     c.title = c.title || stateObj.attributes.event_name;
-    c.subtitle = c.gameDatePOST;
-    c.subtitleDisplay = "block";
+    if (stateObj.attributes.date) {
+        c.subtitle = c.gameDatePOST;
+        c.subtitleDisplay = "block";
+    }
     if (stateObj.attributes.quarter) {
         c.pre1 = stateObj.attributes.quarter;
         c.in1 = stateObj.attributes.quarter;
