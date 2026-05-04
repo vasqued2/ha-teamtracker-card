@@ -58,6 +58,8 @@ export const cardStyles = css`
 
 .notFound1 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
 .notFound2 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
+.notFound-row1 { display: var(--not-found-row1-display, none); font-size: 1.4em; line-height: 1.4em; text-align: center; width: 100%; margin-bottom: 4px; }
+.notFound-row2 { display: var(--not-found-row2-display, block); font-size: 1.1em; line-height: 1.1em; text-align: center; width: 100%; margin-bottom: 4px; }
 
 .bye { font-size: 1.8em; text-align: center; width: 50%; }
 

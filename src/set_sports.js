@@ -170,6 +170,8 @@ export function setMMA(t, stateObj, c, team, oppo) {
 //
 export function setRacing(t, stateObj, c, team, oppo) {
     c.title = c.title || stateObj.attributes.event_name;
+    c.notFoundRow1Display = "block"
+    c.notFoundRow2Display = "block"
     if (stateObj.attributes.quarter) {
         c.pre1 = stateObj.attributes.quarter;
         c.in1 = stateObj.attributes.quarter;
