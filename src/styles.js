@@ -3,6 +3,7 @@ import { css } from "lit";
 export const cardStyles = css`
 .card { position: relative; overflow: hidden; padding: 16px 16px 20px; font-weight: 400; border-radius: var(--ha-card-border-radius, 10px); }
 .title { text-align: center; font-size: 1.2em; font-weight: 500; }
+.subtitle { display: var(--subtitle-display, block); font-size: 1.1em; line-height: 1.1em; text-align: center; width: 100%; margin-bottom: 4px; }
 .team-bg { opacity: 0.08; position: absolute; top: -20%; left: -20%; width: 58%; z-index: 0; }
 .opponent-bg { opacity: 0.08; position: absolute; top: -20%; right: -20%; width: 58%; z-index: 0; }
 .card-content { display: flex; justify-content: space-evenly; align-items: center; text-align: center; position: relative; z-index: 1; }
@@ -58,8 +59,6 @@ export const cardStyles = css`
 
 .notFound1 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
 .notFound2 { font-size: 1.4em; line-height: 1.2em; text-align: center; width: 100%; margin-bottom: 4px; }
-.notFound-row1 { display: var(--not-found-row1-display, none); font-size: 1.4em; line-height: 1.4em; text-align: center; width: 100%; margin-bottom: 4px; }
-.notFound-row2 { display: var(--not-found-row2-display, block); font-size: 1.1em; line-height: 1.1em; text-align: center; width: 100%; margin-bottom: 4px; }
 
 .bye { font-size: 1.8em; text-align: center; width: 50%; }
 

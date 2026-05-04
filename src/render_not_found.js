@@ -9,6 +9,7 @@ export function renderNotFound(c) {
         <ha-card>
             <div class="card">
                 <div class="title">${c.title}</div>
+                <div class="subtitle" style=${styleMap({ '--subtitle-display': c.subtitleDisplay })}>${c.subtitle}</div>
                 <img class="team-bg" src="${c.notFoundLogoBG}" />
                 <div class="card-content">
                     <div class="team">
@@ -21,10 +22,6 @@ export function renderNotFound(c) {
                     </div>
                 </div>
             </div>
-            <a class="bottom-clickable ${!c.bottomURL ? 'disabled' : ''}" href="${c.bottomURL ? c.bottomURL : '#'}" target="_blank">
-                <div class="notFound-row1" style=${styleMap({ '--not-found-row1-display': c.notFoundRow1Display })}>${c.gameWeekday}</div>
-                <div class="notFound-row2" style=${styleMap({ '--not-found-row2-display': c.notFoundRow2Display })}>${c.gameDatePOST}</div>
-            </a>
         </ha-card>
     `;
     // Return the HTML template

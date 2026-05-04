@@ -9,6 +9,7 @@ export function renderPre(c) {
     <ha-card>
         <div class="card">
             <div class="title">${c.title}</div>
+            <div class="subtitle" style=${styleMap({ '--subtitle-display': c.subtitleDisplay })}>${c.subtitle}</div>
             <img class="team-bg" src="${c.logoBG[1]}"
                 onerror="this.onerror=null; this.src='${c.logoBGAlternate[1]}';" />
             <img class="opponent-bg" src="${c.logoBG[2]}"

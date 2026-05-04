@@ -53,8 +53,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     if (o.show_rank == false) {
         c.rankDisplay = 'none';
     }
-    c.notFoundRow1Display = "none"
-    c.notFoundRow2Display = "none"
+    c.subtitleDisplay = "none";
 
     c.onFirstOp = 0.2;
     c.onSecondOp = 0.2;
@@ -75,6 +74,7 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
     if (o.showLeague) {
         c.title = c.title || stateObj.attributes.league_name
     }
+    c.subtitle = "";
 
     // Set Scoreboard data
 

@@ -160,6 +160,7 @@ export function setMMA(t, stateObj, c, team, oppo) {
 //
 //  setRacing()
 //    title = use event_name if title is not set
+//    subtitle = use event_date (as displayed on the POST card)
 //    pre1 = quarter (race type)
 //    in1 = quarter (race type)
 //    finalTerm = adjust for type of race (race, qualifying, etc.)
@@ -170,8 +171,8 @@ export function setMMA(t, stateObj, c, team, oppo) {
 //
 export function setRacing(t, stateObj, c, team, oppo) {
     c.title = c.title || stateObj.attributes.event_name;
-    c.notFoundRow1Display = "block"
-    c.notFoundRow2Display = "block"
+    c.subtitle = c.gameDatePOST;
+    c.subtitleDisplay = "block";
     if (stateObj.attributes.quarter) {
         c.pre1 = stateObj.attributes.quarter;
         c.in1 = stateObj.attributes.quarter;
