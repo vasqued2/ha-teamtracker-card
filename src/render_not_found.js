@@ -1,4 +1,5 @@
 import { html } from "lit";
+import { styleMap } from 'lit/directives/style-map.js';
 
 
 // Define the rendering function
@@ -8,6 +9,7 @@ export function renderNotFound(c) {
         <ha-card>
             <div class="card">
                 <div class="title">${c.title}</div>
+                <div class="subtitle" style=${styleMap({ '--subtitle-display': c.subtitleDisplay })}>${c.subtitle}</div>
                 <img class="team-bg" src="${c.notFoundLogoBG}" />
                 <div class="card-content">
                     <div class="team">
