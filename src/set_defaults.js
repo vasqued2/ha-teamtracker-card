@@ -141,17 +141,18 @@ export function setDefaults(t, lang, stateObj, c, o, sport, team, oppo) {
         c.scoreOp[oppo] = 1;
     }
 
-    if (stateObj.attributes.team_homeaway == 'home') {
-        c.color[team] = stateObj.attributes.team_colors[0];
-        c.color[oppo] = stateObj.attributes.opponent_colors[1];
-    }
-    else if (stateObj.attributes.team_homeaway == 'away') {
-        c.color[team] = stateObj.attributes.team_colors[1];
-        c.color[oppo] = stateObj.attributes.opponent_colors[0];
-    }
-    else {
-        c.color[team] = '#ffffff';
-        c.color[oppo] = '#000000';
+    c.color[team] = '#ffffff';
+    c.color[oppo] = '#000000';
+
+    if (stateObj.attributes.team_colors && stateObj.attributes.opponent_colors) {
+        if (stateObj.attributes.team_homeaway == 'home') {
+            c.color[team] = stateObj.attributes.team_colors[0];
+            c.color[oppo] = stateObj.attributes.opponent_colors[1];
+        }
+        else if (stateObj.attributes.team_homeaway == 'away') {
+            c.color[team] = stateObj.attributes.team_colors[1];
+            c.color[oppo] = stateObj.attributes.opponent_colors[0];
+        }
     }
 
     c.possessionOp[team] = 0;
