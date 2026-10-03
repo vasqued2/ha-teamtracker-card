@@ -42,6 +42,8 @@ export const cardStyles = css`
 .bar-flex { width: 100%; display: flex; justify-content: center; margin-top: 4px; }
 .bar-right { width: var(--bar-length, 0); background-color: var(--bar-color, red); height: 0.8em; border-radius: 0 0.4em 0.4em 0; border: var(--bar-border, 1px) solid var(--bar-border-color, lightgrey); border-left: 0; transition: all 1s ease-out; }
 .bar-left { width: var(--bar-length, 0); background-color: var(--bar-color, blue); height: 0.8em; border-radius: 0.4em 0 0 0.4em; border: var(--bar-border, 1px) solid var(--bar-border-color, lightgrey); border-right: 0; transition: all 1s ease-out; }
+.bar-left[data-separator] { box-shadow: inset -1px 0 #ffffff; }
+.bar-left[data-separator] + .bar-right { box-shadow: inset 1px 0 #000000; }
 .bar { display: flex; align-items: center; }
 .bar1-label { flex: 0 0 10px; padding: 0 10px 0 0; margin-top: 4px; }
 .bar2-label { flex: 0 0 10px; padding: 0 0 0 10px; text-align: right; margin-top: 4px; }

@@ -77,7 +77,7 @@ export function renderIn(c) {
                     <div class="bar">
                         <div class="bar1-label">${c.barLabel[1]}</div>
                         <div class="bar-flex">
-                            <div class="bar-left"  style=${styleMap({"--bar-length": `${c.barLength[1]}%`, "--bar-color": `${c.color[1]}`, "--bar-border": `${c.outlineWidth}px`, "--bar-border-color": `${c.outlineColor}`})}></div>
+                            <div class="bar-left" ?data-separator=${c.barLength[1] > 0 && c.barLength[2] > 0} style=${styleMap({"--bar-length": `${c.barLength[1]}%`, "--bar-color": `${c.color[1]}`, "--bar-border": `${c.outlineWidth}px`, "--bar-border-color": `${c.outlineColor}`})}></div>
                             <div class="bar-right" style=${styleMap({"--bar-length": `${c.barLength[2]}%`, "--bar-color": `${c.color[2]}`, "--bar-border": `${c.outlineWidth}px`, "--bar-border-color": `${c.outlineColor}`})}></div>
                         </div>
                         <div class="bar2-label">${c.barLabel[2]}</div>
